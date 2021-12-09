@@ -55,6 +55,7 @@ import UserAdd from "../pages/User/UserAdd";
 import UserDelete from "../pages/User/UserDelete";
 import UserDetail from "../pages/User/UserDetail";
 import UserList from "../pages/User/UserList";
+import UserLogin from "../pages/User/UserLogin";
 import UserUpdate from "../pages/User/UserUpdate";
 import UserRoleAdd from "../pages/UserRole/UserRoleAdd";
 import UserRoleDelete from "../pages/UserRole/UserRoleDelete";
@@ -70,6 +71,7 @@ export default function Dashboard() {
           <Menus />
         </Grid.Column>
         <Grid.Column stretched width={12}>
+          <Route exact path="/" component={UserLogin} />
           <Route exact path="/admins" component={AdminList} />
           <Route exact path="/admin/:adminId" component={AdminDetail} />
           <Route exact path="/admin_add" component={AdminAdd} />

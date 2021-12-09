@@ -8,8 +8,8 @@ import ExamQuizTextInput from "../../utilities/ExamQuizTextInput";
 export default function LessonUpdate() {
   let { lessonId } = useParams();
   const [lesson, setLesson] = useState({});
+  let lessonService = new LessonService();
   useEffect(() => {
-    let lessonService = new LessonService();
     lessonService
       .getByLessonId(lessonId)
       .then((result) => setLesson(result.data));
@@ -19,8 +19,6 @@ export default function LessonUpdate() {
   const [lessonName, setLessonName] = useState(null);
   const [lessonTeamsCode, setLessonTeamsCode] = useState(null);
   const [lessonMaterialLink, setLessonMaterialLink] = useState(null);
-
-  let lessonService = new LessonService();
 
   const initialValues = {
     lessonId: "",
