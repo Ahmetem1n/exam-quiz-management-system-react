@@ -1,7 +1,8 @@
 import React from "react";
 import { Dropdown, DropdownMenu, Image, Menu } from "semantic-ui-react";
 
-export default function SignedIn() {
+export default function SignedIn(props) {
+    
   return (
     <div>
       <Menu.Item>
@@ -13,7 +14,7 @@ export default function SignedIn() {
         <Dropdown pointing="top left" text="Ahmet">
           <DropdownMenu>
             <Dropdown.Item text="Bilgilerim" icon="info" />
-            <Dropdown.Item text="Çıkış Yap" icon="sign-out" />
+            <Dropdown.Item onClick={props.signOut} text="Çıkış Yap" icon="sign-out" />
           </DropdownMenu>
         </Dropdown>
       </Menu.Item>

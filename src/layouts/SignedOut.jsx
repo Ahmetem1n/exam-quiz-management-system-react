@@ -1,11 +1,11 @@
 import React from "react";
 import { Button, Menu } from "semantic-ui-react";
 
-export default function SignedOut() {
+export default function SignedOut(props) {
   return (
     <div>
       <Menu.Item>
-        <Button>Giriş Yap</Button>
+        <Button onClick={props.signIn}>Giriş Yap</Button>
       </Menu.Item>
     </div>
   );
