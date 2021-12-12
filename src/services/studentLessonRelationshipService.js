@@ -10,6 +10,20 @@ export default class StudentLessonRelationshipService extends Component {
         relationshipId
     );
   }
+
+  getByLessonId(lessonId) {
+    return axios.get(
+      "http://localhost:8080/studentLessonRelationship/getByLessonId?lessonId=" +
+      lessonId
+    );
+  }
+
+  getByStudentId(studentId) {
+    return axios.get(
+      "http://localhost:8080/studentLessonRelationship/getByStudentId?studentId=" +
+      studentId
+    );
+  }
   addRelationship(initialValues) {
     return axios.post(
       "http://localhost:8080/studentLessonRelationship/add?lessonId=" +

@@ -6,12 +6,12 @@ import DepartmentService from "../../../services/departmentService";
 export default function DepartmentDetail() {
   let { departmentId } = useParams();
 
-  const [departments, setDepartments] = useState({});
+  const [department, setDepartment] = useState({});
   useEffect(() => {
     let departmentService = new DepartmentService();
     departmentService
       .getByDepartmentId(departmentId)
-      .then((result) => setDepartments(result.data));
+      .then((result) => setDepartment(result.data));
   }, []);
 
   return (
@@ -53,10 +53,10 @@ export default function DepartmentDetail() {
           <Table>
             <Table.Body>
               <Table.Row>
-                <Table.Cell>{departmentId}</Table.Cell>
+                <Table.Cell>{department?.departmentId}</Table.Cell>
               </Table.Row>
               <Table.Row>
-                <Table.Cell>{departments?.departmentName}</Table.Cell>
+                <Table.Cell>{department?.departmentName}</Table.Cell>
               </Table.Row>
             </Table.Body>
           </Table>
@@ -64,10 +64,10 @@ export default function DepartmentDetail() {
           <Table>
             <Table.Body>
               <Table.Row>
-                <Table.Cell>{departments?.faculty?.facultyId}</Table.Cell>
+                <Table.Cell>{department?.faculty?.facultyId}</Table.Cell>
               </Table.Row>
               <Table.Row>
-                <Table.Cell>{departments?.faculty?.facultyName}</Table.Cell>
+                <Table.Cell>{department?.faculty?.facultyName}</Table.Cell>
               </Table.Row>
             </Table.Body>
           </Table>

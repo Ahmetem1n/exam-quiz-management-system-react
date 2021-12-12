@@ -9,6 +9,13 @@ export default class LessonService extends Component {
       "http://localhost:8080/lesson/getByLessonId?lessonId=" + lessonId
     );
   }
+
+  getByTeacherId(teacherId) {
+    return axios.get(
+      "http://localhost:8080/lesson/getByTeacherId?teacherId=" + teacherId
+    );
+  }
+
   addLesson(initialValues) {
     return axios.post(
       "http://localhost:8080/lesson/add?teacherId=" +

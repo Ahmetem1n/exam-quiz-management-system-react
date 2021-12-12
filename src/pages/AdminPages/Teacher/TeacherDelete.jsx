@@ -9,19 +9,12 @@ export default function TeacherDelete() {
   let { teacherId } = useParams();
   let teacherService = new TeacherService();
 
-  const initialValues = {
-    teacherId: "",
-  };
   return (
     <div>
       TEACHER SİLME
-      <Formik initialValues={initialValues}>
+      <Formik>
         <Form className="ui form">
-          <ExamQuizTextInput
-            name="teacherId"
-            placeholder="Teacher Id"
-            value={teacherId}
-          />
+          <ExamQuizTextInput name="teacherId" value={teacherId} />
           <FormField>
             <Checkbox label="I agree to the Terms and Conditions" />
           </FormField>
@@ -30,7 +23,6 @@ export default function TeacherDelete() {
             color="green"
             type="submit"
             onClick={() => teacherService.deleteTeacher(teacherId)}
-            disabled={!teacherId}
           >
             Teacher Delete
           </Button>

@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { Table } from "semantic-ui-react";
+import { NavLink, useParams } from "react-router-dom";
+import { Button, Table } from "semantic-ui-react";
 import QuestionService from "../../../services/questionService";
 
 export default function QuestionList() {
+  let { examId } = useParams();
   const [questions, setQuestions] = useState([]);
-
+  let questionService = new QuestionService();
   useEffect(() => {
-    let questionsService = new QuestionService();
-    questionsService.getQuestions().then((result) => setQuestions(result.data));
+    questionService
+      .getByExamId(examId)
+      .then((result) => setQuestions(result.data));
   }, []);
+  useEffect(() => {}, []);
   return (
     <div>
       <Table celled>
@@ -18,7 +22,6 @@ export default function QuestionList() {
             <Table.HeaderCell>Soru Metni</Table.HeaderCell>
             <Table.HeaderCell>Şıklar</Table.HeaderCell>
             <Table.HeaderCell>Doğru Şık</Table.HeaderCell>
-            <Table.HeaderCell>Seçilen Şık</Table.HeaderCell>
           </Table.Row>
         </Table.Header>
 
@@ -29,7 +32,12 @@ export default function QuestionList() {
               <Table.Cell>{question?.questionText}</Table.Cell>
               <Table.Cell>{question?.questionOptionsText}</Table.Cell>
               <Table.Cell>{question?.trueOption}</Table.Cell>
-              <Table.Cell>{question?.markedOption}</Table.Cell>
+              <Button as={NavLink} to={"/2/question_update/" + question.questionId}>
+                Güncelleme
+              </Button>
+              <Button as={NavLink} to={"/2/question_delete/" + question.questionId}>
+                Silme
+              </Button>
             </Table.Row>
           ))}
         </Table.Body>

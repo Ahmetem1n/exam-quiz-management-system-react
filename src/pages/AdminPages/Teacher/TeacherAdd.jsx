@@ -7,12 +7,14 @@ import ExamQuizTextInput from "../../../utilities/ExamQuizTextInput";
 export default function TeacherAdd() {
   const [userId, setUserId] = useState(null);
   const [profession, setProfession] = useState(null);
+  const [departmentId, setDepartmentId] = useState(null);
 
   let teacherService = new TeacherService();
 
   const initialValues = {
     userId: "",
     profession: "",
+    departmentId: "",
   };
   return (
     <div>
@@ -31,6 +33,13 @@ export default function TeacherAdd() {
             placeholder="Profession"
             value={profession ?? ""}
             onChange={(e) => setProfession(e.target.value)}
+          />
+
+          <ExamQuizTextInput
+            name="departmentId"
+            placeholder="Department Id"
+            value={departmentId ?? ""}
+            onChange={(e) => setDepartmentId(e.target.value)}
           />
 
           <FormField>

@@ -9,6 +9,13 @@ export default class AdminService extends Component {
       "http://localhost:8080/admin/getByAdminId?adminId=" + adminId
     );
   }
+
+  getByUserId(userId) {
+    return axios.get(
+      "http://localhost:8080/admin/getByUserId?userId=" + userId
+    );
+  }
+
   addAdmin(initialValues) {
     return axios.post("http://localhost:8080/admin/add?userId=" + initialValues.userId);
   }

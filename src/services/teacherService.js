@@ -9,12 +9,19 @@ export default class TeacherService extends Component {
       "http://localhost:8080/teacher/getByTeacherId?teacherId=" + teacherId
     );
   }
+  getByUserId(userId) {
+    return axios.get(
+      "http://localhost:8080/teacher/getByUserId?userId=" + userId
+    );
+  }
   addTeacher(initialValues) {
     return axios.post(
       "http://localhost:8080/teacher/add?userId=" +
         initialValues.userId +
         "&profession=" +
-        initialValues.profession
+        initialValues.profession +
+        "&departmentId=" +
+        initialValues.departmentId
     );
   }
   deleteTeacher(teacherId) {
@@ -29,7 +36,9 @@ export default class TeacherService extends Component {
         "userId=" +
         initialValues.userId +
         "&profession=" +
-        initialValues.profession
+        initialValues.profession +
+        "&departmentId=" +
+        initialValues.departmentId
     );
   }
 }

@@ -16,34 +16,38 @@ export default function TeacherUpdate() {
   }, []);
   const [userId, setUserId] = useState(null);
   const [profession, setProfession] = useState(null);
+  const [departmentId, setDepartmentId] = useState(null);
 
   const initialValues = {
     teacherId: "",
     userId: "",
     profession: "",
+    departmentId: "",
   };
   return (
     <div>
       TEACHER GUNCELLEME
       <Formik initialValues={initialValues}>
         <Form className="ui form">
-          <ExamQuizTextInput
-            name="teacherId"
-            placeholder="Teacher Id"
-            value={teacherId}
-          />
+          <ExamQuizTextInput name="teacherId" value={teacherId} />
           <ExamQuizTextInput
             name="userId"
             placeholder="User Id"
-            value={userId ?? teacher.userId}
+            value={userId ?? teacher?.user?.userId}
             onChange={(e) => setUserId(e.target.value)}
           />
 
           <ExamQuizTextInput
             name="profession"
             placeholder="Profession"
-            value={profession ?? teacher.profession}
+            value={profession ?? teacher?.profession}
             onChange={(e) => setProfession(e.target.value)}
+          />
+          <ExamQuizTextInput
+            name="departmentId"
+            placeholder="Department Id"
+            value={departmentId ?? teacher?.department?.departmentId}
+            onChange={(e) => setDepartmentId(e.target.value)}
           />
 
           <FormField>
@@ -58,9 +62,10 @@ export default function TeacherUpdate() {
                 teacherId,
                 userId,
                 profession,
+                departmentId,
               })
             }
-            disabled={!(userId && profession)}
+            disabled={!(userId && profession && departmentId)}
           >
             Teacher Update
           </Button>

@@ -17,23 +17,18 @@ export default function UserRoleUpdate() {
   const [roleName, setRoleName] = useState(null);
 
   const initialValues = {
-    roleId: "",
     roleName: "",
   };
   return (
     <div>
-      USER ROLE GUNCELLEME
+      USER ROLE GÜNCELLEME
       <Formik initialValues={initialValues}>
         <Form className="ui form">
-          <ExamQuizTextInput
-            name="roleId"
-            placeholder="Role Id"
-            value={roleId}
-          />
+          <ExamQuizTextInput name="roleId" value={roleId} />
           <ExamQuizTextInput
             name="roleName"
             placeholder="Role Name"
-            value={roleName ?? userRole.roleName}
+            value={roleName ?? userRole?.roleName}
             onChange={(e) => setRoleName(e.target.value)}
           />
 

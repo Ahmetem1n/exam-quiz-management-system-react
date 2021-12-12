@@ -17,41 +17,45 @@ export default function StudentUpdate() {
   const [userId, setUserId] = useState(null);
   const [studentNumber, setStudentNumber] = useState(null);
   const [studentGrade, setStudentGrade] = useState(null);
+  const [departmentId, setDepartmentId] = useState(null);
 
   const initialValues = {
     studentId: "",
     userId: "",
     studentNumber: "",
     studentGrade: "",
+    departmentId: "",
   };
   return (
     <div>
       STUDENT GUNCELLEME
       <Formik initialValues={initialValues}>
         <Form className="ui form">
-          <ExamQuizTextInput
-            name="studentId"
-            placeholder="Student Id"
-            value={studentId}
-          />
+          <ExamQuizTextInput name="studentId" value={studentId} />
           <ExamQuizTextInput
             name="userId"
             placeholder="User Id"
-            value={userId ?? student.userId}
+            value={userId ?? student?.user?.userId}
             onChange={(e) => setUserId(e.target.value)}
           />
 
           <ExamQuizTextInput
             name="studentNumber"
             placeholder="Student Number"
-            value={studentNumber ?? student.studentNumber}
+            value={studentNumber ?? student?.studentNumber}
             onChange={(e) => setStudentNumber(e.target.value)}
           />
           <ExamQuizTextInput
             name="studentGrade"
             placeholder="Student Grade"
-            value={studentGrade ?? student.studentGrade}
+            value={studentGrade ?? student?.studentGrade}
             onChange={(e) => setStudentGrade(e.target.value)}
+          />
+          <ExamQuizTextInput
+            name="departmentId"
+            placeholder="Department Id"
+            value={studentGrade ?? student?.department?.departmentId}
+            onChange={(e) => setDepartmentId(e.target.value)}
           />
 
           <FormField>
@@ -67,9 +71,12 @@ export default function StudentUpdate() {
                 userId,
                 studentNumber,
                 studentGrade,
+                departmentId,
               })
             }
-            disabled={!(userId && studentNumber && studentGrade)}
+            disabled={
+              !(userId && studentNumber && studentGrade && departmentId)
+            }
           >
             Student Update
           </Button>

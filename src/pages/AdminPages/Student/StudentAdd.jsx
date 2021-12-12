@@ -8,6 +8,7 @@ export default function StudentAdd() {
   const [userId, setUserId] = useState(null);
   const [studentNumber, setStudentNumber] = useState(null);
   const [studentGrade, setStudentGrade] = useState(null);
+  const [departmentId, setDepartmentId] = useState(null);
 
   let studentService = new StudentService();
 
@@ -15,6 +16,7 @@ export default function StudentAdd() {
     userId: "",
     studentNumber: "",
     studentGrade: "",
+    departmentId:""
   };
   return (
     <div>
@@ -40,6 +42,12 @@ export default function StudentAdd() {
             value={studentGrade ?? ""}
             onChange={(e) => setStudentGrade(e.target.value)}
           />
+          <ExamQuizTextInput
+            name="departmentId"
+            placeholder="Department Id"
+            value={departmentId ?? ""}
+            onChange={(e) => setDepartmentId(e.target.value)}
+          />
 
           <FormField>
             <Checkbox label="I agree to the Terms and Conditions" />
@@ -53,9 +61,10 @@ export default function StudentAdd() {
                 userId,
                 studentNumber,
                 studentGrade,
+                departmentId,
               })
             }
-            disabled={!(userId && studentNumber && studentGrade)}
+            disabled={!(userId && studentNumber && studentGrade&&departmentId)}
           >
             Student Add
           </Button>

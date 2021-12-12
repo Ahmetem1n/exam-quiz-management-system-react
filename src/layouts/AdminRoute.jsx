@@ -50,11 +50,11 @@ import TeacherDelete from "../pages/AdminPages/Teacher/TeacherDelete";
 import TeacherDetail from "../pages/AdminPages/Teacher/TeacherDetail";
 import TeacherList from "../pages/AdminPages/Teacher/TeacherList";
 import TeacherUpdate from "../pages/AdminPages/Teacher/TeacherUpdate";
+import PersonalInformation from "../pages/AdminPages/User/PersonalInformation";
 import UserAdd from "../pages/AdminPages/User/UserAdd";
 import UserDelete from "../pages/AdminPages/User/UserDelete";
 import UserDetail from "../pages/AdminPages/User/UserDetail";
 import UserList from "../pages/AdminPages/User/UserList";
-import UserLogin from "../pages/AdminPages/User/UserLogin";
 import UserUpdate from "../pages/AdminPages/User/UserUpdate";
 import UserRoleAdd from "../pages/AdminPages/UserRole/UserRoleAdd";
 import UserRoleDelete from "../pages/AdminPages/UserRole/UserRoleDelete";
@@ -65,8 +65,7 @@ import AdminNavi from "./AdminNavi";
 export default function AdminRoute() {
   return (
     <div>
-      <AdminNavi x={1}/>
-      <Route exact path="/" component={UserLogin} />
+      <AdminNavi />
       <Route exact path="/1/admins" component={AdminList} />
       <Route exact path="/1/admin/:adminId" component={AdminDetail} />
       <Route exact path="/1/admin_add" component={AdminAdd} />
@@ -226,6 +225,7 @@ export default function AdminRoute() {
         path="/1/userRole_update/:roleId"
         component={UserRoleUpdate}
       />
+      <Route exact path="/1/personalInformation" component={PersonalInformation} />
     </div>
   );
 }

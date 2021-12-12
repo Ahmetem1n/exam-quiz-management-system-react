@@ -5,7 +5,7 @@ export default function SignedOut(props) {
   return (
     <div>
       <Menu.Item>
-        <Button onClick={props.signIn}>Giriş Yap</Button>
+        <Button onClick={props.signIn}>User Logins</Button>
       </Menu.Item>
     </div>
   );

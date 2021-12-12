@@ -9,19 +9,12 @@ export default function LessonDelete() {
   let { lessonId } = useParams();
   let lessonService = new LessonService();
 
-  const initialValues = {
-    lessonId: "",
-  };
   return (
     <div>
       DERS SİLME
-      <Formik initialValues={initialValues}>
+      <Formik>
         <Form className="ui form">
-          <ExamQuizTextInput
-            name="lessonId"
-            placeholder="Lesson Id"
-            value={lessonId}
-          />
+          <ExamQuizTextInput name="lessonId" value={lessonId} />
           <FormField>
             <Checkbox label="I agree to the Terms and Conditions" />
           </FormField>
@@ -30,7 +23,6 @@ export default function LessonDelete() {
             color="green"
             type="submit"
             onClick={() => lessonService.deleteLesson(lessonId)}
-            disabled={!lessonId}
           >
             Lesson Delete
           </Button>

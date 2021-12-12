@@ -19,9 +19,9 @@ export default function LessonUpdate() {
   const [lessonName, setLessonName] = useState(null);
   const [lessonTeamsCode, setLessonTeamsCode] = useState(null);
   const [lessonMaterialLink, setLessonMaterialLink] = useState(null);
-
+  //const teacherId={lesson?.teacher?.teacherId}
+  //setDepartmentId(lesson?.teacher?.teacherId)
   const initialValues = {
-    lessonId: "",
     teacherId: "",
     departmentId: "",
     lessonName: "",
@@ -33,28 +33,22 @@ export default function LessonUpdate() {
       DERS GÜNCELLEME
       <Formik initialValues={initialValues}>
         <Form className="ui form">
-          <ExamQuizTextInput
-            name="lessonId"
-            placeholder="Lesson Id"
-            value={lessonId}
-          />
+          <ExamQuizTextInput name="lessonId" value={lessonId} />
           <ExamQuizTextInput
             name="teacherId"
-            placeholder="Teacher Id"
-            value={teacherId ?? lesson.teacherId}
+            value={teacherId ?? lesson?.teacher?.teacherId}
             onChange={(e) => setTeacherId(e.target.value)}
           />
 
           <ExamQuizTextInput
             name="departmentId"
-            placeholder="Department Id"
-            value={departmentId ?? lesson.departmentId}
+            placeholder="departmentId"
+            value={departmentId ?? lesson?.department?.departmentId}
             onChange={(e) => setDepartmentId(e.target.value)}
           />
           <ExamQuizTextInput
             name="lessonName"
-            placeholder="Lesson Name"
-            value={lessonName ?? lesson.lessonName}
+            value={lessonName ?? lesson?.lessonName}
             onChange={(e) => setLessonName(e.target.value)}
           />
           <ExamQuizTextInput
@@ -86,7 +80,7 @@ export default function LessonUpdate() {
                 lessonMaterialLink,
               })
             }
-            disabled={!(teacherId && departmentId && lessonName)}
+            disabled={!(lessonTeamsCode && lessonMaterialLink)}
           >
             Lesson Update
           </Button>

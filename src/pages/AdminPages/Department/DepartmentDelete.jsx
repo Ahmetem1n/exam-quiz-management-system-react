@@ -9,19 +9,12 @@ export default function DepartmentDelete() {
   let { departmentId } = useParams();
   let departmentService = new DepartmentService();
 
-  const initialValues = {
-    departmentId: "",
-  };
   return (
     <div>
       DEPARTMENT SİLME
-      <Formik initialValues={initialValues}>
+      <Formik>
         <Form className="ui form">
-          <ExamQuizTextInput
-            name="departmentId"
-            placeholder="Department Id"
-            value={departmentId}
-          />
+          <ExamQuizTextInput name="departmentId" value={departmentId} />
           <FormField>
             <Checkbox label="I agree to the Terms and Conditions" />
           </FormField>

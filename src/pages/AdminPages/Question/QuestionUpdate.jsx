@@ -28,18 +28,14 @@ export default function QuestionUpdate() {
   };
   return (
     <div>
-      QUESTİON GUNCELLEME
+      QUESTİON GÜNCELLEME
       <Formik initialValues={initialValues}>
         <Form className="ui form">
-          <ExamQuizTextInput
-            name="questionId"
-            placeholder="Question Id"
-            value={questionId}
-          />
+          <ExamQuizTextInput name="questionId" value={questionId} />
           <ExamQuizTextInput
             name="examId"
             placeholder="Exam Id"
-            value={examId ?? question.examId}
+            value={examId ?? question?.exam?.examId}
             onChange={(e) => setExamId(e.target.value)}
           />
 

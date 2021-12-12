@@ -27,22 +27,18 @@ export default function QuestionStudentAdd() {
       QUESTİON-STUDENT GUNCELLEME
       <Formik initialValues={initialValues}>
         <Form className="ui form">
-          <ExamQuizTextInput
-            name="detailId"
-            placeholder="Detail Id"
-            value={detailId}
-          />
+          <ExamQuizTextInput name="detailId" value={detailId} />
           <ExamQuizTextInput
             name="questionId"
             placeholder="Question Id"
-            value={questionId ?? questionStudent.questionId}
+            value={questionId ?? questionStudent?.question?.questionId}
             onChange={(e) => setQuestionId(e.target.value)}
           />
 
           <ExamQuizTextInput
             name="studentId"
             placeholder="Student Id"
-            value={studentId ?? questionStudent.studentId}
+            value={studentId ?? questionStudent?.student?.studentId}
             onChange={(e) => setStudentId(e.target.value)}
           />
 

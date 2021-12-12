@@ -9,19 +9,12 @@ export default function StudentDelete() {
   let { studentId } = useParams();
   let studentService = new StudentService();
 
-  const initialValues = {
-    studentId: "",
-  };
   return (
     <div>
       STUDENT SİLME
-      <Formik initialValues={initialValues}>
+      <Formik>
         <Form className="ui form">
-          <ExamQuizTextInput
-            name="studentId"
-            placeholder="Student Id"
-            value={studentId}
-          />
+          <ExamQuizTextInput name="studentId" value={studentId} />
           <FormField>
             <Checkbox label="I agree to the Terms and Conditions" />
           </FormField>
@@ -30,7 +23,6 @@ export default function StudentDelete() {
             color="green"
             type="submit"
             onClick={() => studentService.deleteStudent(studentId)}
-            disabled={!studentId}
           >
             Student Delete
           </Button>

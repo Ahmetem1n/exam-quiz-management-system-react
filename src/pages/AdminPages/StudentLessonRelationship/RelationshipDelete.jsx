@@ -9,19 +9,12 @@ export default function RealtionshipDelete() {
   let { relationshipId } = useParams();
   let relationshipService = new StudentLessonRelationshipService();
 
-  const initialValues = {
-    relationshipId: "",
-  };
   return (
     <div>
       STUDENT-LESSON RELATIONSHIP SİLME
-      <Formik initialValues={initialValues}>
+      <Formik>
         <Form className="ui form">
-          <ExamQuizTextInput
-            name="relationshipId"
-            placeholder="relationship Id"
-            value={relationshipId}
-          />
+          <ExamQuizTextInput name="relationshipId" value={relationshipId} />
           <FormField>
             <Checkbox label="I agree to the Terms and Conditions" />
           </FormField>
@@ -32,7 +25,6 @@ export default function RealtionshipDelete() {
             onClick={() =>
               relationshipService.deleteRelationship(relationshipId)
             }
-            disabled={!relationshipId}
           >
             Relationship Delete
           </Button>

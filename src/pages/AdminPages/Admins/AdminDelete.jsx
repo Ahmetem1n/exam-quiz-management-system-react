@@ -9,19 +9,12 @@ export default function AdminDelete() {
   let { adminId } = useParams();
   let adminService = new AdminService();
 
-  const initialValues = {
-    adminId: "",
-  };
   return (
     <div>
       ADMİN SİLME
-      <Formik initialValues={initialValues}>
+      <Formik>
         <Form className="ui form">
-          <ExamQuizTextInput
-            name="adminId"
-            placeholder="Admin Id"
-            value={adminId}
-          />
+          <ExamQuizTextInput value={adminId} />
           <FormField>
             <Checkbox label="I agree to the Terms and Conditions" />
           </FormField>

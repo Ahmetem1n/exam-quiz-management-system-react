@@ -9,19 +9,12 @@ export default function QuestionStudentDelete() {
   let { detailId } = useParams();
   let questionStudentService = new QuestionStudentService();
 
-  const initialValues = {
-    detailId: "",
-  };
   return (
     <div>
       QUESTİON-STUDENT SİLME
-      <Formik initialValues={initialValues}>
+      <Formik>
         <Form className="ui form">
-          <ExamQuizTextInput
-            name="detailId"
-            placeholder="Detail Id"
-            value={detailId}
-          />
+          <ExamQuizTextInput name="detailId" value={detailId} />
           <FormField>
             <Checkbox label="I agree to the Terms and Conditions" />
           </FormField>

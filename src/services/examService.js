@@ -7,6 +7,11 @@ export default class ExamService extends Component {
   getByExamId(examId) {
     return axios.get("http://localhost:8080/exam/getByExamId?examId=" + examId);
   }
+
+  getByLessonId(lessonId) {
+    return axios.get("http://localhost:8080/exam/getByLessonId?lessonId=" + lessonId);
+  }
+
   addExam(initialValues) {
     return axios.post(
       "http://localhost:8080/exam/add?lessonId=" +

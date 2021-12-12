@@ -5,8 +5,8 @@ import DepartmentService from "../../../services/departmentService";
 import ExamQuizTextInput from "../../../utilities/ExamQuizTextInput";
 
 export default function DepartmentAdd() {
-  const [facultyId, setFacultyId] = useState(null);
-  const [departmentName, setDepartmentName] = useState(null);
+  const [facultyId, setFacultyId] = useState("");
+  const [departmentName, setDepartmentName] = useState("");
 
   let departmentService = new DepartmentService();
 

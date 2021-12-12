@@ -9,6 +9,13 @@ export default class StudentService extends Component {
       "http://localhost:8080/student/getByStudentId?studentId=" + studentId
     );
   }
+
+  getByUserId(userId) {
+    return axios.get(
+      "http://localhost:8080/student/getByUserId?userId=" + userId
+    );
+  }
+
   addStudent(initialValues) {
     return axios.post(
       "http://localhost:8080/student/add?userId=" +
@@ -16,7 +23,9 @@ export default class StudentService extends Component {
         "&studentNumber=" +
         initialValues.studentNumber +
         "&studentGrade=" +
-        initialValues.studentGrade
+        initialValues.studentGrade +
+        "&departmentId=" +
+        initialValues.departmentId
     );
   }
   deleteStudent(studentId) {
@@ -33,7 +42,9 @@ export default class StudentService extends Component {
         "&studentNumber=" +
         initialValues.studentNumber +
         "&studentGrade=" +
-        initialValues.studentGrade
+        initialValues.studentGrade +
+        "&departmentId=" +
+        initialValues.departmentId
     );
   }
 }

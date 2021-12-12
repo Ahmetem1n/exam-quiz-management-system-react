@@ -18,7 +18,7 @@ export default function AdminMenus() {
         <Menu.Item name="Teachers" as ={NavLink} to ={"/1/teachers"}/>
         <Menu.Item name="Users" as ={NavLink} to ={"/1/users"}/>
         <Menu.Item name="UserRoles" as ={NavLink} to ={"/1/userRoles"}/>
-        <Menu.Item name="Personal Information" as ={NavLink} to ={"/1/userRoles"}/>
+        <Menu.Item name="Personal Information" as ={NavLink} to ={"/1/personalInformation"}/>
       </Menu>
     </div>
   );

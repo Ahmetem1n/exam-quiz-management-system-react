@@ -9,27 +9,24 @@ export default function FacultyUpdate() {
   let { facultyId } = useParams();
   const [faculty, setFaculty] = useState({});
   let facultyService = new FacultyService();
+
   useEffect(() => {
     facultyService
       .getByFacultyId(facultyId)
       .then((result) => setFaculty(result.data));
   }, []);
+
   const [facultyName, setFacultyName] = useState(null);
 
   const initialValues = {
-    facultyId: "",
     facultyName: "",
   };
   return (
     <div>
-      FACULTY GUNCELLEME
+      FACULTY GÜNCELLEME
       <Formik initialValues={initialValues}>
         <Form className="ui form">
-          <ExamQuizTextInput
-            name="facultyId"
-            placeholder="Faculty Id"
-            value={facultyId}
-          />
+          <ExamQuizTextInput name="facultyId" value={facultyId} />
           <ExamQuizTextInput
             name="facultyName"
             placeholder="Faculty Name"

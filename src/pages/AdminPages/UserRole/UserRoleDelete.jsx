@@ -9,17 +9,13 @@ export default function UserRoleDelete() {
   let { roleId } = useParams();
   let userRoleService = new UserRoleService();
 
-  const initialValues = {
-    roleId: "",
-  };
   return (
     <div>
       USER ROLE SİLME
-      <Formik initialValues={initialValues}>
+      <Formik >
         <Form className="ui form">
           <ExamQuizTextInput
             name="roleId"
-            placeholder="Role Id"
             value={roleId}
           />
           <FormField>

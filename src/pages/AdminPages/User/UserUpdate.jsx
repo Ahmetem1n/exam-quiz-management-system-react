@@ -22,7 +22,6 @@ export default function UserUpdate() {
   const [userPassword, setUserPassword] = useState(null);
 
   const initialValues = {
-    userId: "",
     roleId: "",
     userFirstname: "",
     userLastname: "",
@@ -34,61 +33,57 @@ export default function UserUpdate() {
   };
   return (
     <div>
-      USER GUNCELLEME
+      USER GÜNCELLEME
       <Formik initialValues={initialValues}>
         <Form className="ui form">
-          <ExamQuizTextInput
-            name="userId"
-            placeholder="User Id"
-            value={userId}
-          />
+          <ExamQuizTextInput name="userId" value={userId} />
           <ExamQuizTextInput
             name="roleId"
             placeholder="Role Id"
-            value={roleId ?? user.roleId}
+            value={roleId ?? user?.userRole?.roleId}
             onChange={(e) => setRoleId(e.target.value)}
           />
 
           <ExamQuizTextInput
             name="userFirstname"
             placeholder="User Firstname"
-            value={userFirstname ?? user.userFirstname}
+            value={userFirstname ?? user?.userFirstname}
             onChange={(e) => setUserFirstname(e.target.value)}
           />
           <ExamQuizTextInput
             name="userLastname"
             placeholder="User Lastname"
-            value={userLastname ?? user.userLastname}
+            value={userLastname ?? user?.userLastname}
             onChange={(e) => setUserLastname(e.target.value)}
           />
           <ExamQuizTextInput
             name="userEmail"
             placeholder="User Email"
-            value={userEmail ?? user.userEmail}
+            value={userEmail ?? user?.userEmail}
             onChange={(e) => setUserEmail(e.target.value)}
           />
           <ExamQuizTextInput
             name="nationalityId"
             placeholder="Nationality Id"
-            value={nationalityId ?? user.nationalityId}
+            value={nationalityId ?? user?.nationalityId}
             onChange={(e) => setNationalityId(e.target.value)}
           />
           <ExamQuizTextInput
             name="userGender"
             placeholder="User Gender"
-            value={userGender ?? user.userGender}
+            value={userGender ?? user?.userGender}
             onChange={(e) => setUserGender(e.target.value)}
           />
           <ExamQuizTextInput
             name="userPhoto"
             placeholder="User Photo"
-            value={userPhoto ?? user.userPhoto}
+            value={userPhoto ?? user?.userPhoto}
             onChange={(e) => setUserPhoto(e.target.value)}
           />
           <ExamQuizTextInput
             name="userPassword"
             placeholder="User Password"
-            value={userPassword ?? user.userPassword}
+            value={userPassword ?? user?.userPassword}
             onChange={(e) => setUserPassword(e.target.value)}
           />
           <FormField>

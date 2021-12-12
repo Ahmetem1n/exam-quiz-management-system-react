@@ -18,7 +18,6 @@ export default function RelationshipUpdate() {
   const [studentId, setStudentId] = useState(null);
 
   const initialValues = {
-    relationshipId: "",
     lessonId: "",
     studentId: "",
   };
@@ -27,22 +26,18 @@ export default function RelationshipUpdate() {
       STUDENT-LESSON RELATIONSHIP GUNCELLEME
       <Formik initialValues={initialValues}>
         <Form className="ui form">
-          <ExamQuizTextInput
-            name="relationshipId"
-            placeholder="Relationship Id"
-            value={relationshipId}
-          />
+          <ExamQuizTextInput name="relationshipId" value={relationshipId} />
           <ExamQuizTextInput
             name="lessonId"
             placeholder="Lesson Id"
-            value={lessonId ?? studentLesson.lessonId}
+            value={lessonId ?? studentLesson?.lesson?.lessonId}
             onChange={(e) => setLessonId(e.target.value)}
           />
 
           <ExamQuizTextInput
             name="studentId"
             placeholder="Student Id"
-            value={studentId ?? studentLesson.studentId}
+            value={studentId ?? studentLesson?.student?.studentId}
             onChange={(e) => setStudentId(e.target.value)}
           />
 

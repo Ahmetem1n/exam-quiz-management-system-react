@@ -9,6 +9,12 @@ export default class QuestionService extends Component {
       "http://localhost:8080/question/getByQuestionId?questionId=" + questionId
     );
   }
+
+  getByExamId(examId) {
+    return axios.get(
+      "http://localhost:8080/question/getByExamId?examId=" + examId
+    );
+  }
   addQuestion(initialValues) {
     return axios.post(
       "http://localhost:8080/question/add?examId=" +

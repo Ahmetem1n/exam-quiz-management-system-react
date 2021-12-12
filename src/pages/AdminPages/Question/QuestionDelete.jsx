@@ -9,19 +9,12 @@ export default function QuestionDelete() {
   let { questionId } = useParams();
   let questionService = new QuestionService();
 
-  const initialValues = {
-    questionId: "",
-  };
   return (
     <div>
       QUESTİON SİLME
-      <Formik initialValues={initialValues}>
+      <Formik>
         <Form className="ui form">
-          <ExamQuizTextInput
-            name="questionId"
-            placeholder="Question Id"
-            value={questionId}
-          />
+          <ExamQuizTextInput name="questionId" value={questionId} />
           <FormField>
             <Checkbox label="I agree to the Terms and Conditions" />
           </FormField>
@@ -30,7 +23,6 @@ export default function QuestionDelete() {
             color="green"
             type="submit"
             onClick={() => questionService.deleteQuestion(questionId)}
-            disabled={!questionId}
           >
             Question Delete
           </Button>

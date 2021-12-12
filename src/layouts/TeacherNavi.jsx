@@ -4,7 +4,6 @@ import { NavLink } from "react-router-dom";
 import { useState } from "react/cjs/react.development";
 import { Menu } from "semantic-ui-react";
 import SignedIn from "./SignedIn";
-import SignedOut from "./SignedOut";
 
 export default function Navi(params) {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -15,17 +14,11 @@ export default function Navi(params) {
     history.push("/");
   }
 
-  function handleSignIn() {
-    setIsAuthenticated(true);
-  }
-
   return (
     <div>
       <Menu inverted fixed="top">
-        <Menu.Item name="Ana Sayfa" as={NavLink} to={"/" + params.x} />
-        <Menu.Item name="Exams" as={NavLink} to={"/2/exams"} />
+        <Menu.Item name="Ana Sayfa" as={NavLink} to={"/2"} />
         <Menu.Item name="Lessons" as={NavLink} to={"/2/lessons"} />
-        <Menu.Item name="Questions" as={NavLink} to={"/2/questions"} />
         <Menu.Item
           name="QuestionStudents"
           as={NavLink}
@@ -44,11 +37,7 @@ export default function Navi(params) {
         />
 
         <Menu.Menu position="right">
-          {isAuthenticated ? (
-            <SignedIn signOut={handleSignOut} />
-          ) : (
-            <SignedOut signIn={handleSignIn} />
-          )}
+          <SignedIn signOut={handleSignOut} />
         </Menu.Menu>
       </Menu>
     </div>

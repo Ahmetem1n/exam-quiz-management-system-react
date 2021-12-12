@@ -21,7 +21,6 @@ export default function LessonUpdate() {
   const [lessonMaterialLink, setLessonMaterialLink] = useState(null);
 
   const initialValues = {
-    lessonId: "",
     teacherId: "",
     departmentId: "",
     lessonName: "",
@@ -33,40 +32,36 @@ export default function LessonUpdate() {
       DERS GÜNCELLEME
       <Formik initialValues={initialValues}>
         <Form className="ui form">
-          <ExamQuizTextInput
-            name="lessonId"
-            placeholder="Lesson Id"
-            value={lessonId}
-          />
+          <ExamQuizTextInput name="lessonId" value={lessonId} />
           <ExamQuizTextInput
             name="teacherId"
             placeholder="Teacher Id"
-            value={teacherId ?? lesson.teacherId}
+            value={teacherId ?? lesson?.teacher?.teacherId}
             onChange={(e) => setTeacherId(e.target.value)}
           />
 
           <ExamQuizTextInput
             name="departmentId"
             placeholder="Department Id"
-            value={departmentId ?? lesson.departmentId}
+            value={departmentId ?? lesson?.department?.departmentId}
             onChange={(e) => setDepartmentId(e.target.value)}
           />
           <ExamQuizTextInput
             name="lessonName"
             placeholder="Lesson Name"
-            value={lessonName ?? lesson.lessonName}
+            value={lessonName ?? lesson?.lessonName}
             onChange={(e) => setLessonName(e.target.value)}
           />
           <ExamQuizTextInput
             name="lessonTeamsCode"
             placeholder="Lesson Teams Code"
-            value={lessonTeamsCode ?? lesson.lessonTeamsCode}
+            value={lessonTeamsCode ?? lesson?.lessonTeamsCode}
             onChange={(e) => setLessonTeamsCode(e.target.value)}
           />
           <ExamQuizTextInput
             name="lessonMaterialLink"
             placeholder="Lesson Material Link"
-            value={lessonMaterialLink ?? lesson.lessonMaterialLink}
+            value={lessonMaterialLink ?? lesson?.lessonMaterialLink}
             onChange={(e) => setLessonMaterialLink(e.target.value)}
           />
           <FormField>
@@ -86,7 +81,15 @@ export default function LessonUpdate() {
                 lessonMaterialLink,
               })
             }
-            disabled={!(teacherId && departmentId && lessonName)}
+            disabled={
+              !(
+                teacherId &&
+                departmentId &&
+                lessonName &&
+                lessonTeamsCode &&
+                lessonMaterialLink
+              )
+            }
           >
             Lesson Update
           </Button>

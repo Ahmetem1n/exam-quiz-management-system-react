@@ -9,19 +9,12 @@ export default function ExamDelete() {
   let { examId } = useParams();
   let examService = new ExamService();
 
-  const initialValues = {
-    examId: "",
-  };
   return (
     <div>
       EXAM SİLME
-      <Formik initialValues={initialValues}>
+      <Formik>
         <Form className="ui form">
-          <ExamQuizTextInput
-            name="examId"
-            placeholder="Exam Id"
-            value={examId}
-          />
+          <ExamQuizTextInput name="examId" value={examId} />
           <FormField>
             <Checkbox label="I agree to the Terms and Conditions" />
           </FormField>

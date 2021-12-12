@@ -1,5 +1,6 @@
 import { Formik } from "formik";
 import React, { useEffect, useState } from "react";
+import { Cookies } from "react-cookie";
 import { useParams } from "react-router";
 import { Button, Checkbox, Form, FormField } from "semantic-ui-react";
 import AdminService from "../../../services/adminService";
@@ -20,18 +21,18 @@ export default function AdminUpdate() {
   };
   return (
     <div>
-      ADMİN GUNCELLEME
+      ADMİN GÜNCELLEME
       <Formik initialValues={initialValues}>
         <Form className="ui form">
+        
           <ExamQuizTextInput
             name="adminId"
-            placeholder="Admin Id"
             value={adminId}
           />
           <ExamQuizTextInput
             name="userId"
             placeholder="User Id"
-            value={userId ?? admin.userId}
+            value={userId ?? admin?.userId}
             onChange={(e) => setUserId(e.target.value)}
           />
 

@@ -9,19 +9,12 @@ export default function FacultyDelete() {
   let { facultyId } = useParams();
   let facultyService = new FacultyService();
 
-  const initialValues = {
-    facultyId: "",
-  };
   return (
     <div>
       FACULTY SİLME
-      <Formik initialValues={initialValues}>
+      <Formik>
         <Form className="ui form">
-          <ExamQuizTextInput
-            name="facultyId"
-            placeholder="Faculty Id"
-            value={facultyId}
-          />
+          <ExamQuizTextInput name="facultyId" value={facultyId} />
           <FormField>
             <Checkbox label="I agree to the Terms and Conditions" />
           </FormField>
