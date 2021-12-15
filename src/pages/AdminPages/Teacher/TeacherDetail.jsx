@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router";
-import { Grid, Table } from "semantic-ui-react";
-import TeacherService from "../../../services/teacherService";
+import React, { useEffect, useState } from "react"
+import { useParams } from "react-router"
+import { Grid, Table } from "semantic-ui-react"
+import TeacherService from "../../../services/teacherService"
 
 export default function TeacherDetail() {
-  let { teacherId } = useParams();
-  const [teachers, setTeachers] = useState({});
+  let { teacherId } = useParams()
+  const [teachers, setTeachers] = useState({})
   useEffect(() => {
-    let teacherService = new TeacherService();
+    let teacherService = new TeacherService()
     teacherService
       .getByTeacherId(teacherId)
-      .then((result) => setTeachers(result.data));
-  }, []);
+      .then((result) => setTeachers(result.data))
+  }, [])
 
   return (
     <div>
@@ -166,5 +166,5 @@ export default function TeacherDetail() {
         </Grid.Column>
       </Grid>
     </div>
-  );
+  )
 }

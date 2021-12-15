@@ -1,19 +1,19 @@
-import axios from "axios";
-import { Component } from "react";
+import axios from "axios"
+import { Component } from "react"
 export default class QuestionService extends Component {
   getQuestions() {
-    return axios.get("http://localhost:8080/question/getAll");
+    return axios.get("http://localhost:8080/question/getAll")
   }
   getByQuestionId(questionId) {
     return axios.get(
       "http://localhost:8080/question/getByQuestionId?questionId=" + questionId
-    );
+    )
   }
 
   getByExamId(examId) {
     return axios.get(
       "http://localhost:8080/question/getByExamId?examId=" + examId
-    );
+    )
   }
   addQuestion(initialValues) {
     return axios.post(
@@ -21,18 +21,24 @@ export default class QuestionService extends Component {
         initialValues.examId +
         "&questionText=" +
         initialValues.questionText +
-        "&questionOptionsText=" +
-        initialValues.questionOptionsText +
+        "&optionA=" +
+        initialValues.optionA +
+        "&optionB=" +
+        initialValues.optionB +
+        "&optionC=" +
+        initialValues.optionC +
+        "&optionD=" +
+        initialValues.optionD +
+        "&optionE=" +
+        initialValues.optionE +
         "&trueOption=" +
-        initialValues.trueOption +
-        "&markedOption=" +
-        initialValues.markedOption
-    );
+        initialValues.trueOption
+    )
   }
   deleteQuestion(questionId) {
     return axios.post(
       "http://localhost:8080/question/delete?questionId=" + questionId
-    );
+    )
   }
   updateQuestion(initialValues) {
     return axios.post(
@@ -42,12 +48,18 @@ export default class QuestionService extends Component {
         initialValues.examId +
         "&questionText=" +
         initialValues.questionText +
-        "&questionOptionsText=" +
-        initialValues.questionOptionsText +
+        "&optionA=" +
+        initialValues.optionA +
+        "&optionB=" +
+        initialValues.optionB +
+        "&optionC=" +
+        initialValues.optionC +
+        "&optionD=" +
+        initialValues.optionD +
+        "&optionE=" +
+        initialValues.optionE +
         "&trueOption=" +
-        initialValues.trueOption +
-        "&markedOption=" +
-        initialValues.markedOption
-    );
+        initialValues.trueOption
+    )
   }
 }

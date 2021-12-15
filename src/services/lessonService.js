@@ -1,19 +1,24 @@
-import axios from "axios";
-import { Component } from "react";
+import axios from "axios"
+import { Component } from "react"
 export default class LessonService extends Component {
   getLessons() {
-    return axios.get("http://localhost:8080/lesson/getAll");
+    return axios.get("http://localhost:8080/lesson/getAll")
   }
   getByLessonId(lessonId) {
     return axios.get(
       "http://localhost:8080/lesson/getByLessonId?lessonId=" + lessonId
-    );
+    )
   }
 
   getByTeacherId(teacherId) {
     return axios.get(
       "http://localhost:8080/lesson/getByTeacherId?teacherId=" + teacherId
-    );
+    )
+  }
+  getByStudentId(studentId) {
+    return axios.get(
+      "http://localhost:8080/lesson/getByStudentIdId?studentId=" + studentId
+    )
   }
 
   addLesson(initialValues) {
@@ -28,12 +33,12 @@ export default class LessonService extends Component {
         initialValues.lessonTeamsCode +
         "&lessonMaterialLink=" +
         initialValues.lessonMaterialLink
-    );
+    )
   }
   deleteLesson(lessonId) {
     return axios.post(
       "http://localhost:8080/lesson/delete?lessonId=" + lessonId
-    );
+    )
   }
   updateLesson(initialValues) {
     return axios.post(
@@ -49,6 +54,6 @@ export default class LessonService extends Component {
         initialValues.lessonTeamsCode +
         "&lessonMaterialLink=" +
         initialValues.lessonMaterialLink
-    );
+    )
   }
 }

@@ -1,7 +1,7 @@
 import React from "react";
+import { Cookies } from "react-cookie";
 import { Route } from "react-router";
 import { Grid } from "semantic-ui-react";
-import ExamPage from "../pages/StudentPages/Exam/ExamPage";
 import AdminMenus from "./AdminMenus";
 import AdminRoute from "./AdminRoute";
 import StudentMenus from "./StudentMenus";
@@ -11,23 +11,59 @@ import TeacherRoute from "./TeacherRoute";
 import UserLogin from "./UserLogin";
 
 export default function Dashboard() {
-  return (
-    <div>
-      <Grid>
-        
-        <Grid.Column width={3}>
-          <Route exact path="/" component={UserLogin} />
-          <Route path="/1" component={AdminMenus} />
-          <Route path="/2" component={TeacherMenus} />
-          <Route path="/3" component={StudentMenus} />
-          
-        </Grid.Column>
-        <Grid.Column stretched width={13}>
-          <Route path="/1" component={AdminRoute} />
-          <Route path="/2" component={TeacherRoute} />
-          <Route path="/3" component={StudentRoute} />
-        </Grid.Column>
-      </Grid>
-    </div>
-  );
+  let cookie = new Cookies();
+
+  if (cookie.get("roleId") == 1) {
+    return (
+      <div>
+        <Grid>
+          <Grid.Column width={3}>
+            <Route path="/" component={AdminMenus} />
+          </Grid.Column>
+          <Grid.Column stretched width={13}>
+            <Route path="/" component={AdminRoute} />
+          </Grid.Column>
+        </Grid>
+      </div>
+    );
+  } else if (cookie.get("roleId") == 2) {
+    return (
+      <div>
+        <Grid>
+          <Grid.Column width={3}>
+            <Route path="/" component={TeacherMenus} />
+          </Grid.Column>
+          <Grid.Column stretched width={13}>
+            <Route path="/" component={TeacherRoute} />
+          </Grid.Column>
+        </Grid>
+      </div>
+    );
+  } else if (cookie.get("roleId") == 3) {
+    return (
+      <div>
+        <Grid>
+          <Grid.Column width={3}>
+            <Route path="/" component={StudentMenus} />
+          </Grid.Column>
+          <Grid.Column stretched width={13}>
+            <Route path="/" component={StudentRoute} />
+          </Grid.Column>
+        </Grid>
+      </div>
+    );
+  } else {
+    return (
+      <div>
+        <Grid padded>
+          <Grid.Column width={5}></Grid.Column>
+
+          <Grid.Column color="blue" width={6}>
+            <Route path="/" component={UserLogin} />
+          </Grid.Column>
+          <Grid.Column width={5}></Grid.Column>
+        </Grid>
+      </div>
+    );
+  }
 }

@@ -14,10 +14,10 @@ export default function TeacherList() {
       <Table celled>
         <Table.Header>
           <Table.Row>
-            <Table.HeaderCell>Öğretmen Adı</Table.HeaderCell>
-            <Table.HeaderCell>Öğretmen Soyadı</Table.HeaderCell>
-            <Table.HeaderCell>Öğretmen Email</Table.HeaderCell>
-            <Table.HeaderCell>Öğretmen Cinsiyet</Table.HeaderCell>
+            <Table.HeaderCell>Teacher Firstname</Table.HeaderCell>
+            <Table.HeaderCell>Teacher Lastname</Table.HeaderCell>
+            <Table.HeaderCell>Teacher Email</Table.HeaderCell>
+            <Table.HeaderCell>Teacher Gender</Table.HeaderCell>
           </Table.Row>
         </Table.Header>
 

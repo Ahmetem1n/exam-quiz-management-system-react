@@ -1,26 +1,26 @@
-import axios from "axios";
-import { Component } from "react";
+import axios from "axios"
+import { Component } from "react"
 export default class AdminService extends Component {
   getAdmins() {
-    return axios.get("http://localhost:8080/admin/getAll");
+    return axios.get("http://localhost:8080/admin/getAll")
   }
   getByAdminId(adminId) {
     return axios.get(
       "http://localhost:8080/admin/getByAdminId?adminId=" + adminId
-    );
+    )
   }
 
   getByUserId(userId) {
     return axios.get(
       "http://localhost:8080/admin/getByUserId?userId=" + userId
-    );
+    )
   }
 
   addAdmin(initialValues) {
-    return axios.post("http://localhost:8080/admin/add?userId=" + initialValues.userId);
+    return axios.post("http://localhost:8080/admin/add?userId=" + initialValues.userId)
   }
   deleteAdmin(adminId) {
-    return axios.post("http://localhost:8080/admin/delete?adminId=" + adminId);
+    return axios.post("http://localhost:8080/admin/delete?adminId=" + adminId)
   }
   updateAdmin(initialValues) {
     return axios.post(
@@ -28,6 +28,6 @@ export default class AdminService extends Component {
         initialValues.adminId +
         "&userId=" +
         initialValues.userId
-    );
+    )
   }
 }

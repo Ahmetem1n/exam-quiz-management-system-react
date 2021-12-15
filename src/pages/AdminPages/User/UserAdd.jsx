@@ -1,6 +1,6 @@
 import { Formik } from "formik";
 import React, { useState } from "react";
-import { Button, Checkbox, Form, FormField } from "semantic-ui-react";
+import { Button, Form,  } from "semantic-ui-react";
 import UserService from "../../../services/userService";
 import ExamQuizTextInput from "../../../utilities/ExamQuizTextInput";
 
@@ -28,7 +28,7 @@ export default function UserAdd() {
   };
   return (
     <div>
-      USER EKLEME
+      USER ADD
       <Formik initialValues={initialValues}>
         <Form className="ui form">
           <ExamQuizTextInput
@@ -80,9 +80,6 @@ export default function UserAdd() {
             value={userPassword ?? ""}
             onChange={(e) => setUserPassword(e.target.value)}
           />
-          <FormField>
-            <Checkbox label="I agree to the Terms and Conditions" />
-          </FormField>
 
           <Button
             color="green"

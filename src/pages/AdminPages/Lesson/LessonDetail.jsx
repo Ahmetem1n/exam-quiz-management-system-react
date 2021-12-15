@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router";
-import { Grid, Table } from "semantic-ui-react";
-import LessonService from "../../../services/lessonService";
+import React, { useEffect, useState } from "react"
+import { useParams } from "react-router"
+import { Grid, Table } from "semantic-ui-react"
+import LessonService from "../../../services/lessonService"
 
 export default function LessonDetail() {
-  let { lessonId } = useParams();
-  const [lessons, setLessons] = useState({});
+  let { lessonId } = useParams()
+  const [lessons, setLessons] = useState({})
   useEffect(() => {
-    let lessonService = new LessonService();
+    let lessonService = new LessonService()
     lessonService
       .getByLessonId(lessonId)
-      .then((result) => setLessons(result.data));
-  }, []);
+      .then((result) => setLessons(result.data))
+  }, [])
 
   return (
     <div>
@@ -252,5 +252,5 @@ export default function LessonDetail() {
         </Grid.Column>
       </Grid>
     </div>
-  );
+  )
 }

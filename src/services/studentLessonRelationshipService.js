@@ -1,28 +1,28 @@
-import axios from "axios";
-import { Component } from "react";
+import axios from "axios"
+import { Component } from "react"
 export default class StudentLessonRelationshipService extends Component {
   getRelationships() {
-    return axios.get("http://localhost:8080/studentLessonRelationship/getAll");
+    return axios.get("http://localhost:8080/studentLessonRelationship/getAll")
   }
   getByRelationshipId(relationshipId) {
     return axios.get(
       "http://localhost:8080/studentLessonRelationship/getByRelationshipId?relationshipId=" +
         relationshipId
-    );
+    )
   }
 
   getByLessonId(lessonId) {
     return axios.get(
       "http://localhost:8080/studentLessonRelationship/getByLessonId?lessonId=" +
       lessonId
-    );
+    )
   }
 
   getByStudentId(studentId) {
     return axios.get(
       "http://localhost:8080/studentLessonRelationship/getByStudentId?studentId=" +
       studentId
-    );
+    )
   }
   addRelationship(initialValues) {
     return axios.post(
@@ -30,13 +30,13 @@ export default class StudentLessonRelationshipService extends Component {
         initialValues.lessonId +
         "&studentId=" +
         initialValues.studentId
-    );
+    )
   }
   deleteRelationship(relationshipId) {
     return axios.post(
       "http://localhost:8080/studentLessonRelationship/delete?relationshipId=" +
         relationshipId
-    );
+    )
   }
   updateRelationship(initialValues) {
     return axios.post(
@@ -46,6 +46,6 @@ export default class StudentLessonRelationshipService extends Component {
         initialValues.lessonId +
         "&studentId=" +
         initialValues.studentId
-    );
+    )
   }
 }

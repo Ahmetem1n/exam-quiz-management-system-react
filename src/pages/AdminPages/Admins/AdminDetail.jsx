@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import { useHistory } from "react-router-dom";
-import { Link } from "react-router-dom";
 import { Grid, Table } from "semantic-ui-react";
 import AdminService from "../../../services/adminService";
 
 export default function AdminDetail() {
-  var history = useHistory();
   let { adminId } = useParams();
   const [admin, setAdmin] = useState({});
   useEffect(() => {

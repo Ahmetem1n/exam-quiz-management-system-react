@@ -1,6 +1,6 @@
 import { Formik } from "formik";
 import React, { useState } from "react";
-import { Button, Checkbox, Form, FormField } from "semantic-ui-react";
+import { Button, Form } from "semantic-ui-react";
 import LessonService from "../../../services/lessonService";
 import ExamQuizTextInput from "../../../utilities/ExamQuizTextInput";
 
@@ -22,7 +22,7 @@ export default function LessonAdd() {
   };
   return (
     <div>
-      DERS EKLEME
+      LESSON ADD
       <Formik initialValues={initialValues}>
         <Form className="ui form">
           <ExamQuizTextInput
@@ -56,9 +56,6 @@ export default function LessonAdd() {
             value={lessonMaterialLink ?? ""}
             onChange={(e) => setLessonMaterialLink(e.target.value)}
           />
-          <FormField>
-            <Checkbox label="I agree to the Terms and Conditions" />
-          </FormField>
 
           <Button
             color="green"

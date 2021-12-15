@@ -1,6 +1,6 @@
 import { Formik } from "formik";
 import React, { useState } from "react";
-import { Button, Checkbox, Form, FormField } from "semantic-ui-react";
+import { Button, Form } from "semantic-ui-react";
 import TeacherService from "../../../services/teacherService";
 import ExamQuizTextInput from "../../../utilities/ExamQuizTextInput";
 
@@ -18,7 +18,7 @@ export default function TeacherAdd() {
   };
   return (
     <div>
-      TEACHER EKLEME
+      TEACHER ADD
       <Formik initialValues={initialValues}>
         <Form className="ui form">
           <ExamQuizTextInput
@@ -42,10 +42,6 @@ export default function TeacherAdd() {
             onChange={(e) => setDepartmentId(e.target.value)}
           />
 
-          <FormField>
-            <Checkbox label="I agree to the Terms and Conditions" />
-          </FormField>
-
           <Button
             color="green"
             type="submit"
@@ -53,9 +49,10 @@ export default function TeacherAdd() {
               teacherService.addTeacher({
                 userId,
                 profession,
+                departmentId,
               })
             }
-            disabled={!(userId && profession)}
+            disabled={!(userId && profession && departmentId)}
           >
             Teacher Add
           </Button>

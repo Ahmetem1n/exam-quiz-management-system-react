@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router";
-import { Grid, Table } from "semantic-ui-react";
-import StudentLessonRelationshipService from "../../../services/studentLessonRelationshipService";
+import React, { useEffect, useState } from "react"
+import { useParams } from "react-router"
+import { Grid, Table } from "semantic-ui-react"
+import StudentLessonRelationshipService from "../../../services/studentLessonRelationshipService"
 
 export default function RelationshipDetail() {
-  let { relationshipId } = useParams();
-  const [relationships, setRelationships] = useState({});
+  let { relationshipId } = useParams()
+  const [relationships, setRelationships] = useState({})
   useEffect(() => {
-    let relationshipService = new StudentLessonRelationshipService();
+    let relationshipService = new StudentLessonRelationshipService()
     relationshipService
       .getByRelationshipId(relationshipId)
-      .then((result) => setRelationships(result.data));
-  }, []);
+      .then((result) => setRelationships(result.data))
+  }, [])
 
   return (
     <div>
@@ -461,5 +461,5 @@ export default function RelationshipDetail() {
         </Grid.Column>
       </Grid>
     </div>
-  );
+  )
 }

@@ -2,7 +2,7 @@ import { Formik } from "formik";
 import React, { useEffect, useState } from "react";
 import { Cookies } from "react-cookie";
 import { useParams } from "react-router";
-import { Button, Checkbox, Form, FormField } from "semantic-ui-react";
+import { Button, Form,  } from "semantic-ui-react";
 import AdminService from "../../../services/adminService";
 import ExamQuizTextInput from "../../../utilities/ExamQuizTextInput";
 
@@ -16,29 +16,20 @@ export default function AdminUpdate() {
   const [userId, setUserId] = useState(null);
 
   const initialValues = {
-    adminId: "",
     userId: "",
   };
   return (
     <div>
-      ADMİN GÜNCELLEME
+      ADMİN UPDATE
       <Formik initialValues={initialValues}>
         <Form className="ui form">
-        
-          <ExamQuizTextInput
-            name="adminId"
-            value={adminId}
-          />
+          <ExamQuizTextInput name="adminId" value={adminId} />
           <ExamQuizTextInput
             name="userId"
             placeholder="User Id"
-            value={userId ?? admin?.userId}
+            value={userId ?? admin?.user?.userId}
             onChange={(e) => setUserId(e.target.value)}
           />
-
-          <FormField>
-            <Checkbox label="I agree to the Terms and Conditions" />
-          </FormField>
 
           <Button
             color="green"

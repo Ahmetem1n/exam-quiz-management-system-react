@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router";
-import { Grid, Table } from "semantic-ui-react";
-import DepartmentService from "../../../services/departmentService";
+import React, { useEffect, useState } from "react"
+import { useParams } from "react-router"
+import { Grid, Table } from "semantic-ui-react"
+import DepartmentService from "../../../services/departmentService"
 
 export default function DepartmentDetail() {
-  let { departmentId } = useParams();
+  let { departmentId } = useParams()
 
-  const [department, setDepartment] = useState({});
+  const [department, setDepartment] = useState({})
   useEffect(() => {
-    let departmentService = new DepartmentService();
+    let departmentService = new DepartmentService()
     departmentService
       .getByDepartmentId(departmentId)
-      .then((result) => setDepartment(result.data));
-  }, []);
+      .then((result) => setDepartment(result.data))
+  }, [])
 
   return (
     <div>
@@ -74,5 +74,5 @@ export default function DepartmentDetail() {
         </Grid.Column>
       </Grid>
     </div>
-  );
+  )
 }

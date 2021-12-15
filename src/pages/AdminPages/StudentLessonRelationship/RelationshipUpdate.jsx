@@ -1,7 +1,7 @@
 import { Formik } from "formik";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import { Button, Checkbox, Form, FormField } from "semantic-ui-react";
+import { Button, Form,  } from "semantic-ui-react";
 import StudentLessonRelationshipService from "../../../services/studentLessonRelationshipService";
 import ExamQuizTextInput from "../../../utilities/ExamQuizTextInput";
 
@@ -23,7 +23,7 @@ export default function RelationshipUpdate() {
   };
   return (
     <div>
-      STUDENT-LESSON RELATIONSHIP GUNCELLEME
+      STUDENT-LESSON RELATIONSHIP UPDATE
       <Formik initialValues={initialValues}>
         <Form className="ui form">
           <ExamQuizTextInput name="relationshipId" value={relationshipId} />
@@ -40,10 +40,6 @@ export default function RelationshipUpdate() {
             value={studentId ?? studentLesson?.student?.studentId}
             onChange={(e) => setStudentId(e.target.value)}
           />
-
-          <FormField>
-            <Checkbox label="I agree to the Terms and Conditions" />
-          </FormField>
 
           <Button
             color="green"

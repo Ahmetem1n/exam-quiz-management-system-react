@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from "react";
-import { Table } from "semantic-ui-react";
-import StudentLessonRelationshipService from "../../../services/studentLessonRelationshipService";
+import React, { useEffect, useState } from "react"
+import { Table } from "semantic-ui-react"
+import StudentLessonRelationshipService from "../../../services/studentLessonRelationshipService"
 
 export default function RelationshipList() {
-  const [relationships, setRelationships] = useState([]);
+  const [relationships, setRelationships] = useState([])
 
   useEffect(() => {
-    let relationshipService = new StudentLessonRelationshipService();
+    let relationshipService = new StudentLessonRelationshipService()
     relationshipService
       .getRelationships()
-      .then((result) => setRelationships(result.data));
-  }, []);
+      .then((result) => setRelationships(result.data))
+  }, [])
   return (
     <div>
       <Table celled>
@@ -31,5 +31,5 @@ export default function RelationshipList() {
         </Table.Body>
       </Table>
     </div>
-  );
+  )
 }

@@ -14,10 +14,11 @@ export default function StudentList() {
       <Table celled>
         <Table.Header>
           <Table.Row>
-            <Table.HeaderCell>Öğrenci Adı</Table.HeaderCell>
-            <Table.HeaderCell>Öğrenci Soyadı</Table.HeaderCell>
-            <Table.HeaderCell>Öğrenci Email</Table.HeaderCell>
-            <Table.HeaderCell>Öğrenci Cinsiyet</Table.HeaderCell>
+            <Table.HeaderCell>Student Firstname</Table.HeaderCell>
+            <Table.HeaderCell>Student Lastname</Table.HeaderCell>
+            <Table.HeaderCell>Student Email</Table.HeaderCell>
+            <Table.HeaderCell>Student Gender</Table.HeaderCell>
+            <Table.HeaderCell>Lesson Relationship</Table.HeaderCell>
           </Table.Row>
         </Table.Header>
 

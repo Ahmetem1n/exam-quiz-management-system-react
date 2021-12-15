@@ -1,6 +1,6 @@
 import { Formik } from "formik";
 import React, { useState } from "react";
-import { Button, Checkbox, Form, FormField } from "semantic-ui-react";
+import { Button, Form,  } from "semantic-ui-react";
 import AdminService from "../../../services/adminService";
 import ExamQuizTextInput from "../../../utilities/ExamQuizTextInput";
 
@@ -14,7 +14,7 @@ export default function AdminAdd() {
   };
   return (
     <div>
-      ADMİN EKLEME
+      ADMİN ADD
       <Formik initialValues={initialValues}>
         <Form className="ui form">
           <ExamQuizTextInput
@@ -23,10 +23,6 @@ export default function AdminAdd() {
             value={userId ?? ""}
             onChange={(e) => setUserId(e.target.value)}
           />
-
-          <FormField>
-            <Checkbox label="I agree to the Terms and Conditions" />
-          </FormField>
 
           <Button
             color="green"

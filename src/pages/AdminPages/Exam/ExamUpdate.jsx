@@ -1,7 +1,7 @@
 import { Formik } from "formik";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import { Button, Checkbox, Form, FormField } from "semantic-ui-react";
+import { Button, Form,  } from "semantic-ui-react";
 import ExamService from "../../../services/examService";
 import ExamQuizTextInput from "../../../utilities/ExamQuizTextInput";
 
@@ -23,7 +23,7 @@ export default function ExamUpdate() {
   };
   return (
     <div>
-      EXAM GÜNCELLEME
+      EXAM UPDATE
       <Formik initialValues={initialValues}>
         <Form className="ui form">
           <ExamQuizTextInput name="examId" value={examId} />
@@ -41,10 +41,6 @@ export default function ExamUpdate() {
             onChange={(e) => setActive(e.target.value)}
           />
 
-          <FormField>
-            <Checkbox label="I agree to the Terms and Conditions" />
-          </FormField>
-
           <Button
             color="green"
             type="submit"
@@ -55,7 +51,7 @@ export default function ExamUpdate() {
                 active,
               })
             }
-            disabled={!(examId && lessonId && active)}
+            disabled={!(lessonId && active)}
           >
             Exam Update
           </Button>

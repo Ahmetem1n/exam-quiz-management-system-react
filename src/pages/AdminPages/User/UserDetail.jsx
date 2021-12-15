@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router";
-import { Grid, Table } from "semantic-ui-react";
-import UserService from "../../../services/userService";
+import React, { useEffect, useState } from "react"
+import { useParams } from "react-router"
+import { Grid, Table } from "semantic-ui-react"
+import UserService from "../../../services/userService"
 
 export default function UserDetail() {
-  let { userId } = useParams();
-  const [users, setUsers] = useState({});
+  let { userId } = useParams()
+  const [users, setUsers] = useState({})
   useEffect(() => {
-    let userService = new UserService();
-    userService.getByUserId(userId).then((result) => setUsers(result.data));
-  }, []);
+    let userService = new UserService()
+    userService.getByUserId(userId).then((result) => setUsers(result.data))
+  }, [])
 
   return (
     <div>
@@ -134,5 +134,5 @@ export default function UserDetail() {
         </Grid.Column>
       </Grid>
     </div>
-  );
+  )
 }

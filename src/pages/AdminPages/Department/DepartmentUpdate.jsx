@@ -1,7 +1,7 @@
 import { Formik } from "formik";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import { Button, Checkbox, Form, FormField } from "semantic-ui-react";
+import { Button, Form,  } from "semantic-ui-react";
 import DepartmentService from "../../../services/departmentService";
 import ExamQuizTextInput from "../../../utilities/ExamQuizTextInput";
 
@@ -25,7 +25,7 @@ export default function DepartmentUpdate() {
   };
   return (
     <div>
-      DEPARTMENT GÜNCELLEME
+      DEPARTMENT UPDATE
       <Formik initialValues={initialValues}>
         <Form className="ui form">
           <ExamQuizTextInput name="departmentId" value={departmentId} />
@@ -42,21 +42,18 @@ export default function DepartmentUpdate() {
             value={departmentName ?? department?.departmentName}
             onChange={(e) => setDepartmentName(e.target.value)}
           />
-          <FormField>
-            <Checkbox label="I agree to the Terms and Conditions" />
-          </FormField>
 
           <Button
             color="green"
             type="submit"
             onClick={() =>
-              departmentService.addDepartment({
+              departmentService.updateDepartment({
                 departmentId,
                 facultyId,
                 departmentName,
               })
             }
-            disabled={!(departmentId && facultyId && departmentName)}
+            disabled={!(facultyId && departmentName)}
           >
             Department Update
           </Button>

@@ -14,10 +14,10 @@ export default function FacultyList() {
       <Table celled>
         <Table.Header>
           <Table.Row>
-            <Table.HeaderCell>Fakülte Id</Table.HeaderCell>
-            <Table.HeaderCell>Fakülte Adı</Table.HeaderCell>
-            <Table.HeaderCell>Güncelleme</Table.HeaderCell>
-            <Table.HeaderCell>Silme</Table.HeaderCell>
+            <Table.HeaderCell>Faculty Id</Table.HeaderCell>
+            <Table.HeaderCell>Faculty Name</Table.HeaderCell>
+            <Table.HeaderCell>Update</Table.HeaderCell>
+            <Table.HeaderCell>Delete</Table.HeaderCell>
           </Table.Row>
         </Table.Header>
 
@@ -25,7 +25,7 @@ export default function FacultyList() {
           {faculties.map((faculty) => (
             <Table.Row key={faculty.facultyId}>
               <Table.Cell>
-                <Link to={`/1/faculty/${faculty?.facultyId}`}>
+                <Link to={`/faculty/${faculty?.facultyId}`}>
                   {faculty?.facultyId}
                 </Link>
               </Table.Cell>
@@ -33,25 +33,25 @@ export default function FacultyList() {
               <Table.Cell>
                 <Button
                   as={NavLink}
-                  to={"/1/faculty_update/" + faculty?.facultyId}
+                  to={"/faculty_update/" + faculty?.facultyId}
                 >
-                  Güncelleme
+                  Update
                 </Button>
               </Table.Cell>
               <Table.Cell>
                 <Button
                   as={NavLink}
-                  to={"/1/faculty_delete/" + faculty?.facultyId}
+                  to={"/faculty_delete/" + faculty?.facultyId}
                 >
-                  Silme
+                  Delete
                 </Button>
               </Table.Cell>
             </Table.Row>
           ))}
         </Table.Body>
       </Table>
-      <Button as={NavLink} to={"/1/faculty_add/"}>
-        Faculty Ekleme
+      <Button as={NavLink} to={"/faculty_add/"}>
+        Faculty Add
       </Button>
     </div>
   );

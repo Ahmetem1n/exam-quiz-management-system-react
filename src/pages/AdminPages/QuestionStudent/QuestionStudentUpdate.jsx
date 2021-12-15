@@ -1,7 +1,7 @@
 import { Formik } from "formik";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import { Button, Checkbox, Form, FormField } from "semantic-ui-react";
+import { Button, Form } from "semantic-ui-react";
 import QuestionStudentService from "../../../services/questionStudentService";
 import ExamQuizTextInput from "../../../utilities/ExamQuizTextInput";
 
@@ -24,7 +24,7 @@ export default function QuestionStudentAdd() {
   };
   return (
     <div>
-      QUESTİON-STUDENT GUNCELLEME
+      QUESTİON-STUDENT UPDATE
       <Formik initialValues={initialValues}>
         <Form className="ui form">
           <ExamQuizTextInput name="detailId" value={detailId} />
@@ -41,10 +41,6 @@ export default function QuestionStudentAdd() {
             value={studentId ?? questionStudent?.student?.studentId}
             onChange={(e) => setStudentId(e.target.value)}
           />
-
-          <FormField>
-            <Checkbox label="I agree to the Terms and Conditions" />
-          </FormField>
 
           <Button
             color="green"

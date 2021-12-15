@@ -1,23 +1,23 @@
-import React, { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
-import { Button, Table } from "semantic-ui-react";
-import UserRoleService from "../../../services/userRoleService";
+import React, { useEffect, useState } from "react"
+import { NavLink } from "react-router-dom"
+import { Button, Table } from "semantic-ui-react"
+import UserRoleService from "../../../services/userRoleService"
 
 export default function UserRoleList() {
-  const [userRoles, setUserRoles] = useState([]);
-  let userRoleService = new UserRoleService();
+  const [userRoles, setUserRoles] = useState([])
+  let userRoleService = new UserRoleService()
   useEffect(() => {
-    userRoleService.getUserRoles().then((result) => setUserRoles(result.data));
-  }, []);
+    userRoleService.getUserRoles().then((result) => setUserRoles(result.data))
+  }, [])
   return (
     <div>
       <Table celled>
         <Table.Header>
           <Table.Row>
-            <Table.HeaderCell>Rol Id</Table.HeaderCell>
-            <Table.HeaderCell>Rol Adı</Table.HeaderCell>
-            <Table.HeaderCell>Güncelleme</Table.HeaderCell>
-            <Table.HeaderCell>Silme</Table.HeaderCell>
+            <Table.HeaderCell>Role Id</Table.HeaderCell>
+            <Table.HeaderCell>Role Name</Table.HeaderCell>
+            <Table.HeaderCell>Update</Table.HeaderCell>
+            <Table.HeaderCell>Delete</Table.HeaderCell>
           </Table.Row>
         </Table.Header>
 
@@ -29,17 +29,17 @@ export default function UserRoleList() {
               <Table.Cell>
                 <Button
                   as={NavLink}
-                  to={"/1/userRole_update/" + userRole?.roleId}
+                  to={"/userRole_update/" + userRole?.roleId}
                 >
-                  Güncelleme
+                  Update
                 </Button>
               </Table.Cell>
               <Table.Cell>
                 <Button
                   as={NavLink}
-                  to={"/1/userRole_delete/" + userRole?.roleId}
+                  to={"/userRole_delete/" + userRole?.roleId}
                 >
-                  Silme
+                  Delete
                 </Button>
               </Table.Cell>
             </Table.Row>
@@ -47,9 +47,9 @@ export default function UserRoleList() {
         </Table.Body>
       </Table>
 
-      <Button as={NavLink} to={"/1/userRole_add"}>
-        User Role Ekleme
+      <Button as={NavLink} to={"/userRole_add"}>
+        User Role Add
       </Button>
     </div>
-  );
+  )
 }

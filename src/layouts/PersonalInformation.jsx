@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { Cookies } from "react-cookie";
 import { Grid, Table } from "semantic-ui-react";
-import AdminService from "../../../services/adminService";
+import UserService from "../services/userService";
 
 export default function PersonalInformation() {
-  const [admin, setAdmin] = useState({});
+  const [user, setUser] = useState({});
   let cookie = new Cookies();
   useEffect(() => {
-    let adminService = new AdminService();
-    adminService
-      .getByAdminId(cookie.get("userId"))
-      .then((result) => setAdmin(result.data));
+    let userService = new UserService();
+    userService
+      .getByUserId(cookie.get("userId"))
+      .then((result) => setUser(result.data));
   }, []);
 
   return (
@@ -62,25 +62,25 @@ export default function PersonalInformation() {
           <Table>
             <Table.Body>
               <Table.Row>
-                <Table.Cell>{admin?.user?.userRole?.roleName}</Table.Cell>
+                <Table.Cell>{user?.userRole?.roleName}</Table.Cell>
               </Table.Row>
               <Table.Row>
-                <Table.Cell>{admin?.user?.userFirstname}</Table.Cell>
+                <Table.Cell>{user?.userFirstname}</Table.Cell>
               </Table.Row>
               <Table.Row>
-                <Table.Cell>{admin?.user?.userLastname}</Table.Cell>
+                <Table.Cell>{user?.userLastname}</Table.Cell>
               </Table.Row>
               <Table.Row>
-                <Table.Cell>{admin?.user?.userEmail}</Table.Cell>
+                <Table.Cell>{user?.userEmail}</Table.Cell>
               </Table.Row>
               <Table.Row>
-                <Table.Cell>{admin?.user?.nationalityId}</Table.Cell>
+                <Table.Cell>{user?.nationalityId}</Table.Cell>
               </Table.Row>
               <Table.Row>
-                <Table.Cell>{admin?.user?.userGender}</Table.Cell>
+                <Table.Cell>{user?.userGender}</Table.Cell>
               </Table.Row>
               <Table.Row>
-                <Table.Cell>{admin?.user?.userPassword}</Table.Cell>
+                <Table.Cell>{user?.userPassword}</Table.Cell>
               </Table.Row>
             </Table.Body>
           </Table>

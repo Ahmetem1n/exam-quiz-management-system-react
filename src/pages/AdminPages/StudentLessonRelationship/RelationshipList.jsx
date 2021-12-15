@@ -17,11 +17,11 @@ export default function RelationshipList() {
       <Table celled>
         <Table.Header>
           <Table.Row>
-            <Table.HeaderCell>İlişki Id</Table.HeaderCell>
-            <Table.HeaderCell>Ders Adı</Table.HeaderCell>
-            <Table.HeaderCell>Öğrenci Adı</Table.HeaderCell>
-            <Table.HeaderCell>Güncelleme</Table.HeaderCell>
-            <Table.HeaderCell>Silme</Table.HeaderCell>
+            <Table.HeaderCell>Relationship Id</Table.HeaderCell>
+            <Table.HeaderCell>Lesson Name</Table.HeaderCell>
+            <Table.HeaderCell>Student Name</Table.HeaderCell>
+            <Table.HeaderCell>Update</Table.HeaderCell>
+            <Table.HeaderCell>Delete</Table.HeaderCell>
           </Table.Row>
         </Table.Header>
 
@@ -37,11 +37,11 @@ export default function RelationshipList() {
                 <Button
                   as={NavLink}
                   to={
-                    "/1/studentLessonRelationship_update/" +
+                    "/studentLessonRelationship_update/" +
                     relationship.relationshipId
                   }
                 >
-                  Güncelleme
+                  Update
                 </Button>
               </Table.Cell>
 
@@ -49,11 +49,11 @@ export default function RelationshipList() {
                 <Button
                   as={NavLink}
                   to={
-                    "/1/studentLessonRelationship_delete/" +
+                    "/studentLessonRelationship_delete/" +
                     relationship.relationshipId
                   }
                 >
-                  Silme
+                  Delete
                 </Button>
               </Table.Cell>
             </Table.Row>
@@ -61,8 +61,8 @@ export default function RelationshipList() {
         </Table.Body>
       </Table>
 
-      <Button as={NavLink} to={"/1/studentLessonRelationship_add"}>
-        Student-Lesson Relationship Ekleme
+      <Button as={NavLink} to={"/studentLessonRelationship_add"}>
+        Student-Lesson Relationship Add
       </Button>
     </div>
   );

@@ -1,16 +1,25 @@
+import { Formik } from "formik";
 import React, { Component, useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { Form, Table } from "semantic-ui-react";
 import QuestionService from "../../../services/questionService";
 
 export default function ExamPage() {
+  let { examId } = useParams();
   const [questions, setQuestions] = useState([]);
+
+  const [question, setQuestion] = useState("");
 
   useEffect(() => {
     let questionsService = new QuestionService();
-    questionsService.getQuestions().then((result) => setQuestions(result.data));
+    questionsService
+      .getByExamId(examId)
+      .then((result) => setQuestions(result.data));
   }, []);
+
   let i = 1;
-  const { value } = {};
+  
   return (
     <div>
       <Table celled>
@@ -23,44 +32,57 @@ export default function ExamPage() {
             <Table.Body key={question.questionId}>
               <Table>
                 <Table.Row>
-                  <h2>
+                  <h3>
                     {i++}) {question?.questionText}
-                  </h2>
-                </Table.Row>
-                <Table.Row>
-                  <strong>{question?.questionOptionsText}</strong>
+                  </h3>
                 </Table.Row>
 
                 <Table.Row>
-                  <Form.Radio label="A" value="sm" checked={value === "sm"} />
-                  <Form.Radio label="B" value="md" checked={value === "md"} />
-                  <Form.Radio label="C" value="lg" checked={value === "lg"} />
-                  <Form.Radio label="D" value="lg" checked={value === "lg"} />
-                  <Form.Radio label="E" value="lg" checked={value === "lg"} />
+                  <Form.Group>
+                    <Form.Radio
+                      label={"A) " + question?.optionA}
+                      name={question.questionId}
+                      value='a'
+                      checked={ question.questionId !== 'a'}
+                      onChange={(e) => setQuestion("A" + question.questionId)}
+                    />
+                    <Form.Radio
+                      label={"B) " + question?.optionB}
+                      name={question.questionId}
+                      value='b'
+                      checked={question.questionId !== 'b'}
+                      onChange={(e) => setQuestion("B" + question.questionId)}
+                    />
+                    <Form.Radio
+                      label={"C) " + question?.optionC}
+                      name={question.questionId}
+                      value='c'
+                      checked={ question.questionId !== 'c'}
+                      onChange={(e) => setQuestion("C" + question.questionId)}
+                    />
+                    <Form.Radio
+                      label={"D) " + question?.optionD}
+                      name={question.questionId}
+                      value='d'
+                      checked={ question.questionId !== 'd'}
+                      onChange={(e) => setQuestion("D" + question.questionId)}
+                    />
+                    <Form.Radio
+                      label={"E) " + question?.optionE}
+                      name={question.questionId}
+                      value='e'
+                      checked={ question.questionId !== 'e'}
+                      onChange={(e) => setQuestion("E" + question.questionId)}
+                    />
+                  </Form.Group>
                 </Table.Row>
               </Table>
               <Table></Table>
             </Table.Body>
           ))}
         </Table.Body>
+        <Form.Button>{console.log(question)}Submit</Form.Button>
       </Table>
-
-      <Form>
-        <Form.Group inline>
-          {questions.map((question) => (
-            <Table.Row key={question.questionId}>
-              <Form.Radio label="A" value="sm" checked={value === "sm"} />
-              <Form.Radio label="B" value="md" checked={value === "md"} />
-              <Form.Radio label="C" value="lg" checked={value === "lg"} />
-              <Form.Radio label="D" value="lg" checked={value === "lg"} />
-              <Form.Radio label="E" value="lg" checked={value === "lg"} />
-            </Table.Row>
-          ))}
-          <label>Size</label>
-        </Form.Group>
-
-        <Form.Button>Submit</Form.Button>
-      </Form>
     </div>
   );
 }

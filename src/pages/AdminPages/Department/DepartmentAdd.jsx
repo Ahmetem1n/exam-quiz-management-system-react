@@ -1,22 +1,22 @@
-import { Formik } from "formik";
-import React, { useState } from "react";
-import { Button, Checkbox, Form, FormField } from "semantic-ui-react";
-import DepartmentService from "../../../services/departmentService";
-import ExamQuizTextInput from "../../../utilities/ExamQuizTextInput";
+import { Formik } from "formik"
+import React, { useState } from "react"
+import { Button, Form } from "semantic-ui-react"
+import DepartmentService from "../../../services/departmentService"
+import ExamQuizTextInput from "../../../utilities/ExamQuizTextInput"
 
 export default function DepartmentAdd() {
-  const [facultyId, setFacultyId] = useState("");
-  const [departmentName, setDepartmentName] = useState("");
+  const [facultyId, setFacultyId] = useState("")
+  const [departmentName, setDepartmentName] = useState("")
 
-  let departmentService = new DepartmentService();
+  let departmentService = new DepartmentService()
 
   const initialValues = {
     facultyId: "",
     departmentName: "",
-  };
+  }
   return (
     <div>
-      DEPARTMENT EKLEME
+      DEPARTMENT ADD
       <Formik initialValues={initialValues}>
         <Form className="ui form">
           <ExamQuizTextInput
@@ -32,9 +32,7 @@ export default function DepartmentAdd() {
             value={departmentName ?? ""}
             onChange={(e) => setDepartmentName(e.target.value)}
           />
-          <FormField>
-            <Checkbox label="I agree to the Terms and Conditions" />
-          </FormField>
+          
 
           <Button
             color="green"
@@ -52,5 +50,5 @@ export default function DepartmentAdd() {
         </Form>
       </Formik>
     </div>
-  );
+  )
 }

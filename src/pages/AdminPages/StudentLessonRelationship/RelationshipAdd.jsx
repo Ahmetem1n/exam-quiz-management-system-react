@@ -1,22 +1,22 @@
-import { Formik } from "formik";
-import React, { useState } from "react";
-import { Button, Checkbox, Form, FormField } from "semantic-ui-react";
-import StudentLessonRelationshipService from "../../../services/studentLessonRelationshipService";
-import ExamQuizTextInput from "../../../utilities/ExamQuizTextInput";
+import { Formik } from "formik"
+import React, { useState } from "react"
+import { Button, Form,  } from "semantic-ui-react"
+import StudentLessonRelationshipService from "../../../services/studentLessonRelationshipService"
+import ExamQuizTextInput from "../../../utilities/ExamQuizTextInput"
 
 export default function RelationshipAdd() {
-  const [lessonId, setLessonId] = useState(null);
-  const [studentId, setStudentId] = useState(null);
+  const [lessonId, setLessonId] = useState(null)
+  const [studentId, setStudentId] = useState(null)
 
-  let relationshipService = new StudentLessonRelationshipService();
+  let relationshipService = new StudentLessonRelationshipService()
 
   const initialValues = {
     lessonId: "",
     studentId: "",
-  };
+  }
   return (
     <div>
-      STUDENT-LESSON RELATIONSHIP EKLEME
+      STUDENT-LESSON RELATIONSHIP ADD
       <Formik initialValues={initialValues}>
         <Form className="ui form">
           <ExamQuizTextInput
@@ -33,9 +33,7 @@ export default function RelationshipAdd() {
             onChange={(e) => setStudentId(e.target.value)}
           />
 
-          <FormField>
-            <Checkbox label="I agree to the Terms and Conditions" />
-          </FormField>
+          
 
           <Button
             color="green"
@@ -53,5 +51,5 @@ export default function RelationshipAdd() {
         </Form>
       </Formik>
     </div>
-  );
+  )
 }

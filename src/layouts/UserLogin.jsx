@@ -1,16 +1,14 @@
 import { Formik } from "formik";
 import React, { useState } from "react";
 import { Cookies } from "react-cookie";
-import { useHistory } from "react-router";
-import { Button, Checkbox, Form, FormField } from "semantic-ui-react";
+import { Button, Form } from "semantic-ui-react";
 import AdminService from "../services/adminService";
 import StudentService from "../services/studentService";
 import TeacherService from "../services/teacherService";
 import UserService from "../services/userService";
 import ExamQuizTextInput from "../utilities/ExamQuizTextInput";
 
-export default function UserLogin(props) {
-  const history = useHistory();
+export default function UserLogin() {
   let userService = new UserService();
   let adminService = new AdminService();
   let teacherService = new TeacherService();
@@ -27,7 +25,7 @@ export default function UserLogin(props) {
 
   return (
     <div>
-      USER GİRİS
+      USER LOGIN
       <Formik initialValues={initialValues}>
         <Form className="ui form">
           <ExamQuizTextInput
@@ -43,9 +41,6 @@ export default function UserLogin(props) {
             value={userPassword ?? ""}
             onChange={(e) => setUserPassword(e.target.value)}
           />
-          <FormField>
-            <Checkbox label="I agree to the Terms and Conditions" />
-          </FormField>
 
           <Button
             color="green"
@@ -57,31 +52,31 @@ export default function UserLogin(props) {
                   if (result.data === "") {
                     alert("Wrong User Or Wrong Password");
                   } else {
-                    cookie.set("userId", result.data.userId);
-                    cookie.set("firstname", result.data.userFirstname);
-                    cookie.set("profilePhoto", result.data.userPhoto);
-                    cookie.set("roleId", result.data.userRole.roleId);
                     if (result.data.userRole.roleId === 1) {
                       adminService
                         .getByUserId(result.data.userId)
-                        .then((result) => {
-                          cookie.set("adminId", result.data.adminId);
+                        .then((result2) => {
+                          cookie.set("adminId", result2.data.adminId);
                         });
                     } else if (result.data.userRole.roleId === 2) {
                       teacherService
                         .getByUserId(result.data.userId)
-                        .then((result) => {
-                          cookie.set("teacherId", result.data.teacherId);
+                        .then((result2) => {
+                          cookie.set("teacherId", result2.data.teacherId);
                         });
-                    }
-                    if (result.data.userRole.roleId === 3) {
+                    } else if (result.data.userRole.roleId === 3) {
                       studentService
                         .getByUserId(result.data.userId)
-                        .then((result) => {
-                          cookie.set("studentId", result.data.studentId);
+                        .then((result2) => {
+                          cookie.set("studentId", result2.data.studentId);
                         });
                     }
-                    history.push("/" + result.data.userRole.roleId);
+                    cookie.set("userId", result.data.userId);
+                    cookie.set("firstname", result.data.userFirstname);
+                    cookie.set("profilePhoto", result.data.userPhoto);
+                    cookie.set("roleId", result.data.userRole.roleId);
+                    
+                    window.location.reload();
                   }
                 })
             }

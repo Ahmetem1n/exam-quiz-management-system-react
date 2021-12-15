@@ -15,17 +15,17 @@ export default function UserList() {
       <Table celled>
         <Table.Header>
           <Table.Row>
-            <Table.HeaderCell>Kullanıcı Id</Table.HeaderCell>
-            <Table.HeaderCell>Kullanıcı Adı</Table.HeaderCell>
-            <Table.HeaderCell>Kullanıcı Soyadı</Table.HeaderCell>
-            <Table.HeaderCell>Kullanıcı Email</Table.HeaderCell>
-            <Table.HeaderCell>Kullanıcı Cinsiyet</Table.HeaderCell>
-            <Table.HeaderCell>Kullanıcı Tc</Table.HeaderCell>
-            <Table.HeaderCell>Kullanıcı Fotoğraf</Table.HeaderCell>
-            <Table.HeaderCell>Kullanıcı Şifre</Table.HeaderCell>
-            <Table.HeaderCell>Kullanıcı Rolü</Table.HeaderCell>
-            <Table.HeaderCell>Güncelleme</Table.HeaderCell>
-            <Table.HeaderCell>Silme</Table.HeaderCell>
+            <Table.HeaderCell>User Id</Table.HeaderCell>
+            <Table.HeaderCell>User Firstname</Table.HeaderCell>
+            <Table.HeaderCell>User Lastname</Table.HeaderCell>
+            <Table.HeaderCell>User Email</Table.HeaderCell>
+            <Table.HeaderCell>User Gender</Table.HeaderCell>
+            <Table.HeaderCell>User Nationality Id</Table.HeaderCell>
+            <Table.HeaderCell>User Photo</Table.HeaderCell>
+            <Table.HeaderCell>User Password</Table.HeaderCell>
+            <Table.HeaderCell>User Role</Table.HeaderCell>
+            <Table.HeaderCell>Update</Table.HeaderCell>
+            <Table.HeaderCell>Delete</Table.HeaderCell>
           </Table.Row>
         </Table.Header>
 
@@ -42,21 +42,21 @@ export default function UserList() {
               <Table.Cell>{user?.userPassword}</Table.Cell>
               <Table.Cell>{user?.userRole?.roleName}</Table.Cell>
               <Table.Cell>
-                <Button as={NavLink} to={"/1/user_update/" + user.userId}>
-                  Güncelleme
+                <Button as={NavLink} to={"/user_update/" + user.userId}>
+                  Update
                 </Button>
               </Table.Cell>
               <Table.Cell>
-                <Button as={NavLink} to={"/1/user_delete/" + user.userId}>
-                  Silme
+                <Button as={NavLink} to={"/user_delete/" + user.userId}>
+                  Delete
                 </Button>
               </Table.Cell>
             </Table.Row>
           ))}
         </Table.Body>
       </Table>
-      <Button as={NavLink} to={"/1/user_add"}>
-        User Ekleme
+      <Button as={NavLink} to={"/user_add"}>
+        User Add
       </Button>
     </div>
   );

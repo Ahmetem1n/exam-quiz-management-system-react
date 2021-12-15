@@ -15,13 +15,13 @@ export default function StudentList() {
       <Table celled>
         <Table.Header>
           <Table.Row>
-            <Table.HeaderCell>Öğrenci Id</Table.HeaderCell>
-            <Table.HeaderCell>Öğrenci Adı</Table.HeaderCell>
-            <Table.HeaderCell>Öğrenci Soyadı</Table.HeaderCell>
-            <Table.HeaderCell>Öğrenci Email</Table.HeaderCell>
-            <Table.HeaderCell>Öğrenci Cinsiyet</Table.HeaderCell>
-            <Table.HeaderCell>Güncelleme</Table.HeaderCell>
-            <Table.HeaderCell>Silme</Table.HeaderCell>
+            <Table.HeaderCell>Student Id</Table.HeaderCell>
+            <Table.HeaderCell>Student Firstname</Table.HeaderCell>
+            <Table.HeaderCell>Student Lastname</Table.HeaderCell>
+            <Table.HeaderCell>Student Email</Table.HeaderCell>
+            <Table.HeaderCell>Student Gender</Table.HeaderCell>
+            <Table.HeaderCell>Update</Table.HeaderCell>
+            <Table.HeaderCell>Delete</Table.HeaderCell>
           </Table.Row>
         </Table.Header>
 
@@ -36,26 +36,26 @@ export default function StudentList() {
               <Table.Cell>
                 <Button
                   as={NavLink}
-                  to={"/1/student_update/" + student.studentId}
+                  to={"/student_update/" + student.studentId}
                 >
-                  Güncelleme
+                  Update
                 </Button>
               </Table.Cell>
 
               <Table.Cell>
                 <Button
                   as={NavLink}
-                  to={"/1/student_delete/" + student.studentId}
+                  to={"/student_delete/" + student.studentId}
                 >
-                  Silme
+                  Delete
                 </Button>
               </Table.Cell>
             </Table.Row>
           ))}
         </Table.Body>
       </Table>
-      <Button as={NavLink} to={"/1/student_add"}>
-        Student Ekleme
+      <Button as={NavLink} to={"/student_add"}>
+        Student Add
       </Button>
     </div>
   );

@@ -16,13 +16,17 @@ export default function QuestionList() {
         <Table.Header>
           <Table.Row>
             <Table.HeaderCell>Question Id</Table.HeaderCell>
-            <Table.HeaderCell>Ders Id</Table.HeaderCell>
-            <Table.HeaderCell>Ders Adı</Table.HeaderCell>
-            <Table.HeaderCell>Soru Metni</Table.HeaderCell>
-            <Table.HeaderCell>Şıklar</Table.HeaderCell>
-            <Table.HeaderCell>Doğru Şık</Table.HeaderCell>
-            <Table.HeaderCell>Güncelleme</Table.HeaderCell>
-            <Table.HeaderCell>Silme</Table.HeaderCell>
+            <Table.HeaderCell>Lesson Id</Table.HeaderCell>
+            <Table.HeaderCell>Lesson Name</Table.HeaderCell>
+            <Table.HeaderCell>Question Text</Table.HeaderCell>
+            <Table.HeaderCell>Option A</Table.HeaderCell>
+            <Table.HeaderCell>Option B</Table.HeaderCell>
+            <Table.HeaderCell>Option C</Table.HeaderCell>
+            <Table.HeaderCell>Option D</Table.HeaderCell>
+            <Table.HeaderCell>Option E</Table.HeaderCell>
+            <Table.HeaderCell>True Option</Table.HeaderCell>
+            <Table.HeaderCell>Update</Table.HeaderCell>
+            <Table.HeaderCell>Delete</Table.HeaderCell>
           </Table.Row>
         </Table.Header>
 
@@ -33,30 +37,34 @@ export default function QuestionList() {
               <Table.Cell>{question?.exam?.lesson?.lessonId}</Table.Cell>
               <Table.Cell>{question?.exam?.lesson?.lessonName}</Table.Cell>
               <Table.Cell>{question?.questionText}</Table.Cell>
-              <Table.Cell>{question?.questionOptionsText}</Table.Cell>
+              <Table.Cell>{question?.optionA}</Table.Cell>
+              <Table.Cell>{question?.optionB}</Table.Cell>
+              <Table.Cell>{question?.optionC}</Table.Cell>
+              <Table.Cell>{question?.optionD}</Table.Cell>
+              <Table.Cell>{question?.optionE}</Table.Cell>
               <Table.Cell>{question?.trueOption}</Table.Cell>
               <Table.Cell>
                 <Button
                   as={NavLink}
-                  to={"/1/question_update/" + question.questionId}
+                  to={"/question_update/" + question.questionId}
                 >
-                  Güncelleme
+                  Update
                 </Button>
               </Table.Cell>
               <Table.Cell>
                 <Button
                   as={NavLink}
-                  to={"/1/question_delete/" + question.questionId}
+                  to={"/question_delete/" + question.questionId}
                 >
-                  Silme
+                  Delete
                 </Button>
               </Table.Cell>
             </Table.Row>
           ))}
         </Table.Body>
       </Table>
-      <Button as={NavLink} to={"/1/question_add"}>
-        Question Ekleme
+      <Button as={NavLink} to={"/question_add"}>
+        Question Add
       </Button>
     </div>
   );

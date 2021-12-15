@@ -1,26 +1,34 @@
-import { Formik } from "formik";
-import React, { useState } from "react";
-import { Button, Checkbox, Form, FormField } from "semantic-ui-react";
-import QuestionService from "../../../services/questionService";
-import ExamQuizTextInput from "../../../utilities/ExamQuizTextInput";
+import { Formik } from "formik"
+import React, { useState } from "react"
+import { Button, Form,  } from "semantic-ui-react"
+import QuestionService from "../../../services/questionService"
+import ExamQuizTextInput from "../../../utilities/ExamQuizTextInput"
 
 export default function QuestionAdd() {
-  const [examId, setExamId] = useState(null);
-  const [questionText, setQuestionText] = useState(null);
-  const [questionOptionsText, setQuestionOptionsText] = useState(null);
-  const [trueOption, setTrueOption] = useState(null);
+  const [examId, setExamId] = useState(null)
+  const [questionText, setQuestionText] = useState(null)
+  const [optionA, setOptionA] = useState(null)
+  const [optionB, setOptionB] = useState(null)
+  const [optionC, setOptionC] = useState(null)
+  const [optionD, setOptionD] = useState(null)
+  const [optionE, setOptionE] = useState(null)
+  const [trueOption, setTrueOption] = useState(null)
 
-  let questionService = new QuestionService();
+  let questionService = new QuestionService()
 
   const initialValues = {
     examId: "",
     questionText: "",
-    questionOptionsText: "",
+    optionA: "",
+    optionB: "",
+    optionC: "",
+    optionD: "",
+    optionE: "",
     trueOption: "",
-  };
+  }
   return (
     <div>
-      QUESTİON EKLEME
+      QUESTİON ADD
       <Formik initialValues={initialValues}>
         <Form className="ui form">
           <ExamQuizTextInput
@@ -37,10 +45,34 @@ export default function QuestionAdd() {
             onChange={(e) => setQuestionText(e.target.value)}
           />
           <ExamQuizTextInput
-            name="questionOptionsText"
-            placeholder="Question Options Text"
-            value={questionOptionsText ?? ""}
-            onChange={(e) => setQuestionOptionsText(e.target.value)}
+            name="optionA"
+            placeholder="OptionA"
+            value={optionA ?? ""}
+            onChange={(e) => setOptionA(e.target.value)}
+          />
+          <ExamQuizTextInput
+            name="optionB"
+            placeholder="OptionB"
+            value={optionB ?? ""}
+            onChange={(e) => setOptionB(e.target.value)}
+          />
+          <ExamQuizTextInput
+            name="optionC"
+            placeholder="OptionC"
+            value={optionC ?? ""}
+            onChange={(e) => setOptionC(e.target.value)}
+          />
+          <ExamQuizTextInput
+            name="optionD"
+            placeholder="OptionD"
+            value={optionD ?? ""}
+            onChange={(e) => setOptionD(e.target.value)}
+          />
+          <ExamQuizTextInput
+            name="optionE"
+            placeholder="OptionE"
+            value={optionE ?? ""}
+            onChange={(e) => setOptionE(e.target.value)}
           />
           <ExamQuizTextInput
             name="trueOption"
@@ -49,9 +81,7 @@ export default function QuestionAdd() {
             onChange={(e) => setTrueOption(e.target.value)}
           />
 
-          <FormField>
-            <Checkbox label="I agree to the Terms and Conditions" />
-          </FormField>
+          
 
           <Button
             color="green"
@@ -60,12 +90,25 @@ export default function QuestionAdd() {
               questionService.addQuestion({
                 examId,
                 questionText,
-                questionOptionsText,
+                optionA,
+                optionB,
+                optionC,
+                optionD,
+                optionE,
                 trueOption,
               })
             }
             disabled={
-              !(examId && questionText && questionOptionsText && trueOption)
+              !(
+                examId &&
+                questionText &&
+                optionA &&
+                optionB &&
+                optionC &&
+                optionD &&
+                optionE &&
+                trueOption
+              )
             }
           >
             Question Add
@@ -73,5 +116,5 @@ export default function QuestionAdd() {
         </Form>
       </Formik>
     </div>
-  );
+  )
 }

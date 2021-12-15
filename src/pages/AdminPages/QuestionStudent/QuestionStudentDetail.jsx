@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router";
-import { Grid, Table } from "semantic-ui-react";
-import QuestionStudentService from "../../../services/questionStudentService";
+import React, { useEffect, useState } from "react"
+import { useParams } from "react-router"
+import { Grid, Table } from "semantic-ui-react"
+import QuestionStudentService from "../../../services/questionStudentService"
 
 export default function QuestionStudentDetail() {
-  let { detailId } = useParams();
-  const [questionStudents, setQuestionStudents] = useState({});
+  let { detailId } = useParams()
+  const [questionStudents, setQuestionStudents] = useState({})
   useEffect(() => {
-    let questionStudentService = new QuestionStudentService();
+    let questionStudentService = new QuestionStudentService()
     questionStudentService
       .getByDetailId(detailId)
-      .then((result) => setQuestionStudents(result.data));
-  }, []);
+      .then((result) => setQuestionStudents(result.data))
+  }, [])
 
   return (
     <div>
@@ -635,5 +635,5 @@ export default function QuestionStudentDetail() {
         </Grid.Column>
       </Grid>
     </div>
-  );
+  )
 }
