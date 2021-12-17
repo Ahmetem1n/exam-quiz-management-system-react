@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from "react"
-import { NavLink } from "react-router-dom"
-import { Button, Table } from "semantic-ui-react"
-import UserRoleService from "../../../services/userRoleService"
+import React, { useEffect, useState } from "react";
+import { Link, NavLink } from "react-router-dom";
+import { Button, Table } from "semantic-ui-react";
+import UserRoleService from "../../../services/userRoleService";
 
 export default function UserRoleList() {
-  const [userRoles, setUserRoles] = useState([])
-  let userRoleService = new UserRoleService()
+  const [userRoles, setUserRoles] = useState([]);
+  let userRoleService = new UserRoleService();
   useEffect(() => {
-    userRoleService.getUserRoles().then((result) => setUserRoles(result.data))
-  }, [])
+    userRoleService.getUserRoles().then((result) => setUserRoles(result.data));
+  }, []);
   return (
     <div>
       <Table celled>
@@ -25,7 +25,11 @@ export default function UserRoleList() {
           {userRoles.map((userRole) => (
             <Table.Row key={userRole.roleId}>
               <Table.Cell>{userRole?.roleId}</Table.Cell>
-              <Table.Cell>{userRole?.roleName}</Table.Cell>
+              <Table.Cell>
+                <Link to={`/userRole/${userRole?.roleId}`}>
+                  {userRole?.roleName}
+                </Link>
+              </Table.Cell>
               <Table.Cell>
                 <Button
                   as={NavLink}
@@ -51,5 +55,5 @@ export default function UserRoleList() {
         User Role Add
       </Button>
     </div>
-  )
+  );
 }

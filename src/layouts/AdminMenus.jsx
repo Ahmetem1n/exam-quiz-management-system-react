@@ -9,6 +9,7 @@ export default function AdminMenus() {
         <Menu.Item name="Admins" as={NavLink} to={"/admins"} />
         <Menu.Item name="Department" as={NavLink} to={"/departments"} />
         <Menu.Item name="Exams" as={NavLink} to={"/exams"} />
+        <Menu.Item name="Exam Results" as={NavLink} to={"/examResults"} />
         <Menu.Item name="Faculties" as={NavLink} to={"/faculties"} />
         <Menu.Item name="Lessons" as={NavLink} to={"/lessons"} />
         <Menu.Item name="Questions" as={NavLink} to={"/questions"} />

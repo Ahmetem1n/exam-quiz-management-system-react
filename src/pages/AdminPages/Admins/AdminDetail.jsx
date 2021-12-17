@@ -22,6 +22,10 @@ export default function AdminDetail() {
                   <strong>Admin Id</strong>
                 </Table.Cell>
               </Table.Row>
+              </Table.Body>
+          </Table>
+          <Table>
+            <Table.Body>
               <Table.Row>
                 <Table.Cell>
                   <strong>Role Name</strong>
@@ -76,6 +80,10 @@ export default function AdminDetail() {
               <Table.Row>
                 <Table.Cell>{admin?.adminId}</Table.Cell>
               </Table.Row>
+              </Table.Body>
+          </Table>
+          <Table>
+            <Table.Body>
               <Table.Row>
                 <Table.Cell>{admin?.user?.userRole?.roleName}</Table.Cell>
               </Table.Row>

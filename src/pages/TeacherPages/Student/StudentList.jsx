@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from "react";
+import { Cookies } from "react-cookie";
 import { Table } from "semantic-ui-react";
-import StudentService from "../../../services/studentService";
+import StudentLessonRelationshipService from "../../../services/studentLessonRelationshipService";
 
 export default function StudentList() {
-  const [students, setStudents] = useState([]);
+  const [relationships, setRelationships] = useState([]);
+  let cookie = new Cookies();
 
   useEffect(() => {
-    let studentService = new StudentService();
-    studentService.getStudents().then((result) => setStudents(result.data));
+    let relationshipService = new StudentLessonRelationshipService();
+    relationshipService
+      .getByTeacher(cookie.get("teacherId"))
+      .then((result) => setRelationships(result.data));
   }, []);
   return (
     <div>
@@ -16,19 +20,22 @@ export default function StudentList() {
           <Table.Row>
             <Table.HeaderCell>Student Firstname</Table.HeaderCell>
             <Table.HeaderCell>Student Lastname</Table.HeaderCell>
-            <Table.HeaderCell>Student Email</Table.HeaderCell>
             <Table.HeaderCell>Student Gender</Table.HeaderCell>
-            <Table.HeaderCell>Lesson Relationship</Table.HeaderCell>
+            <Table.HeaderCell>Lesson Name</Table.HeaderCell>
           </Table.Row>
         </Table.Header>
 
         <Table.Body>
-          {students.map((student) => (
-            <Table.Row key={student.studentId}>
-              <Table.Cell>{student?.user?.userFirstname}</Table.Cell>
-              <Table.Cell>{student?.user?.userLastname}</Table.Cell>
-              <Table.Cell>{student?.user?.userEmail}</Table.Cell>
-              <Table.Cell>{student?.user?.userGender}</Table.Cell>
+          {relationships.map((relationship) => (
+            <Table.Row key={relationship.relationshipId}>
+              <Table.Cell>
+                {relationship?.student?.user?.userFirstname}
+              </Table.Cell>
+              <Table.Cell>
+                {relationship?.student?.user?.userLastname}
+              </Table.Cell>
+              <Table.Cell>{relationship?.student?.user?.userGender}</Table.Cell>
+              <Table.Cell>{relationship?.lesson?.lessonName}</Table.Cell>
             </Table.Row>
           ))}
         </Table.Body>

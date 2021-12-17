@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { Button, Table } from "semantic-ui-react";
 import UserService from "../../../services/userService";
 
@@ -33,14 +33,21 @@ export default function UserList() {
           {users.map((user) => (
             <Table.Row key={user.userId}>
               <Table.Cell>{user?.userId}</Table.Cell>
-              <Table.Cell>{user?.userFirstname}</Table.Cell>
+              <Table.Cell>
+                <Link to={`/user/${user?.userId}`}>
+                  {user?.userFirstname}
+                </Link>
+              </Table.Cell>
               <Table.Cell>{user?.userLastname}</Table.Cell>
               <Table.Cell>{user?.userEmail}</Table.Cell>
               <Table.Cell>{user?.userGender}</Table.Cell>
               <Table.Cell>{user?.nationalityId}</Table.Cell>
               <Table.Cell>{user?.userPhoto}</Table.Cell>
               <Table.Cell>{user?.userPassword}</Table.Cell>
-              <Table.Cell>{user?.userRole?.roleName}</Table.Cell>
+              <Table.Cell>
+              <Link to={`/userRole/${user?.userRole?.roleId}`}>
+              {user?.userRole?.roleName}
+                </Link></Table.Cell>
               <Table.Cell>
                 <Button as={NavLink} to={"/user_update/" + user.userId}>
                   Update

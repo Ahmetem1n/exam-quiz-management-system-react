@@ -27,7 +27,7 @@ export default class ExamService extends Component {
 
   addExam(initialValues) {
     return axios.post(
-      "http://localhost:8080/exam/add?lessonId=" +
+      "http://localhost:8080/exam/add?lesson.lessonId=" +
         initialValues.lessonId +
         "&active=" +
         initialValues.active
@@ -40,7 +40,7 @@ export default class ExamService extends Component {
     return axios.post(
       "http://localhost:8080/exam/update?examId=" +
         initialValues.examId +
-        "&lessonId=" +
+        "&lesson.lessonId=" +
         initialValues.lessonId +
         "&active=" +
         initialValues.active

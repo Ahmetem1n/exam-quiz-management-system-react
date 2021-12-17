@@ -20,6 +20,7 @@ export default function ExamListTeacher() {
       <Table celled>
         <Table.Header>
           <Table.Row>
+          <Table.HeaderCell>Exam Id</Table.HeaderCell>
             <Table.HeaderCell>Lesson Id</Table.HeaderCell>
             <Table.HeaderCell>Lesson Name</Table.HeaderCell>
             <Table.HeaderCell>Active</Table.HeaderCell>
@@ -32,6 +33,7 @@ export default function ExamListTeacher() {
         <Table.Body>
           {exams.map((exam) => (
             <Table.Row key={exam.examId}>
+              <Table.Cell>{exam?.examId}</Table.Cell>
               <Table.Cell>{exam?.lesson?.lessonId}</Table.Cell>
               <Table.Cell>{exam?.lesson?.lessonName}</Table.Cell>
               <Table.Cell>{`${exam?.active}`}</Table.Cell>

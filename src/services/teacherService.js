@@ -16,11 +16,11 @@ export default class TeacherService extends Component {
   }
   addTeacher(initialValues) {
     return axios.post(
-      "http://localhost:8080/teacher/add?userId=" +
+      "http://localhost:8080/teacher/add?user.userId=" +
         initialValues.userId +
         "&profession=" +
         initialValues.profession +
-        "&departmentId=" +
+        "&department.departmentId=" +
         initialValues.departmentId
     )
   }
@@ -33,11 +33,11 @@ export default class TeacherService extends Component {
     return axios.post(
       "http://localhost:8080/teacher/update?teacherId=" +
         initialValues.teacherId +
-        "userId=" +
+        "user.userId=" +
         initialValues.userId +
         "&profession=" +
         initialValues.profession +
-        "&departmentId=" +
+        "&department.departmentId=" +
         initialValues.departmentId
     )
   }

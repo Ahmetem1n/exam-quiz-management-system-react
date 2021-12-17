@@ -7,7 +7,9 @@ export default function StudentMenus() {
     <div>
       <Menu fluid vertical tabular>
         <Menu.Item name="Exams" as={NavLink} to={"/exams"} />
+        <Menu.Item name="Exam Results" as={NavLink} to={"/examResults"} />
         <Menu.Item name="Lessons" as={NavLink} to={"/lessons"} />
+        
         <Menu.Item name="Teachers" as={NavLink} to={"/teachers"} />
         <Menu.Item
           name="Personal Information"

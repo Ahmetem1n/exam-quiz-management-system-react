@@ -7,15 +7,11 @@ export default function Navi() {
   return (
     <div>
       <Menu inverted fixed="top">
-        <Menu.Item name="Ana Sayfa" as={NavLink} to={"/"} />
+        <Menu.Item name="Home" as={NavLink} to={"/"} />
+        <Menu.Item name="Exams" as={NavLink} to={"/exams"} />
         <Menu.Item name="Lessons" as={NavLink} to={"/lessons"} />
-
         <Menu.Item name="Students" as={NavLink} to={"/students"} />
-        <Menu.Item
-          name="StudentLessonRelationships"
-          as={NavLink}
-          to={"/studentLessonRelationships"}
-        />
+       
         <Menu.Item
           name="Personal Information"
           as={NavLink}

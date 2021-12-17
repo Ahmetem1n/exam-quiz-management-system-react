@@ -33,18 +33,37 @@ export default function QuestionDetail() {
 
               <Table.Row>
                 <Table.Cell>
-                  <strong>Question Options Text</strong>
+                  <strong>Option A</strong>
+                </Table.Cell>
+              </Table.Row>
+
+              <Table.Row>
+                <Table.Cell>
+                  <strong>Option B</strong>
+                </Table.Cell>
+              </Table.Row>
+
+              <Table.Row>
+                <Table.Cell>
+                  <strong>Option C</strong>
+                </Table.Cell>
+              </Table.Row>
+
+              <Table.Row>
+                <Table.Cell>
+                  <strong>Option D</strong>
+                </Table.Cell>
+              </Table.Row>
+
+              <Table.Row>
+                <Table.Cell>
+                  <strong>Option E</strong>
                 </Table.Cell>
               </Table.Row>
 
               <Table.Row>
                 <Table.Cell>
                   <strong>True Option</strong>
-                </Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell>
-                  <strong>Marked Option</strong>
                 </Table.Cell>
               </Table.Row>
             </Table.Body>
@@ -77,18 +96,6 @@ export default function QuestionDetail() {
                   <strong>Lesson Name</strong>
                 </Table.Cell>
               </Table.Row>
-
-              <Table.Row>
-                <Table.Cell>
-                  <strong>Teams Code</strong>
-                </Table.Cell>
-              </Table.Row>
-
-              <Table.Row>
-                <Table.Cell>
-                  <strong>Material Link</strong>
-                </Table.Cell>
-              </Table.Row>
             </Table.Body>
           </Table>
 
@@ -105,17 +112,6 @@ export default function QuestionDetail() {
                   <strong>Department Name</strong>
                 </Table.Cell>
               </Table.Row>
-            </Table.Body>
-          </Table>
-
-          <Table>
-            <Table.Body>
-              <Table.Row>
-                <Table.Cell>
-                  <strong>Faculty Id</strong>
-                </Table.Cell>
-              </Table.Row>
-
               <Table.Row>
                 <Table.Cell>
                   <strong>Faculty Name</strong>
@@ -134,77 +130,7 @@ export default function QuestionDetail() {
 
               <Table.Row>
                 <Table.Cell>
-                  <strong>Teacher Profession</strong>
-                </Table.Cell>
-              </Table.Row>
-            </Table.Body>
-          </Table>
-
-          <Table>
-            <Table.Body>
-              <Table.Row>
-                <Table.Cell>
-                  <strong>User Id</strong>
-                </Table.Cell>
-              </Table.Row>
-
-              <Table.Row>
-                <Table.Cell>
-                  <strong>User Firstname</strong>
-                </Table.Cell>
-              </Table.Row>
-            </Table.Body>
-            <Table.Body>
-              <Table.Row>
-                <Table.Cell>
-                  <strong>User Lastname</strong>
-                </Table.Cell>
-              </Table.Row>
-
-              <Table.Row>
-                <Table.Cell>
-                  <strong>User Email</strong>
-                </Table.Cell>
-              </Table.Row>
-            </Table.Body>
-            <Table.Body>
-              <Table.Row>
-                <Table.Cell>
-                  <strong>User Nationality Id</strong>
-                </Table.Cell>
-              </Table.Row>
-
-              <Table.Row>
-                <Table.Cell>
-                  <strong>User Gender</strong>
-                </Table.Cell>
-              </Table.Row>
-            </Table.Body>
-            <Table.Body>
-              <Table.Row>
-                <Table.Cell>
-                  <strong>User Photo</strong>
-                </Table.Cell>
-              </Table.Row>
-
-              <Table.Row>
-                <Table.Cell>
-                  <strong>User Password</strong>
-                </Table.Cell>
-              </Table.Row>
-            </Table.Body>
-          </Table>
-
-          <Table>
-            <Table.Body>
-              <Table.Row>
-                <Table.Cell>
-                  <strong>User Id</strong>
-                </Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell>
-                  <strong>User Role</strong>
+                  <strong>Teacher Name</strong>
                 </Table.Cell>
               </Table.Row>
             </Table.Body>
@@ -221,13 +147,22 @@ export default function QuestionDetail() {
                 <Table.Cell>{questions?.questionText}</Table.Cell>
               </Table.Row>
               <Table.Row>
-                <Table.Cell>{questions?.questionOptionsText}</Table.Cell>
+                <Table.Cell>{questions?.optionA}</Table.Cell>
+              </Table.Row>
+              <Table.Row>
+                <Table.Cell>{questions?.optionB}</Table.Cell>
+              </Table.Row>
+              <Table.Row>
+                <Table.Cell>{questions?.optionC}</Table.Cell>
+              </Table.Row>
+              <Table.Row>
+                <Table.Cell>{questions?.optionD}</Table.Cell>
+              </Table.Row>
+              <Table.Row>
+                <Table.Cell>{questions?.optionE}</Table.Cell>
               </Table.Row>
               <Table.Row>
                 <Table.Cell>{questions?.trueOption}</Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell>{questions?.markedOption}</Table.Cell>
               </Table.Row>
             </Table.Body>
           </Table>
@@ -237,7 +172,7 @@ export default function QuestionDetail() {
                 <Table.Cell>{questions?.exam?.examId}</Table.Cell>
               </Table.Row>
               <Table.Row>
-                <Table.Cell>{questions?.exam?.examId}</Table.Cell>
+                <Table.Cell>{`${questions?.exam?.active}`}</Table.Cell>
               </Table.Row>
             </Table.Body>
           </Table>
@@ -249,37 +184,20 @@ export default function QuestionDetail() {
               <Table.Row>
                 <Table.Cell>{questions?.exam?.lesson?.lessonName}</Table.Cell>
               </Table.Row>
-              <Table.Row>
-                <Table.Cell>
-                  {questions?.exam?.lesson?.lessonTeamsCode}
-                </Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell>
-                  {questions?.exam?.lesson?.lessonMaterialLink}
-                </Table.Cell>
-              </Table.Row>
             </Table.Body>
           </Table>
 
           <Table>
             <Table.Body>
               <Table.Row>
-                <Table.Cell>{questions?.exam?.lesson?.departmentId}</Table.Cell>
+                <Table.Cell>
+                  {questions?.exam?.lesson?.department?.departmentId}
+                </Table.Cell>
               </Table.Row>
 
               <Table.Row>
                 <Table.Cell>
                   {questions?.exam?.lesson?.department?.departmentName}
-                </Table.Cell>
-              </Table.Row>
-            </Table.Body>
-          </Table>
-          <Table>
-            <Table.Body>
-              <Table.Row>
-                <Table.Cell>
-                  {questions?.exam?.lesson?.department?.faculty?.facultyId}
                 </Table.Cell>
               </Table.Row>
               <Table.Row>
@@ -293,77 +211,15 @@ export default function QuestionDetail() {
           <Table>
             <Table.Body>
               <Table.Row>
-                <Table.Cell>{questions?.exam?.lesson?.teacherId}</Table.Cell>
-              </Table.Row>
-              <Table.Row>
                 <Table.Cell>
-                  {questions?.exam?.lesson?.teacher?.profession}
-                </Table.Cell>
-              </Table.Row>
-            </Table.Body>
-          </Table>
-
-          <Table>
-            <Table.Body>
-              <Table.Row>
-                <Table.Cell>
-                  {questions?.exam?.lesson?.teacher?.user?.userId}
+                  {questions?.exam?.lesson?.teacher?.teacherId}
                 </Table.Cell>
               </Table.Row>
               <Table.Row>
                 <Table.Cell>
-                  {questions?.exam?.lesson?.teacher?.user?.userFirstname}
-                </Table.Cell>
-              </Table.Row>
-            </Table.Body>
-            <Table.Body>
-              <Table.Row>
-                <Table.Cell>
-                  {questions?.exam?.lesson?.teacher?.user?.userLastname}
-                </Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell>
-                  {questions?.exam?.lesson?.teacher?.user?.userEmail}
-                </Table.Cell>
-              </Table.Row>
-            </Table.Body>
-            <Table.Body>
-              <Table.Row>
-                <Table.Cell>
-                  {questions?.exam?.lesson?.teacher?.user?.nationalityId}
-                </Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell>
-                  {questions?.exam?.lesson?.teacher?.user?.userGender}
-                </Table.Cell>
-              </Table.Row>
-            </Table.Body>
-            <Table.Body>
-              <Table.Row>
-                <Table.Cell>
-                  {questions?.exam?.lesson?.teacher?.user?.userPhoto}
-                </Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell>
-                  {questions?.exam?.lesson?.teacher?.user?.userPassword}
-                </Table.Cell>
-              </Table.Row>
-            </Table.Body>
-          </Table>
-
-          <Table>
-            <Table.Body>
-              <Table.Row>
-                <Table.Cell>
-                  {questions?.exam?.lesson?.teacher?.user?.userRole?.roleId}
-                </Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell>
-                  {questions?.exam?.lesson?.teacher?.user?.userRole?.roleName}
+                  {questions?.exam?.lesson?.teacher?.user?.userFirstname +
+                    " " +
+                    questions?.exam?.lesson?.teacher?.user?.userLastname}
                 </Table.Cell>
               </Table.Row>
             </Table.Body>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { Button, Table } from "semantic-ui-react";
 import StudentService from "../../../services/studentService";
 
@@ -29,7 +29,11 @@ export default function StudentList() {
           {students.map((student) => (
             <Table.Row key={student.studentId}>
               <Table.Cell>{student?.studentId}</Table.Cell>
-              <Table.Cell>{student?.user?.userFirstname}</Table.Cell>
+              <Table.Cell>
+                <Link to={`/student/${student?.studentId}`}>
+                  {student?.user?.userFirstname}
+                </Link>
+              </Table.Cell>
               <Table.Cell>{student?.user?.userLastname}</Table.Cell>
               <Table.Cell>{student?.user?.userEmail}</Table.Cell>
               <Table.Cell>{student?.user?.userGender}</Table.Cell>

@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import { Grid, Table } from "semantic-ui-react";
-import ExamService from "../../../services/examService";
+import ExamResultService from "../../../services/examResultService";
 
-export default function ExamDetail() {
-  let { examId } = useParams();
-  const [exam, setExam] = useState({});
+export default function ExamResultDetail() {
+  let { resultId } = useParams();
 
-  let examService = new ExamService();
+  const [examResult, setExamResult] = useState({});
   useEffect(() => {
-    examService.getByExamId(examId).then((result) => setExam(result.data));
+    let examResultService = new ExamResultService();
+    examResultService
+      .getByResultId(resultId)
+      .then((result) => setExamResult(result.data));
   }, []);
 
   return (
@@ -20,13 +22,12 @@ export default function ExamDetail() {
             <Table.Body>
               <Table.Row>
                 <Table.Cell>
-                  <strong>Exam Id</strong>
+                  <strong>Exam Result Id</strong>
                 </Table.Cell>
               </Table.Row>
-
               <Table.Row>
                 <Table.Cell>
-                  <strong>Active</strong>
+                  <strong>Exam Result</strong>
                 </Table.Cell>
               </Table.Row>
             </Table.Body>
@@ -35,46 +36,31 @@ export default function ExamDetail() {
             <Table.Body>
               <Table.Row>
                 <Table.Cell>
+                  <strong>Exam Id</strong>
+                </Table.Cell>
+              </Table.Row>
+              <Table.Row>
+                <Table.Cell>
                   <strong>Lesson Id</strong>
                 </Table.Cell>
               </Table.Row>
-
               <Table.Row>
                 <Table.Cell>
                   <strong>Lesson Name</strong>
                 </Table.Cell>
               </Table.Row>
-              
-
-              <Table.Row>
-                <Table.Cell>
-                  <strong>Department Name</strong>
-                </Table.Cell>
-              </Table.Row>
-
-              <Table.Row>
-                <Table.Cell>
-                  <strong>Teams Code</strong>
-                </Table.Cell>
-              </Table.Row>
-
-              <Table.Row>
-                <Table.Cell>
-                  <strong>Material Link</strong>
-                </Table.Cell>
-              </Table.Row>
-              </Table.Body>
+            </Table.Body>
           </Table>
           <Table>
             <Table.Body>
               <Table.Row>
                 <Table.Cell>
-                  <strong>Teacher Id</strong>
+                  <strong>Student Id</strong>
                 </Table.Cell>
               </Table.Row>
               <Table.Row>
                 <Table.Cell>
-                  <strong>Teacher Name</strong>
+                  <strong>Student Name</strong>
                 </Table.Cell>
               </Table.Row>
             </Table.Body>
@@ -85,48 +71,37 @@ export default function ExamDetail() {
           <Table>
             <Table.Body>
               <Table.Row>
-                <Table.Cell>{exam?.examId}</Table.Cell>
+                <Table.Cell>{examResult?.resultId}</Table.Cell>
               </Table.Row>
               <Table.Row>
-                <Table.Cell>{`${exam?.active}`}</Table.Cell>
+                <Table.Cell>{examResult?.result}</Table.Cell>
               </Table.Row>
             </Table.Body>
           </Table>
           <Table>
             <Table.Body>
               <Table.Row>
-                <Table.Cell>{exam?.lesson?.lessonId}</Table.Cell>
+                <Table.Cell>{examResult?.exam?.examId}</Table.Cell>
+              </Table.Row>
+
+              <Table.Row>
+                <Table.Cell>{examResult?.exam?.lesson?.lessonId}</Table.Cell>
               </Table.Row>
               <Table.Row>
-                <Table.Cell>{exam?.lesson?.lessonName}</Table.Cell>
+                <Table.Cell>{examResult?.exam?.lesson?.lessonName}</Table.Cell>
               </Table.Row>
-             
-              <Table.Row>
-                <Table.Cell>
-                  {exam?.lesson?.department?.departmentId}
-                </Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell>{exam?.lesson?.lessonTeamsCode}</Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell>{exam?.lesson?.lessonMaterialLink}</Table.Cell>
-              </Table.Row>
-              </Table.Body>
+            </Table.Body>
           </Table>
           <Table>
             <Table.Body>
-            <Table.Row>
-                <Table.Cell>
-                  {exam?.lesson?.teacher?.teacherId}
-                </Table.Cell>
+              <Table.Row>
+                <Table.Cell>{examResult?.student?.studentId}</Table.Cell>
               </Table.Row>
               <Table.Row>
                 <Table.Cell>
-                  {exam?.lesson?.teacher?.user?.userFirstname+ " " + exam?.lesson?.teacher?.user?.userLastname}
+                  {examResult?.student?.user?.userFirstname}
                 </Table.Cell>
               </Table.Row>
-              
             </Table.Body>
           </Table>
         </Grid.Column>

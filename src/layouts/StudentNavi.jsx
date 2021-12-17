@@ -7,8 +7,9 @@ export default function Navi(params) {
   return (
     <div>
       <Menu inverted fixed="top">
-        <Menu.Item name="Ana Sayfa" as={NavLink} to={"/"} />
+        <Menu.Item name="Home" as={NavLink} to={"/"} />
         <Menu.Item name="Exams" as={NavLink} to={"/exams"} />
+        <Menu.Item name="Exam Results" as={NavLink} to={"/examResults"} />
         <Menu.Item name="Lessons" as={NavLink} to={"/lessons"} />
         <Menu.Item name="Teachers" as={NavLink} to={"/teachers"} />
         <Menu.Item

@@ -22,6 +22,7 @@ export default function ExamList() {
             <Table.HeaderCell>Active</Table.HeaderCell>
             <Table.HeaderCell>Update</Table.HeaderCell>
             <Table.HeaderCell>Delete</Table.HeaderCell>
+            <Table.HeaderCell>Questions</Table.HeaderCell>
           </Table.Row>
         </Table.Header>
 
@@ -57,6 +58,11 @@ export default function ExamList() {
               <Table.Cell>
                 <Button as={NavLink} to={"/exam_delete/" + exam.examId}>
                   Delete
+                </Button>
+              </Table.Cell>
+              <Table.Cell>
+                <Button as={NavLink} to={"/questions/" + exam.examId}>
+                  Questions
                 </Button>
               </Table.Cell>
             </Table.Row>

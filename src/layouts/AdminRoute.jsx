@@ -15,7 +15,13 @@ import ExamAdd from "../pages/AdminPages/Exam/ExamAdd";
 import ExamDelete from "../pages/AdminPages/Exam/ExamDelete";
 import ExamDetail from "../pages/AdminPages/Exam/ExamDetail";
 import ExamList from "../pages/AdminPages/Exam/ExamList";
+import ExamListByLessonId from "../pages/AdminPages/Exam/ExamListByLessonId";
 import ExamUpdate from "../pages/AdminPages/Exam/ExamUpdate";
+import ExamResultAdd from "../pages/AdminPages/ExamResult/ExamResultAdd";
+import ExamResultDelete from "../pages/AdminPages/ExamResult/ExamResultDelete";
+import ExamResultDetail from "../pages/AdminPages/ExamResult/ExamResultDetail";
+import ExamResultList from "../pages/AdminPages/ExamResult/ExamResultList";
+import ExamResultUpdate from "../pages/AdminPages/ExamResult/ExamResultUpdate";
 import FacultyAdd from "../pages/AdminPages/Faculty/FacultyAdd";
 import FacultyDelete from "../pages/AdminPages/Faculty/FacultyDelete";
 import FacultyDetail from "../pages/AdminPages/Faculty/FacultyDetail";
@@ -30,6 +36,7 @@ import QuestionAdd from "../pages/AdminPages/Question/QuestionAdd";
 import QuestionDelete from "../pages/AdminPages/Question/QuestionDelete";
 import QuestionDetail from "../pages/AdminPages/Question/QuestionDetail";
 import QuestionList from "../pages/AdminPages/Question/QuestionList";
+import QuestionListByExamId from "../pages/AdminPages/Question/QuestionListByExamId";
 import QuestionUpdate from "../pages/AdminPages/Question/QuestionUpdate";
 import QuestionStudentAdd from "../pages/AdminPages/QuestionStudent/QuestionStudentAdd";
 import QuestionStudentDelete from "../pages/AdminPages/QuestionStudent/QuestionStudentDelete";
@@ -93,10 +100,17 @@ export default function AdminRoute() {
       />
 
       <Route exact path="/exams" component={ExamList} />
+      <Route exact path="/exams/:lessonId" component={ExamListByLessonId} />
       <Route exact path="/exam/:examId" component={ExamDetail} />
       <Route exact path="/exam_add" component={ExamAdd} />
       <Route exact path="/exam_delete/:examId" component={ExamDelete} />
       <Route exact path="/exam_update/:examId" component={ExamUpdate} />
+
+      <Route exact path="/examResults" component={ExamResultList} />
+      <Route exact path="/examResult/:resultId" component={ExamResultDetail} />
+      <Route exact path="/examResult_add" component={ExamResultAdd} />
+      <Route exact path="/examResult_delete/:resultId" component={ExamResultDelete} />
+      <Route exact path="/examResult_update/:resultId" component={ExamResultUpdate} />
 
       <Route exact path="/faculties" component={FacultyList} />
       <Route exact path="/faculty/:facultyId" component={FacultyDetail} />
@@ -119,6 +133,7 @@ export default function AdminRoute() {
       <Route exact path="/lesson_update/:lessonId" component={LessonUpdate} />
 
       <Route exact path="/questions" component={QuestionList} />
+      <Route exact path="/questions/:examId" component={QuestionListByExamId} />
       <Route exact path="/question/:questionId" component={QuestionDetail} />
       <Route exact path="/question_add" component={QuestionAdd} />
       <Route

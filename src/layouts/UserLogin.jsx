@@ -38,6 +38,7 @@ export default function UserLogin() {
           <ExamQuizTextInput
             name="userPassword"
             placeholder="User Password"
+            type="password"
             value={userPassword ?? ""}
             onChange={(e) => setUserPassword(e.target.value)}
           />
@@ -71,6 +72,10 @@ export default function UserLogin() {
                           cookie.set("studentId", result2.data.studentId);
                         });
                     }
+
+                    sessionStorage.setItem("userId", result.data.userId)
+                    sessionStorage.setItem("firstname", result.data.userFirstname);
+
                     cookie.set("userId", result.data.userId);
                     cookie.set("firstname", result.data.userFirstname);
                     cookie.set("profilePhoto", result.data.userPhoto);

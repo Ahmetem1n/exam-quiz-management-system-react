@@ -16,11 +16,13 @@ export default function QuestionStudentAdd() {
   }, []);
   const [questionId, setQuestionId] = useState(null);
   const [studentId, setStudentId] = useState(null);
+  const [markedOption, setMarkedOption] = useState(null);
 
   const initialValues = {
     detailId: "",
     questionId: "",
     studentId: "",
+    markedOption: "",
   };
   return (
     <div>
@@ -41,6 +43,12 @@ export default function QuestionStudentAdd() {
             value={studentId ?? questionStudent?.student?.studentId}
             onChange={(e) => setStudentId(e.target.value)}
           />
+          <ExamQuizTextInput
+            name="markedOption"
+            placeholder="Marked Option"
+            value={markedOption ?? questionStudent?.markedOption}
+            onChange={(e) => setMarkedOption(e.target.value)}
+          />
 
           <Button
             color="green"
@@ -50,9 +58,10 @@ export default function QuestionStudentAdd() {
                 detailId,
                 questionId,
                 studentId,
+                markedOption
               })
             }
-            disabled={!(questionId && studentId)}
+            disabled={!(questionId && studentId && markedOption)}
           >
             Question-Student Update
           </Button>

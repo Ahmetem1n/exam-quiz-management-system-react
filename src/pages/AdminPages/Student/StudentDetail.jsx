@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from "react"
-import { useParams } from "react-router"
-import { Grid, Table } from "semantic-ui-react"
-import StudentService from "../../../services/studentService"
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router";
+import { Grid, Table } from "semantic-ui-react";
+import StudentService from "../../../services/studentService";
 
 export default function StudentDetail() {
-  let { studentId } = useParams()
-  const [students, setStudents] = useState({})
+  let { studentId } = useParams();
+  const [student, setStudent] = useState({});
   useEffect(() => {
-    let studentService = new StudentService()
+    let studentService = new StudentService();
     studentService
       .getByStudentId(studentId)
-      .then((result) => setStudents(result.data))
-  }, [])
+      .then((result) => setStudent(result.data));
+  }, []);
 
   return (
     <div>
@@ -24,6 +24,7 @@ export default function StudentDetail() {
                   <strong>Student Id</strong>
                 </Table.Cell>
               </Table.Row>
+
               <Table.Row>
                 <Table.Cell>
                   <strong>Student Number</strong>
@@ -36,72 +37,60 @@ export default function StudentDetail() {
               </Table.Row>
             </Table.Body>
           </Table>
-
           <Table>
             <Table.Body>
+              <Table.Row>
+                <Table.Cell>
+                  <strong>Role Name</strong>
+                </Table.Cell>
+              </Table.Row>
               <Table.Row>
                 <Table.Cell>
                   <strong>User Id</strong>
                 </Table.Cell>
               </Table.Row>
-
               <Table.Row>
                 <Table.Cell>
                   <strong>User Firstname</strong>
                 </Table.Cell>
               </Table.Row>
-            </Table.Body>
-            <Table.Body>
               <Table.Row>
                 <Table.Cell>
                   <strong>User Lastname</strong>
                 </Table.Cell>
               </Table.Row>
-
               <Table.Row>
                 <Table.Cell>
                   <strong>User Email</strong>
                 </Table.Cell>
               </Table.Row>
-            </Table.Body>
-            <Table.Body>
               <Table.Row>
                 <Table.Cell>
                   <strong>User Nationality Id</strong>
                 </Table.Cell>
               </Table.Row>
-
               <Table.Row>
                 <Table.Cell>
                   <strong>User Gender</strong>
                 </Table.Cell>
               </Table.Row>
-            </Table.Body>
-            <Table.Body>
               <Table.Row>
                 <Table.Cell>
-                  <strong>User Photo</strong>
-                </Table.Cell>
-              </Table.Row>
-
-              <Table.Row>
-                <Table.Cell>
-                  <strong>User Password</strong>
+                  <strong>User Photo Link</strong>
                 </Table.Cell>
               </Table.Row>
             </Table.Body>
           </Table>
-
           <Table>
             <Table.Body>
               <Table.Row>
                 <Table.Cell>
-                  <strong>User Role Id</strong>
+                  <strong>Department Id</strong>
                 </Table.Cell>
               </Table.Row>
               <Table.Row>
                 <Table.Cell>
-                  <strong>User Role Name</strong>
+                  <strong>Department Name</strong>
                 </Table.Cell>
               </Table.Row>
             </Table.Body>
@@ -112,65 +101,56 @@ export default function StudentDetail() {
           <Table>
             <Table.Body>
               <Table.Row>
-                <Table.Cell>{students?.studentId}</Table.Cell>
-              </Table.Row>
-
-              <Table.Row>
-                <Table.Cell>{students?.studentNumber}</Table.Cell>
-              </Table.Row>
-
-              <Table.Row>
-                <Table.Cell>{students?.studentGrade}</Table.Cell>
-              </Table.Row>
-            </Table.Body>
-          </Table>
-
-          <Table>
-            <Table.Body>
-              <Table.Row>
-                <Table.Cell>{students?.user?.userId}</Table.Cell>
+                <Table.Cell>{student?.studentId}</Table.Cell>
               </Table.Row>
               <Table.Row>
-                <Table.Cell>{students?.user?.userFirstname}</Table.Cell>
-              </Table.Row>
-            </Table.Body>
-            <Table.Body>
-              <Table.Row>
-                <Table.Cell>{students?.user?.userLastname}</Table.Cell>
+                <Table.Cell>{student?.studentNumber}</Table.Cell>
               </Table.Row>
               <Table.Row>
-                <Table.Cell>{students?.user?.userEmail}</Table.Cell>
-              </Table.Row>
-            </Table.Body>
-            <Table.Body>
-              <Table.Row>
-                <Table.Cell>{students?.user?.nationalityId}</Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell>{students?.user?.userGender}</Table.Cell>
-              </Table.Row>
-            </Table.Body>
-            <Table.Body>
-              <Table.Row>
-                <Table.Cell>{students?.user?.userPhoto}</Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell>{students?.user?.userPassword}</Table.Cell>
+                <Table.Cell>{student?.studentGrade}</Table.Cell>
               </Table.Row>
             </Table.Body>
           </Table>
           <Table>
             <Table.Body>
               <Table.Row>
-                <Table.Cell>{students?.user?.userRole?.roleId}</Table.Cell>
+                <Table.Cell>{student?.user?.userRole?.roleName}</Table.Cell>
               </Table.Row>
               <Table.Row>
-                <Table.Cell>{students?.user?.userRole?.roleName}</Table.Cell>
+                <Table.Cell>{student?.user?.userId}</Table.Cell>
+              </Table.Row>
+              <Table.Row>
+                <Table.Cell>{student?.user?.userFirstname}</Table.Cell>
+              </Table.Row>
+              <Table.Row>
+                <Table.Cell>{student?.user?.userLastname}</Table.Cell>
+              </Table.Row>
+              <Table.Row>
+                <Table.Cell>{student?.user?.userEmail}</Table.Cell>
+              </Table.Row>
+              <Table.Row>
+                <Table.Cell>{student?.user?.nationalityId}</Table.Cell>
+              </Table.Row>
+              <Table.Row>
+                <Table.Cell>{student?.user?.userGender}</Table.Cell>
+              </Table.Row>
+              <Table.Row>
+                <Table.Cell>{student?.user?.userPhoto}</Table.Cell>
+              </Table.Row>
+            </Table.Body>
+          </Table>
+          <Table>
+            <Table.Body>
+              <Table.Row>
+                <Table.Cell>{student?.department?.departmentId}</Table.Cell>
+              </Table.Row>
+              <Table.Row>
+                <Table.Cell>{student?.department?.departmentName}</Table.Cell>
               </Table.Row>
             </Table.Body>
           </Table>
         </Grid.Column>
       </Grid>
     </div>
-  )
+  );
 }

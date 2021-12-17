@@ -17,7 +17,7 @@ export default class QuestionService extends Component {
   }
   addQuestion(initialValues) {
     return axios.post(
-      "http://localhost:8080/question/add?examId=" +
+      "http://localhost:8080/question/add?exam.examId=" +
         initialValues.examId +
         "&questionText=" +
         initialValues.questionText +
@@ -44,7 +44,7 @@ export default class QuestionService extends Component {
     return axios.post(
       "http://localhost:8080/question/update?questionId=" +
         initialValues.questionId +
-        "&examId=" +
+        "&exam.examId=" +
         initialValues.examId +
         "&questionText=" +
         initialValues.questionText +

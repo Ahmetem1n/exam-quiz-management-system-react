@@ -24,12 +24,12 @@ export default function FacultyList() {
         <Table.Body>
           {faculties.map((faculty) => (
             <Table.Row key={faculty.facultyId}>
+              <Table.Cell>{faculty?.facultyId}</Table.Cell>
               <Table.Cell>
                 <Link to={`/faculty/${faculty?.facultyId}`}>
-                  {faculty?.facultyId}
+                  {faculty?.facultyName}
                 </Link>
               </Table.Cell>
-              <Table.Cell>{faculty?.facultyName}</Table.Cell>
               <Table.Cell>
                 <Button
                   as={NavLink}

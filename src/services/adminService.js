@@ -17,7 +17,7 @@ export default class AdminService extends Component {
   }
 
   addAdmin(initialValues) {
-    return axios.post("http://localhost:8080/admin/add?userId=" + initialValues.userId)
+    return axios.post("http://localhost:8080/admin/add?user.userId=" + initialValues.userId)
   }
   deleteAdmin(adminId) {
     return axios.post("http://localhost:8080/admin/delete?adminId=" + adminId)
@@ -26,7 +26,7 @@ export default class AdminService extends Component {
     return axios.post(
       "http://localhost:8080/admin/update?adminId=" +
         initialValues.adminId +
-        "&userId=" +
+        "&user.userId=" +
         initialValues.userId
     )
   }

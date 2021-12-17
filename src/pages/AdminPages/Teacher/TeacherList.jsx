@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from "react"
-import { NavLink } from "react-router-dom"
-import { Button, Table } from "semantic-ui-react"
-import TeacherService from "../../../services/teacherService"
+import React, { useEffect, useState } from "react";
+import { Link, NavLink } from "react-router-dom";
+import { Button, Table } from "semantic-ui-react";
+import TeacherService from "../../../services/teacherService";
 
 export default function TeacherList() {
-  const [teachers, setTeachers] = useState([])
+  const [teachers, setTeachers] = useState([]);
 
   useEffect(() => {
-    let teacherService = new TeacherService()
-    teacherService.getTeachers().then((result) => setTeachers(result.data))
-  }, [])
+    let teacherService = new TeacherService();
+    teacherService.getTeachers().then((result) => setTeachers(result.data));
+  }, []);
   return (
     <div>
       <Table celled>
@@ -29,7 +29,11 @@ export default function TeacherList() {
           {teachers.map((teacher) => (
             <Table.Row key={teacher.teacherId}>
               <Table.Cell>{teacher?.teacherId}</Table.Cell>
-              <Table.Cell>{teacher?.user?.userFirstname}</Table.Cell>
+              <Table.Cell>
+                <Link to={`/teacher/${teacher?.teacherId}`}>
+                  {teacher?.user?.userFirstname}
+                </Link>
+              </Table.Cell>
               <Table.Cell>{teacher?.user?.userLastname}</Table.Cell>
               <Table.Cell>{teacher?.user?.userEmail}</Table.Cell>
               <Table.Cell>{teacher?.user?.userGender}</Table.Cell>
@@ -57,5 +61,5 @@ export default function TeacherList() {
         Teacher Add
       </Button>
     </div>
-  )
+  );
 }

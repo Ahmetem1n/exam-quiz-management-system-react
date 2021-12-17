@@ -1,22 +1,24 @@
 import React, { useEffect, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import { Button, Table } from "semantic-ui-react";
 import QuestionService from "../../../services/questionService";
 
-export default function QuestionList() {
+export default function QuestionListByExamId() {
+  let { examId } = useParams();
   const [questions, setQuestions] = useState([]);
-
+  let questionService = new QuestionService();
   useEffect(() => {
-    let questionsService = new QuestionService();
-    questionsService.getQuestions().then((result) => setQuestions(result.data));
+    questionService
+      .getByExamId(examId)
+      .then((result) => setQuestions(result.data));
   }, []);
+  useEffect(() => {}, []);
   return (
     <div>
       <Table celled>
         <Table.Header>
           <Table.Row>
-            <Table.HeaderCell>Question Id</Table.HeaderCell>
-            <Table.HeaderCell>Lesson Id</Table.HeaderCell>
+          <Table.HeaderCell>Question Id</Table.HeaderCell>
             <Table.HeaderCell>Lesson Name</Table.HeaderCell>
             <Table.HeaderCell>Question Text</Table.HeaderCell>
             <Table.HeaderCell>Option A</Table.HeaderCell>
@@ -33,17 +35,8 @@ export default function QuestionList() {
         <Table.Body>
           {questions.map((question) => (
             <Table.Row key={question.questionId}>
-              <Table.Cell>
-                <Link to={`/question/${question?.exam?.examId}`}>
-                  {question?.exam?.examId}
-                </Link>
-              </Table.Cell>
-              <Table.Cell>{question?.exam?.lesson?.lessonId}</Table.Cell>
-              <Table.Cell>
-                <Link to={`/lesson/${question?.exam?.lesson?.lessonId}`}>
-                  {question?.exam?.lesson?.lessonName}
-                </Link>
-              </Table.Cell>
+              <Table.Cell>{question?.questionId}</Table.Cell>
+              <Table.Cell>{question?.exam?.lesson?.lessonName}</Table.Cell>
               <Table.Cell>{question?.questionText}</Table.Cell>
               <Table.Cell>{question?.optionA}</Table.Cell>
               <Table.Cell>{question?.optionB}</Table.Cell>

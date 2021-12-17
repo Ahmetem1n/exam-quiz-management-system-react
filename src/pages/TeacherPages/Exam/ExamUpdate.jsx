@@ -32,7 +32,7 @@ export default function ExamAdd() {
           <ExamQuizTextInput
             name="lessonId"
             placeholder="Lesson Id"
-            value={lessonId ?? exam.lessonId}
+            value={lessonId ?? exam?.lesson?.lessonId}
             onChange={(e) => setLessonId(e.target.value)}
           />
 

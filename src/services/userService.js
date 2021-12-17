@@ -9,7 +9,7 @@ export default class UserService extends Component {
   }
   addUser(initialValues) {
     return axios.post(
-      "http://localhost:8080/user/add?roleId=" +
+      "http://localhost:8080/user/add?userRole.roleId=" +
         initialValues.roleId +
         "&userFirstname=" +
         initialValues.userFirstname +
@@ -34,7 +34,7 @@ export default class UserService extends Component {
     return axios.post(
       "http://localhost:8080/user/update?userId=" +
         initialValues.userId +
-        "roleId=" +
+        "userRole.roleId=" +
         initialValues.roleId +
         "&userFirstname=" +
         initialValues.userFirstname +

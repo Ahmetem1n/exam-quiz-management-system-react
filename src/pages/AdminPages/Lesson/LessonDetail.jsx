@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from "react"
-import { useParams } from "react-router"
-import { Grid, Table } from "semantic-ui-react"
-import LessonService from "../../../services/lessonService"
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router";
+import { Grid, Table } from "semantic-ui-react";
+import LessonService from "../../../services/lessonService";
 
 export default function LessonDetail() {
-  let { lessonId } = useParams()
-  const [lessons, setLessons] = useState({})
+  let { lessonId } = useParams();
+  const [lessons, setLessons] = useState({});
   useEffect(() => {
-    let lessonService = new LessonService()
+    let lessonService = new LessonService();
     lessonService
       .getByLessonId(lessonId)
-      .then((result) => setLessons(result.data))
-  }, [])
+      .then((result) => setLessons(result.data));
+  }, []);
 
   return (
     <div>
@@ -77,77 +77,7 @@ export default function LessonDetail() {
 
               <Table.Row>
                 <Table.Cell>
-                  <strong>Teacher Profession</strong>
-                </Table.Cell>
-              </Table.Row>
-            </Table.Body>
-          </Table>
-
-          <Table>
-            <Table.Body>
-              <Table.Row>
-                <Table.Cell>
-                  <strong>User Id</strong>
-                </Table.Cell>
-              </Table.Row>
-
-              <Table.Row>
-                <Table.Cell>
-                  <strong>User Firstname</strong>
-                </Table.Cell>
-              </Table.Row>
-            </Table.Body>
-            <Table.Body>
-              <Table.Row>
-                <Table.Cell>
-                  <strong>User Lastname</strong>
-                </Table.Cell>
-              </Table.Row>
-
-              <Table.Row>
-                <Table.Cell>
-                  <strong>User Email</strong>
-                </Table.Cell>
-              </Table.Row>
-            </Table.Body>
-            <Table.Body>
-              <Table.Row>
-                <Table.Cell>
-                  <strong>User Nationality Id</strong>
-                </Table.Cell>
-              </Table.Row>
-
-              <Table.Row>
-                <Table.Cell>
-                  <strong>User Gender</strong>
-                </Table.Cell>
-              </Table.Row>
-            </Table.Body>
-            <Table.Body>
-              <Table.Row>
-                <Table.Cell>
-                  <strong>User Photo</strong>
-                </Table.Cell>
-              </Table.Row>
-
-              <Table.Row>
-                <Table.Cell>
-                  <strong>User Password</strong>
-                </Table.Cell>
-              </Table.Row>
-            </Table.Body>
-          </Table>
-
-          <Table>
-            <Table.Body>
-              <Table.Row>
-                <Table.Cell>
-                  <strong>User Role Id</strong>
-                </Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell>
-                  <strong>User Role Name</strong>
+                  <strong>Teacher Name</strong>
                 </Table.Cell>
               </Table.Row>
             </Table.Body>
@@ -175,7 +105,7 @@ export default function LessonDetail() {
           <Table>
             <Table.Body>
               <Table.Row>
-                <Table.Cell>{lessons?.departmentId}</Table.Cell>
+                <Table.Cell>{lessons?.department?.departmentId}</Table.Cell>
               </Table.Row>
 
               <Table.Row>
@@ -192,59 +122,13 @@ export default function LessonDetail() {
           <Table>
             <Table.Body>
               <Table.Row>
-                <Table.Cell>{lessons?.teacherId}</Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell>{lessons?.teacher?.profession}</Table.Cell>
-              </Table.Row>
-            </Table.Body>
-          </Table>
-
-          <Table>
-            <Table.Body>
-              <Table.Row>
-                <Table.Cell>{lessons?.teacher?.user?.userId}</Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell>{lessons?.teacher?.user?.userFirstname}</Table.Cell>
-              </Table.Row>
-            </Table.Body>
-            <Table.Body>
-              <Table.Row>
-                <Table.Cell>{lessons?.teacher?.user?.userLastname}</Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell>{lessons?.teacher?.user?.userEmail}</Table.Cell>
-              </Table.Row>
-            </Table.Body>
-            <Table.Body>
-              <Table.Row>
-                <Table.Cell>{lessons?.teacher?.user?.nationalityId}</Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell>{lessons?.teacher?.user?.userGender}</Table.Cell>
-              </Table.Row>
-            </Table.Body>
-            <Table.Body>
-              <Table.Row>
-                <Table.Cell>{lessons?.teacher?.user?.userPhoto}</Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell>{lessons?.teacher?.user?.userPassword}</Table.Cell>
-              </Table.Row>
-            </Table.Body>
-          </Table>
-
-          <Table>
-            <Table.Body>
-              <Table.Row>
-                <Table.Cell>
-                  {lessons?.teacher?.user?.userRole?.roleId}
-                </Table.Cell>
+                <Table.Cell>{lessons?.teacher?.teacherId}</Table.Cell>
               </Table.Row>
               <Table.Row>
                 <Table.Cell>
-                  {lessons?.teacher?.user?.userRole?.roleName}
+                  {lessons?.teacher?.user?.userFirstname +
+                    " " +
+                    lessons?.teacher?.user?.userLastname}
                 </Table.Cell>
               </Table.Row>
             </Table.Body>
@@ -252,5 +136,5 @@ export default function LessonDetail() {
         </Grid.Column>
       </Grid>
     </div>
-  )
+  );
 }

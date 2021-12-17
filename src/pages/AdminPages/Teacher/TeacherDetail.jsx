@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from "react"
-import { useParams } from "react-router"
-import { Grid, Table } from "semantic-ui-react"
-import TeacherService from "../../../services/teacherService"
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router";
+import { Grid, Table } from "semantic-ui-react";
+import TeacherService from "../../../services/teacherService";
 
 export default function TeacherDetail() {
-  let { teacherId } = useParams()
-  const [teachers, setTeachers] = useState({})
+  let { teacherId } = useParams();
+  const [teacher, setTeacher] = useState({});
   useEffect(() => {
-    let teacherService = new TeacherService()
+    let teacherService = new TeacherService();
     teacherService
       .getByTeacherId(teacherId)
-      .then((result) => setTeachers(result.data))
-  }, [])
+      .then((result) => setTeacher(result.data));
+  }, []);
 
   return (
     <div>
@@ -24,79 +24,68 @@ export default function TeacherDetail() {
                   <strong>Teacher Id</strong>
                 </Table.Cell>
               </Table.Row>
+
               <Table.Row>
                 <Table.Cell>
-                  <strong>Profession</strong>
+                  <strong>Teacher Profession</strong>
                 </Table.Cell>
               </Table.Row>
             </Table.Body>
           </Table>
-
           <Table>
             <Table.Body>
+              <Table.Row>
+                <Table.Cell>
+                  <strong>Role Name</strong>
+                </Table.Cell>
+              </Table.Row>
               <Table.Row>
                 <Table.Cell>
                   <strong>User Id</strong>
                 </Table.Cell>
               </Table.Row>
-
               <Table.Row>
                 <Table.Cell>
                   <strong>User Firstname</strong>
                 </Table.Cell>
               </Table.Row>
-            </Table.Body>
-            <Table.Body>
               <Table.Row>
                 <Table.Cell>
                   <strong>User Lastname</strong>
                 </Table.Cell>
               </Table.Row>
-
               <Table.Row>
                 <Table.Cell>
                   <strong>User Email</strong>
                 </Table.Cell>
               </Table.Row>
-            </Table.Body>
-            <Table.Body>
               <Table.Row>
                 <Table.Cell>
                   <strong>User Nationality Id</strong>
                 </Table.Cell>
               </Table.Row>
-
               <Table.Row>
                 <Table.Cell>
                   <strong>User Gender</strong>
                 </Table.Cell>
               </Table.Row>
-            </Table.Body>
-            <Table.Body>
               <Table.Row>
                 <Table.Cell>
-                  <strong>User Photo</strong>
-                </Table.Cell>
-              </Table.Row>
-
-              <Table.Row>
-                <Table.Cell>
-                  <strong>User Password</strong>
+                  <strong>User Photo Link</strong>
                 </Table.Cell>
               </Table.Row>
             </Table.Body>
           </Table>
-
           <Table>
             <Table.Body>
               <Table.Row>
                 <Table.Cell>
-                  <strong>User Role Id</strong>
+                  <strong>Department Id</strong>
                 </Table.Cell>
               </Table.Row>
               <Table.Row>
                 <Table.Cell>
-                  <strong>User Role Name</strong>
+                  <strong>Department Name</strong>
                 </Table.Cell>
               </Table.Row>
             </Table.Body>
@@ -107,64 +96,53 @@ export default function TeacherDetail() {
           <Table>
             <Table.Body>
               <Table.Row>
-                <Table.Cell>{teachers?.teacherId}</Table.Cell>
+                <Table.Cell>{teacher?.teacherId}</Table.Cell>
               </Table.Row>
               <Table.Row>
-                <Table.Cell>{teachers?.profession}</Table.Cell>
-              </Table.Row>
-            </Table.Body>
-          </Table>
-
-          <Table>
-            <Table.Body>
-              <Table.Row>
-                <Table.Cell>{teachers?.user?.userId}</Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell>{teachers?.user?.userFirstname}</Table.Cell>
-              </Table.Row>
-            </Table.Body>
-            <Table.Body>
-              <Table.Row>
-                <Table.Cell>{teachers?.user?.userLastname}</Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell>{teachers?.user?.userEmail}</Table.Cell>
-              </Table.Row>
-            </Table.Body>
-            <Table.Body>
-              <Table.Row>
-                <Table.Cell>{teachers?.user?.nationalityId}</Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell>{teachers?.user?.userGender}</Table.Cell>
-              </Table.Row>
-            </Table.Body>
-            <Table.Body>
-              <Table.Row>
-                <Table.Cell>{teachers?.user?.userPhoto}</Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell>{teachers?.user?.userPassword}</Table.Cell>
+                <Table.Cell>{teacher?.profession}</Table.Cell>
               </Table.Row>
             </Table.Body>
           </Table>
           <Table>
             <Table.Body>
               <Table.Row>
-                <Table.Cell>
-                  {teachers?.user?.userRole?.roleId}
-                </Table.Cell>
+                <Table.Cell>{teacher?.user?.userRole?.roleName}</Table.Cell>
               </Table.Row>
               <Table.Row>
-                <Table.Cell>
-                  {teachers?.user?.userRole?.roleName}
-                </Table.Cell>
+                <Table.Cell>{teacher?.user?.userId}</Table.Cell>
+              </Table.Row>
+              <Table.Row>
+                <Table.Cell>{teacher?.user?.userFirstname}</Table.Cell>
+              </Table.Row>
+              <Table.Row>
+                <Table.Cell>{teacher?.user?.userLastname}</Table.Cell>
+              </Table.Row>
+              <Table.Row>
+                <Table.Cell>{teacher?.user?.userEmail}</Table.Cell>
+              </Table.Row>
+              <Table.Row>
+                <Table.Cell>{teacher?.user?.nationalityId}</Table.Cell>
+              </Table.Row>
+              <Table.Row>
+                <Table.Cell>{teacher?.user?.userGender}</Table.Cell>
+              </Table.Row>
+              <Table.Row>
+                <Table.Cell>{teacher?.user?.userPhoto}</Table.Cell>
+              </Table.Row>
+            </Table.Body>
+          </Table>
+          <Table>
+            <Table.Body>
+              <Table.Row>
+                <Table.Cell>{teacher?.department?.departmentId}</Table.Cell>
+              </Table.Row>
+              <Table.Row>
+                <Table.Cell>{teacher?.department?.departmentName}</Table.Cell>
               </Table.Row>
             </Table.Body>
           </Table>
         </Grid.Column>
       </Grid>
     </div>
-  )
+  );
 }

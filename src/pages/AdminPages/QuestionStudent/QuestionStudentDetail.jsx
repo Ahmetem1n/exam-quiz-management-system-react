@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from "react"
-import { useParams } from "react-router"
-import { Grid, Table } from "semantic-ui-react"
-import QuestionStudentService from "../../../services/questionStudentService"
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router";
+import { Grid, Table } from "semantic-ui-react";
+import QuestionStudentService from "../../../services/questionStudentService";
 
 export default function QuestionStudentDetail() {
-  let { detailId } = useParams()
-  const [questionStudents, setQuestionStudents] = useState({})
+  let { detailId } = useParams();
+  const [questionStudents, setQuestionStudents] = useState({});
   useEffect(() => {
-    let questionStudentService = new QuestionStudentService()
+    let questionStudentService = new QuestionStudentService();
     questionStudentService
       .getByDetailId(detailId)
-      .then((result) => setQuestionStudents(result.data))
-  }, [])
+      .then((result) => setQuestionStudents(result.data));
+  }, []);
 
   return (
     <div>
@@ -26,11 +26,12 @@ export default function QuestionStudentDetail() {
               </Table.Row>
               <Table.Row>
                 <Table.Cell>
-                  <strong>Marked Option</strong>
+                  <strong>Exam Id</strong>
                 </Table.Cell>
               </Table.Row>
             </Table.Body>
           </Table>
+
           <Table>
             <Table.Body>
               <Table.Row>
@@ -47,7 +48,31 @@ export default function QuestionStudentDetail() {
 
               <Table.Row>
                 <Table.Cell>
-                  <strong>Question Options Text</strong>
+                  <strong>Option A</strong>
+                </Table.Cell>
+              </Table.Row>
+
+              <Table.Row>
+                <Table.Cell>
+                  <strong>Option B</strong>
+                </Table.Cell>
+              </Table.Row>
+
+              <Table.Row>
+                <Table.Cell>
+                  <strong>Option C</strong>
+                </Table.Cell>
+              </Table.Row>
+
+              <Table.Row>
+                <Table.Cell>
+                  <strong>Option D</strong>
+                </Table.Cell>
+              </Table.Row>
+
+              <Table.Row>
+                <Table.Cell>
+                  <strong>Option E</strong>
                 </Table.Cell>
               </Table.Row>
 
@@ -63,21 +88,7 @@ export default function QuestionStudentDetail() {
               </Table.Row>
             </Table.Body>
           </Table>
-          <Table>
-            <Table.Body>
-              <Table.Row>
-                <Table.Cell>
-                  <strong>Exam Id</strong>
-                </Table.Cell>
-              </Table.Row>
 
-              <Table.Row>
-                <Table.Cell>
-                  <strong>Active</strong>
-                </Table.Cell>
-              </Table.Row>
-            </Table.Body>
-          </Table>
           <Table>
             <Table.Body>
               <Table.Row>
@@ -91,53 +102,8 @@ export default function QuestionStudentDetail() {
                   <strong>Lesson Name</strong>
                 </Table.Cell>
               </Table.Row>
-
-              <Table.Row>
-                <Table.Cell>
-                  <strong>Teams Code</strong>
-                </Table.Cell>
-              </Table.Row>
-
-              <Table.Row>
-                <Table.Cell>
-                  <strong>Material Link</strong>
-                </Table.Cell>
-              </Table.Row>
             </Table.Body>
           </Table>
-
-          <Table>
-            <Table.Body>
-              <Table.Row>
-                <Table.Cell>
-                  <strong>Department Id</strong>
-                </Table.Cell>
-              </Table.Row>
-
-              <Table.Row>
-                <Table.Cell>
-                  <strong>Department Name</strong>
-                </Table.Cell>
-              </Table.Row>
-            </Table.Body>
-          </Table>
-
-          <Table>
-            <Table.Body>
-              <Table.Row>
-                <Table.Cell>
-                  <strong>Faculty Id</strong>
-                </Table.Cell>
-              </Table.Row>
-
-              <Table.Row>
-                <Table.Cell>
-                  <strong>Faculty Name</strong>
-                </Table.Cell>
-              </Table.Row>
-            </Table.Body>
-          </Table>
-
           <Table>
             <Table.Body>
               <Table.Row>
@@ -148,77 +114,7 @@ export default function QuestionStudentDetail() {
 
               <Table.Row>
                 <Table.Cell>
-                  <strong>Teacher Profession</strong>
-                </Table.Cell>
-              </Table.Row>
-            </Table.Body>
-          </Table>
-
-          <Table>
-            <Table.Body>
-              <Table.Row>
-                <Table.Cell>
-                  <strong>User Id</strong>
-                </Table.Cell>
-              </Table.Row>
-
-              <Table.Row>
-                <Table.Cell>
-                  <strong>User Firstname</strong>
-                </Table.Cell>
-              </Table.Row>
-            </Table.Body>
-            <Table.Body>
-              <Table.Row>
-                <Table.Cell>
-                  <strong>User Lastname</strong>
-                </Table.Cell>
-              </Table.Row>
-
-              <Table.Row>
-                <Table.Cell>
-                  <strong>User Email</strong>
-                </Table.Cell>
-              </Table.Row>
-            </Table.Body>
-            <Table.Body>
-              <Table.Row>
-                <Table.Cell>
-                  <strong>User Nationality Id</strong>
-                </Table.Cell>
-              </Table.Row>
-
-              <Table.Row>
-                <Table.Cell>
-                  <strong>User Gender</strong>
-                </Table.Cell>
-              </Table.Row>
-            </Table.Body>
-            <Table.Body>
-              <Table.Row>
-                <Table.Cell>
-                  <strong>User Photo</strong>
-                </Table.Cell>
-              </Table.Row>
-
-              <Table.Row>
-                <Table.Cell>
-                  <strong>User Password</strong>
-                </Table.Cell>
-              </Table.Row>
-            </Table.Body>
-          </Table>
-
-          <Table>
-            <Table.Body>
-              <Table.Row>
-                <Table.Cell>
-                  <strong>User Id</strong>
-                </Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell>
-                  <strong>User Role</strong>
+                  <strong>Teacher Name</strong>
                 </Table.Cell>
               </Table.Row>
             </Table.Body>
@@ -233,82 +129,7 @@ export default function QuestionStudentDetail() {
               </Table.Row>
               <Table.Row>
                 <Table.Cell>
-                  <strong>Student Number</strong>
-                </Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell>
-                  <strong>Student Grade</strong>
-                </Table.Cell>
-              </Table.Row>
-            </Table.Body>
-          </Table>
-
-          <Table>
-            <Table.Body>
-              <Table.Row>
-                <Table.Cell>
-                  <strong>User Id</strong>
-                </Table.Cell>
-              </Table.Row>
-
-              <Table.Row>
-                <Table.Cell>
-                  <strong>User Firstname</strong>
-                </Table.Cell>
-              </Table.Row>
-            </Table.Body>
-            <Table.Body>
-              <Table.Row>
-                <Table.Cell>
-                  <strong>User Lastname</strong>
-                </Table.Cell>
-              </Table.Row>
-
-              <Table.Row>
-                <Table.Cell>
-                  <strong>User Email</strong>
-                </Table.Cell>
-              </Table.Row>
-            </Table.Body>
-            <Table.Body>
-              <Table.Row>
-                <Table.Cell>
-                  <strong>User Nationality Id</strong>
-                </Table.Cell>
-              </Table.Row>
-
-              <Table.Row>
-                <Table.Cell>
-                  <strong>User Gender</strong>
-                </Table.Cell>
-              </Table.Row>
-            </Table.Body>
-            <Table.Body>
-              <Table.Row>
-                <Table.Cell>
-                  <strong>User Photo</strong>
-                </Table.Cell>
-              </Table.Row>
-
-              <Table.Row>
-                <Table.Cell>
-                  <strong>User Password</strong>
-                </Table.Cell>
-              </Table.Row>
-            </Table.Body>
-          </Table>
-
-          <Table>
-            <Table.Body>
-              <Table.Row>
-                <Table.Cell>
-                  <strong>User Role Id</strong>
-                </Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell>
-                  <strong>User Role Name</strong>
+                  <strong>Student Name</strong>
                 </Table.Cell>
               </Table.Row>
             </Table.Body>
@@ -322,7 +143,9 @@ export default function QuestionStudentDetail() {
                 <Table.Cell>{questionStudents?.detailId}</Table.Cell>
               </Table.Row>
               <Table.Row>
-                <Table.Cell>{questionStudents?.markedOption}</Table.Cell>
+                <Table.Cell>
+                  {questionStudents?.question?.exam?.examId}
+                </Table.Cell>
               </Table.Row>
             </Table.Body>
           </Table>
@@ -340,33 +163,28 @@ export default function QuestionStudentDetail() {
                 </Table.Cell>
               </Table.Row>
               <Table.Row>
-                <Table.Cell>
-                  {questionStudents?.question?.questionOptionsText}
-                </Table.Cell>
+                <Table.Cell>{questionStudents?.question?.optionA}</Table.Cell>
               </Table.Row>
+              <Table.Row>
+                <Table.Cell>{questionStudents?.question?.optionB}</Table.Cell>
+              </Table.Row>
+              <Table.Row>
+                <Table.Cell>{questionStudents?.question?.optionC}</Table.Cell>
+              </Table.Row>
+              <Table.Row>
+                <Table.Cell>{questionStudents?.question?.optionD}</Table.Cell>
+              </Table.Row>
+              <Table.Row>
+                <Table.Cell>{questionStudents?.question?.optionE}</Table.Cell>
+              </Table.Row>
+
               <Table.Row>
                 <Table.Cell>
                   {questionStudents?.question?.trueOption}
                 </Table.Cell>
               </Table.Row>
               <Table.Row>
-                <Table.Cell>
-                  {questionStudents?.question?.markedOption}
-                </Table.Cell>
-              </Table.Row>
-            </Table.Body>
-          </Table>
-          <Table>
-            <Table.Body>
-              <Table.Row>
-                <Table.Cell>
-                  {questionStudents?.question?.exam?.examId}
-                </Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell>
-                  {questionStudents?.question?.exam?.examId}
-                </Table.Cell>
+                <Table.Cell>{questionStudents?.markedOption}</Table.Cell>
               </Table.Row>
             </Table.Body>
           </Table>
@@ -382,167 +200,22 @@ export default function QuestionStudentDetail() {
                   {questionStudents?.question?.exam?.lesson?.lessonName}
                 </Table.Cell>
               </Table.Row>
-              <Table.Row>
-                <Table.Cell>
-                  {questionStudents?.question?.exam?.lesson?.lessonTeamsCode}
-                </Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell>
-                  {questionStudents?.question?.exam?.lesson?.lessonMaterialLink}
-                </Table.Cell>
-              </Table.Row>
-            </Table.Body>
-          </Table>
-
-          <Table>
-            <Table.Body>
-              <Table.Row>
-                <Table.Cell>
-                  {questionStudents?.question?.exam?.lesson?.departmentId}
-                </Table.Cell>
-              </Table.Row>
-
-              <Table.Row>
-                <Table.Cell>
-                  {
-                    questionStudents?.question?.exam?.lesson?.department
-                      ?.departmentName
-                  }
-                </Table.Cell>
-              </Table.Row>
             </Table.Body>
           </Table>
           <Table>
             <Table.Body>
               <Table.Row>
                 <Table.Cell>
-                  {
-                    questionStudents?.question?.exam?.lesson?.department
-                      ?.faculty?.facultyId
-                  }
+                  {questionStudents?.question?.exam?.lesson?.teacher?.teacherId}
                 </Table.Cell>
               </Table.Row>
               <Table.Row>
                 <Table.Cell>
-                  {
-                    questionStudents?.question?.exam?.lesson?.department
-                      ?.faculty?.facultyName
-                  }
-                </Table.Cell>
-              </Table.Row>
-            </Table.Body>
-          </Table>
-
-          <Table>
-            <Table.Body>
-              <Table.Row>
-                <Table.Cell>
-                  {questionStudents?.question?.exam?.lesson?.teacherId}
-                </Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell>
-                  {
-                    questionStudents?.question?.exam?.lesson?.teacher
-                      ?.profession
-                  }
-                </Table.Cell>
-              </Table.Row>
-            </Table.Body>
-          </Table>
-
-          <Table>
-            <Table.Body>
-              <Table.Row>
-                <Table.Cell>
-                  {
+                  {questionStudents?.question?.exam?.lesson?.teacher?.user
+                    ?.userFirstname +
+                    " " +
                     questionStudents?.question?.exam?.lesson?.teacher?.user
-                      ?.userId
-                  }
-                </Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell>
-                  {
-                    questionStudents?.question?.exam?.lesson?.teacher?.user
-                      ?.userFirstname
-                  }
-                </Table.Cell>
-              </Table.Row>
-            </Table.Body>
-            <Table.Body>
-              <Table.Row>
-                <Table.Cell>
-                  {
-                    questionStudents?.question?.exam?.lesson?.teacher?.user
-                      ?.userLastname
-                  }
-                </Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell>
-                  {
-                    questionStudents?.question?.exam?.lesson?.teacher?.user
-                      ?.userEmail
-                  }
-                </Table.Cell>
-              </Table.Row>
-            </Table.Body>
-            <Table.Body>
-              <Table.Row>
-                <Table.Cell>
-                  {
-                    questionStudents?.question?.exam?.lesson?.teacher?.user
-                      ?.nationalityId
-                  }
-                </Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell>
-                  {
-                    questionStudents?.question?.exam?.lesson?.teacher?.user
-                      ?.userGender
-                  }
-                </Table.Cell>
-              </Table.Row>
-            </Table.Body>
-            <Table.Body>
-              <Table.Row>
-                <Table.Cell>
-                  {
-                    questionStudents?.question?.exam?.lesson?.teacher?.user
-                      ?.userPhoto
-                  }
-                </Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell>
-                  {
-                    questionStudents?.question?.exam?.lesson?.teacher?.user
-                      ?.userPassword
-                  }
-                </Table.Cell>
-              </Table.Row>
-            </Table.Body>
-          </Table>
-
-          <Table>
-            <Table.Body>
-              <Table.Row>
-                <Table.Cell>
-                  {
-                    questionStudents?.question?.exam?.lesson?.teacher?.user
-                      ?.userRole?.roleId
-                  }
-                </Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell>
-                  {
-                    questionStudents?.question?.exam?.lesson?.teacher?.user
-                      ?.userRole?.roleName
-                  }
+                      ?.userLastname}
                 </Table.Cell>
               </Table.Row>
             </Table.Body>
@@ -553,81 +226,11 @@ export default function QuestionStudentDetail() {
               <Table.Row>
                 <Table.Cell>{questionStudents?.student?.studentId}</Table.Cell>
               </Table.Row>
-
               <Table.Row>
                 <Table.Cell>
-                  {questionStudents?.student?.studentNumber}
-                </Table.Cell>
-              </Table.Row>
-
-              <Table.Row>
-                <Table.Cell>
-                  {questionStudents?.student?.studentGrade}
-                </Table.Cell>
-              </Table.Row>
-            </Table.Body>
-          </Table>
-
-          <Table>
-            <Table.Body>
-              <Table.Row>
-                <Table.Cell>
-                  {questionStudents?.student?.user?.userId}
-                </Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell>
-                  {questionStudents?.student?.user?.userFirstname}
-                </Table.Cell>
-              </Table.Row>
-            </Table.Body>
-            <Table.Body>
-              <Table.Row>
-                <Table.Cell>
-                  {questionStudents?.student?.user?.userLastname}
-                </Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell>
-                  {questionStudents?.student?.user?.userEmail}
-                </Table.Cell>
-              </Table.Row>
-            </Table.Body>
-            <Table.Body>
-              <Table.Row>
-                <Table.Cell>
-                  {questionStudents?.student?.user?.nationalityId}
-                </Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell>
-                  {questionStudents?.student?.user?.userGender}
-                </Table.Cell>
-              </Table.Row>
-            </Table.Body>
-            <Table.Body>
-              <Table.Row>
-                <Table.Cell>
-                  {questionStudents?.student?.user?.userPhoto}
-                </Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell>
-                  {questionStudents?.student?.user?.userPassword}
-                </Table.Cell>
-              </Table.Row>
-            </Table.Body>
-          </Table>
-          <Table>
-            <Table.Body>
-              <Table.Row>
-                <Table.Cell>
-                  {questionStudents?.student?.user?.userRole?.roleId}
-                </Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell>
-                  {questionStudents?.student?.user?.userRole?.roleName}
+                  {questionStudents?.student?.user?.userFirstname +
+                    " " +
+                    questionStudents?.student?.user?.userLastname}
                 </Table.Cell>
               </Table.Row>
             </Table.Body>
@@ -635,5 +238,5 @@ export default function QuestionStudentDetail() {
         </Grid.Column>
       </Grid>
     </div>
-  )
+  );
 }

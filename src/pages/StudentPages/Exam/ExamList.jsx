@@ -1,20 +1,24 @@
-import React, { useEffect, useState } from "react"
-import { Cookies } from "react-cookie"
-import { NavLink } from "react-router-dom"
-import { useParams } from "react-router-dom/cjs/react-router-dom.min"
-import { Button, Table } from "semantic-ui-react"
-import ExamService from "../../../services/examService"
+import React, { useEffect, useState } from "react";
+import { Cookies } from "react-cookie";
+import { useHistory } from "react-router-dom";
+import { Button, Table } from "semantic-ui-react";
+import ExamResultService from "../../../services/examResultService";
+import ExamService from "../../../services/examService";
 
 export default function ExamList() {
-  const [exams, setExams] = useState([])
-  let cookie = new Cookies()
-  let examService = new ExamService()
+  const [exams, setExams] = useState([]);
+  let cookie = new Cookies();
+  let examService = new ExamService();
+
+  const history = useHistory();
+
+  let examResultService = new ExamResultService();
 
   useEffect(() => {
     examService
       .getExamsByStudent(cookie.get("studentId"))
-      .then((result) => setExams(result.data))
-  }, [])
+      .then((result) => setExams(result.data));
+  }, []);
 
   return (
     <div>
@@ -31,7 +35,30 @@ export default function ExamList() {
             <Table.Row key={exam.examId}>
               <Table.Cell>{exam?.lesson?.lessonName}</Table.Cell>
               <Table.Cell>
-                <Button as={NavLink} to={"/exam_page/" + exam.examId}>
+                <Button
+                  onClick={() =>
+                    examResultService
+                      .getByExamIdAndStudentId(
+                        exam?.examId,
+                        cookie.get("studentId")
+                      )
+                      .then((result) => {
+                        if (
+                          result.data.result < 100 ||
+                          result.data.result > 0
+                        ) {
+                          alert(
+                            "Zaten bu sınava ait sonucunuz var. Sınava tekrardan giremezsiniz. \nPuanınız : " +
+                              result.data.result +
+                              "\nTüm sonuçlarınızı sonuçlar sayfasından kontrol edebilirsiniz."
+                          );
+                        } else {
+                          cookie.set("examId",exam.examId)
+                          history.push("/exam_page");
+                        }
+                      })
+                  }
+                >
                   Start Exam
                 </Button>
               </Table.Cell>
@@ -40,5 +67,5 @@ export default function ExamList() {
         </Table.Body>
       </Table>
     </div>
-  )
+  );
 }

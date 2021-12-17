@@ -24,7 +24,7 @@ export default function LessonList() {
             <Table.HeaderCell>Teacher Name</Table.HeaderCell>
             <Table.HeaderCell>Lesson Teams Code</Table.HeaderCell>
             <Table.HeaderCell>Lesson Material Link</Table.HeaderCell>
-            <Table.HeaderCell />
+            <Table.HeaderCell>Exams</Table.HeaderCell>
           </Table.Row>
         </Table.Header>
 

@@ -23,7 +23,7 @@ export default class LessonService extends Component {
 
   addLesson(initialValues) {
     return axios.post(
-      "http://localhost:8080/lesson/add?teacherId=" +
+      "http://localhost:8080/lesson/add?teacher.teacherId=" +
         initialValues.teacherId +
         "&departmentId=" +
         initialValues.departmentId +
@@ -44,7 +44,7 @@ export default class LessonService extends Component {
     return axios.post(
       "http://localhost:8080/lesson/update?lessonId=" +
         initialValues.lessonId +
-        "&teacherId=" +
+        "&teacher.teacherId=" +
         initialValues.teacherId +
         "&departmentId=" +
         initialValues.departmentId +

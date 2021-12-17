@@ -12,7 +12,7 @@ export default class DepartmentService extends Component {
   }
   addDepartment(initialValues) {
     return axios.post(
-      "http://localhost:8080/department/add?facultyId=" +
+      "http://localhost:8080/department/add?faculty.facultyId=" +
         initialValues.facultyId +
         "&departmentName=" +
         initialValues.departmentName

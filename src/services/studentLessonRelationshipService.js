@@ -24,11 +24,19 @@ export default class StudentLessonRelationshipService extends Component {
       studentId
     )
   }
+
+  getByTeacher(teacherId) {
+    return axios.get(
+      "http://localhost:8080/studentLessonRelationship/getByTeacher?teacherId=" +
+      teacherId
+    )
+  }
+
   addRelationship(initialValues) {
     return axios.post(
-      "http://localhost:8080/studentLessonRelationship/add?lessonId=" +
+      "http://localhost:8080/studentLessonRelationship/add?lesson.lessonId=" +
         initialValues.lessonId +
-        "&studentId=" +
+        "&student.studentId=" +
         initialValues.studentId
     )
   }
@@ -42,9 +50,9 @@ export default class StudentLessonRelationshipService extends Component {
     return axios.post(
       "http://localhost:8080/studentLessonRelationship/update?relationshipId=" +
         initialValues.relationshipId +
-        "&lessonId=" +
+        "&lesson.lessonId=" +
         initialValues.lessonId +
-        "&studentId=" +
+        "&student.studentId=" +
         initialValues.studentId
     )
   }

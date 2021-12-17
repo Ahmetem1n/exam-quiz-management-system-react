@@ -50,7 +50,7 @@ export default function LessonList() {
                 </Button>
               </Table.Cell>
               <Table.Cell>
-                <Button as={NavLink} to={"/student/" + lesson.lessonId}>
+                <Button as={NavLink} to={"/studentLesson/" + lesson.lessonId}>
                   Students Taking
                 </Button>
               </Table.Cell>

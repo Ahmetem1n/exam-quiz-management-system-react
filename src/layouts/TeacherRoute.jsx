@@ -12,7 +12,7 @@ import QuestionDelete from "../pages/TeacherPages/Question/QuestionDelete";
 import QuestionList from "../pages/TeacherPages/Question/QuestionList";
 import QuestionUpdate from "../pages/TeacherPages/Question/QuestionUpdate";
 import StudentList from "../pages/TeacherPages/Student/StudentList";
-import RelationshipList from "../pages/TeacherPages/StudentLessonRelationship/RelationshipList";
+import Student from "../pages/TeacherPages/StudentLessonRelationship/Student";
 import TeacherHomePage from "../pages/TeacherPages/TeacherHomePage";
 import PersonalInformation from "./PersonalInformation";
 import TeacherNavi from "./TeacherNavi";
@@ -45,12 +45,7 @@ export default function TeacherRoute() {
       />
 
       <Route exact path="/students" component={StudentList} />
-
-      <Route
-        exact
-        path="/studentLessonRelationships"
-        component={RelationshipList}
-      />
+      <Route exact path="/studentLesson/:lessonId" component={Student} />
       <Route
         exact
         path="/personalInformation"

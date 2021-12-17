@@ -18,13 +18,13 @@ export default class StudentService extends Component {
 
   addStudent(initialValues) {
     return axios.post(
-      "http://localhost:8080/student/add?userId=" +
+      "http://localhost:8080/student/add?user.userId=" +
         initialValues.userId +
         "&studentNumber=" +
         initialValues.studentNumber +
         "&studentGrade=" +
         initialValues.studentGrade +
-        "&departmentId=" +
+        "&department.departmentId=" +
         initialValues.departmentId
     )
   }
@@ -37,13 +37,13 @@ export default class StudentService extends Component {
     return axios.post(
       "http://localhost:8080/student/update?studentId=" +
         initialValues.studentId +
-        "userId=" +
+        "user.userId=" +
         initialValues.userId +
         "&studentNumber=" +
         initialValues.studentNumber +
         "&studentGrade=" +
         initialValues.studentGrade +
-        "&departmentId=" +
+        "&department.departmentId=" +
         initialValues.departmentId
     )
   }
