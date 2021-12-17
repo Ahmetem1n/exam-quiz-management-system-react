@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { Menu } from "semantic-ui-react";
 import SignedIn from "./SignedIn";
 
-export default function Navi(params) {
+export default function Navi() {
   return (
     <div>
       <Menu inverted fixed="top">

@@ -74,6 +74,7 @@ export default function AdminRoute() {
   return (
     <div>
       <AdminNavi />
+
       <Route exact path="/" component={AdminHomePage} />
       <Route exact path="/admins" component={AdminList} />
       <Route exact path="/admin/:adminId" component={AdminDetail} />
@@ -109,8 +110,16 @@ export default function AdminRoute() {
       <Route exact path="/examResults" component={ExamResultList} />
       <Route exact path="/examResult/:resultId" component={ExamResultDetail} />
       <Route exact path="/examResult_add" component={ExamResultAdd} />
-      <Route exact path="/examResult_delete/:resultId" component={ExamResultDelete} />
-      <Route exact path="/examResult_update/:resultId" component={ExamResultUpdate} />
+      <Route
+        exact
+        path="/examResult_delete/:resultId"
+        component={ExamResultDelete}
+      />
+      <Route
+        exact
+        path="/examResult_update/:resultId"
+        component={ExamResultUpdate}
+      />
 
       <Route exact path="/faculties" component={FacultyList} />
       <Route exact path="/faculty/:facultyId" component={FacultyDetail} />

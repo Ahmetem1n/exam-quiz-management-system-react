@@ -25,11 +25,6 @@ export default function ExamPage() {
       .getByExamId(examId)
       .then((result) => setQuestions(result.data));
   }, []);
-  const clear = () => {
-    for (i = 0; i < questions.length; i++) {
-      cookie.set("question" + questions[i].questionId, "");
-    }
-  };
 
   function Completionist() {
     for (i = 0; i < questions.length; i++) {

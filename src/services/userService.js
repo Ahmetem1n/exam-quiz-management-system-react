@@ -1,11 +1,11 @@
-import axios from "axios"
-import { Component } from "react"
+import axios from "axios";
+import { Component } from "react";
 export default class UserService extends Component {
   getUsers() {
-    return axios.get("http://localhost:8080/user/getAll")
+    return axios.get("http://localhost:8080/user/getAll");
   }
   getByUserId(userId) {
-    return axios.get("http://localhost:8080/user/getByUserId?userId=" + userId)
+    return axios.get("http://localhost:8080/user/getByUserId?userId=" + userId);
   }
   addUser(initialValues) {
     return axios.post(
@@ -25,10 +25,10 @@ export default class UserService extends Component {
         initialValues.userPhoto +
         "&userPassword=" +
         initialValues.userPassword
-    )
+    );
   }
   deleteUser(userId) {
-    return axios.post("http://localhost:8080/user/delete?userId=" + userId)
+    return axios.post("http://localhost:8080/user/delete?userId=" + userId);
   }
   updateUser(initialValues) {
     return axios.post(
@@ -50,7 +50,7 @@ export default class UserService extends Component {
         initialValues.userPhoto +
         "&userPassword=" +
         initialValues.userPassword
-    )
+    );
   }
   loginUser(initialValues) {
     return axios.get(
@@ -58,6 +58,6 @@ export default class UserService extends Component {
         initialValues.nationalityId +
         "&password=" +
         initialValues.userPassword
-    )
+    );
   }
 }

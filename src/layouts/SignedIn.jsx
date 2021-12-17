@@ -20,12 +20,14 @@ export default function SignedIn() {
             <Dropdown.Item
               onClick={() => (
                 cookie.set("roleId", ""),
-                cookie.set("firstname", ""),
                 cookie.set("adminId", ""),
-                cookie.set("userId", ""),
                 cookie.set("profilePhoto", ""),
                 cookie.set("studentId", ""),
                 cookie.set("teacherId", ""),
+                cookie.set("firstname", ""),
+                cookie.set("userId", ""),
+                sessionStorage.setItem("firstname", ""),
+                sessionStorage.setItem("userId", ""),
                 history.push("/"),
                 window.location.reload()
               )}

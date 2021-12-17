@@ -28,7 +28,7 @@ export default function AdminHomePage() {
             />
             EXAMS
           </Grid.Column>
-          
+
           <Grid.Column as={NavLink} to={"/examResults"}>
             <Image
               src="https://cumhuriyetedutr-my.sharepoint.com/personal/2018141024_cumhuriyet_edu_tr/Documents/EXAM-QU%C4%B0Z%20RES%C4%B0MLER/exam-result.jpeg"
@@ -50,8 +50,8 @@ export default function AdminHomePage() {
             />
             LESSONS
           </Grid.Column>
-          </Grid.Row>
-          <Grid.Row columns={6}>
+        </Grid.Row>
+        <Grid.Row columns={6}>
           <Grid.Column as={NavLink} to={"/questions"}>
             <Image
               src="https://cumhuriyetedutr-my.sharepoint.com/personal/2018141024_cumhuriyet_edu_tr/Documents/EXAM-QU%c4%b0Z%20RES%c4%b0MLER/question.jfif?Web=1"
@@ -59,8 +59,7 @@ export default function AdminHomePage() {
             />
             QUESTIONS
           </Grid.Column>
-        
-        
+
           <Grid.Column as={NavLink} to={"/questionStudents"}>
             <Image
               src="https://cumhuriyetedutr-my.sharepoint.com/personal/2018141024_cumhuriyet_edu_tr/Documents/EXAM-QU%c4%b0Z%20RES%c4%b0MLER/question-student.png?Web=1"
@@ -96,7 +95,7 @@ export default function AdminHomePage() {
             />
             USERS
           </Grid.Column>
-          </Grid.Row>
+        </Grid.Row>
         <Grid.Row columns={6}>
           <Grid.Column as={NavLink} to={"/userRoles"}>
             <Image
@@ -105,7 +104,7 @@ export default function AdminHomePage() {
             />
             USER ROLES
           </Grid.Column>
-        
+
           <Grid.Column as={NavLink} to={"/personalInformation"}>
             <Image
               src="https://cumhuriyetedutr-my.sharepoint.com/personal/2018141024_cumhuriyet_edu_tr/Documents/EXAM-QU%c4%b0Z%20RES%c4%b0MLER/personal-information.jfif?Web=1"

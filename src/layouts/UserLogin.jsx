@@ -1,7 +1,7 @@
 import { Formik } from "formik";
 import React, { useState } from "react";
 import { Cookies } from "react-cookie";
-import { Button, Form } from "semantic-ui-react";
+import { Button, Checkbox, Form } from "semantic-ui-react";
 import AdminService from "../services/adminService";
 import StudentService from "../services/studentService";
 import TeacherService from "../services/teacherService";
@@ -73,14 +73,16 @@ export default function UserLogin() {
                         });
                     }
 
-                    sessionStorage.setItem("userId", result.data.userId)
-                    sessionStorage.setItem("firstname", result.data.userFirstname);
-
+                    sessionStorage.setItem("userId", result.data.userId);
+                    sessionStorage.setItem(
+                      "firstname",
+                      result.data.userFirstname
+                    );
                     cookie.set("userId", result.data.userId);
                     cookie.set("firstname", result.data.userFirstname);
                     cookie.set("profilePhoto", result.data.userPhoto);
                     cookie.set("roleId", result.data.userRole.roleId);
-                    
+
                     window.location.reload();
                   }
                 })
