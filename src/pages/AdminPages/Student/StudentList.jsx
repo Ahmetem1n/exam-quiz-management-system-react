@@ -20,6 +20,7 @@ export default function StudentList() {
             <Table.HeaderCell>Student Lastname</Table.HeaderCell>
             <Table.HeaderCell>Student Email</Table.HeaderCell>
             <Table.HeaderCell>Student Gender</Table.HeaderCell>
+            <Table.HeaderCell>Department Name</Table.HeaderCell>
             <Table.HeaderCell>Update</Table.HeaderCell>
             <Table.HeaderCell>Delete</Table.HeaderCell>
           </Table.Row>
@@ -37,6 +38,11 @@ export default function StudentList() {
               <Table.Cell>{student?.user?.userLastname}</Table.Cell>
               <Table.Cell>{student?.user?.userEmail}</Table.Cell>
               <Table.Cell>{student?.user?.userGender}</Table.Cell>
+              <Table.Cell>
+                <Link to={`/department/${student?.department?.departmentId}`}>
+                  {student?.department?.departmentName}
+                </Link>
+              </Table.Cell>
               <Table.Cell>
                 <Button
                   as={NavLink}
