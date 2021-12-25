@@ -1,6 +1,6 @@
 import { Formik } from "formik";
 import React, { useState } from "react";
-import { Button, Form } from "semantic-ui-react";
+import { Button, Form, Table } from "semantic-ui-react";
 import ExamResultService from "../../../services/examResultService";
 import ExamQuizTextInput from "../../../utilities/ExamQuizTextInput";
 
@@ -11,52 +11,86 @@ export default function ExamResultAdd() {
 
   let examResultService = new ExamResultService();
 
-  const initialValues = {
-    examId: "",
-    studentId: "",
-    result: "",
-  };
   return (
     <div>
       EXAM RESULT ADD
-      <Formik initialValues={initialValues}>
-        <Form className="ui form">
-          <ExamQuizTextInput
-            name="examId"
-            placeholder="Exam Id"
-            value={examId ?? ""}
-            onChange={(e) => setExamId(e.target.value)}
-          />
+      <Table celled>
+        <Table.Body>
+          <Table.Row>
+            <Table.Cell width="1">
+              <strong>Exam Id</strong>
+            </Table.Cell>
+            <Table.Cell width="4">
+              <Formik>
+                <Form className="ui form">
+                  <ExamQuizTextInput
+                    name="examId"
+                    placeholder="Exam Id"
+                    value={examId ?? ""}
+                    onChange={(e) => setExamId(e.target.value)}
+                  />
+                </Form>
+              </Formik>
+            </Table.Cell>
+          </Table.Row>
+          <Table.Row>
+            <Table.Cell>
+              <strong>Student Id</strong>
+            </Table.Cell>
+            <Table.Cell>
+              <Formik>
+                <Form className="ui form">
+                  <ExamQuizTextInput
+                    name="studentId"
+                    placeholder="Student Id"
+                    value={studentId ?? ""}
+                    onChange={(e) => setStudentId(e.target.value)}
+                  />
+                </Form>
+              </Formik>
+            </Table.Cell>
+          </Table.Row>
+          <Table.Row>
+            <Table.Cell>
+              <strong>Result</strong>
+            </Table.Cell>
+            <Table.Cell>
+              <Formik>
+                <Form className="ui form">
+                  <ExamQuizTextInput
+                    name="result"
+                    placeholder="Result"
+                    value={result ?? ""}
+                    onChange={(e) => setResult(e.target.value)}
+                  />
+                </Form>
+              </Formik>
+            </Table.Cell>
+          </Table.Row>
 
-          <ExamQuizTextInput
-            name="studentId"
-            placeholder="Student Id"
-            value={studentId ?? ""}
-            onChange={(e) => setStudentId(e.target.value)}
-          />
-          <ExamQuizTextInput
-            name="result"
-            placeholder="Result"
-            value={result ?? ""}
-            onChange={(e) => setResult(e.target.value)}
-          />
-
-          <Button
-            color="green"
-            type="submit"
-            onClick={() =>
-              examResultService.addResult({
-                examId,
-                studentId,
-                result,
-              })
-            }
-            disabled={!(examId && studentId && result)}
-          >
-            Exam Result Add
-          </Button>
-        </Form>
-      </Formik>
+          <Table.Row>
+            <Table.Cell>
+              <strong>Exam Result Add</strong>
+            </Table.Cell>
+            <Table.Cell>
+              <Button
+                color="green"
+                type="submit"
+                onClick={() =>
+                  examResultService.addResult({
+                    examId,
+                    studentId,
+                    result,
+                  })
+                }
+                disabled={!(examId && studentId && result)}
+              >
+                Exam Result Add
+              </Button>
+            </Table.Cell>
+          </Table.Row>
+        </Table.Body>
+      </Table>
     </div>
   );
 }

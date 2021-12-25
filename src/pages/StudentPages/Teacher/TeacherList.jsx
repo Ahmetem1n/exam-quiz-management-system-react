@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Cookies } from "react-cookie";
 import { Table } from "semantic-ui-react";
 import StudentLessonRelationshipService from "../../../services/studentLessonRelationshipService";
-import TeacherService from "../../../services/teacherService";
 
 export default function TeacherList() {
   const [relationships, setRelationships] = useState([]);

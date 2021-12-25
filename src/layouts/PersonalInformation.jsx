@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Cookies } from "react-cookie";
-import { Grid, Table } from "semantic-ui-react";
+import { Button, Grid, Table } from "semantic-ui-react";
 import UserService from "../services/userService";
 
 export default function PersonalInformation() {
@@ -84,6 +84,9 @@ export default function PersonalInformation() {
               </Table.Row>
             </Table.Body>
           </Table>
+          <Button color="green" type="submit">
+            Password Update
+          </Button>
         </Grid.Column>
       </Grid>
     </div>

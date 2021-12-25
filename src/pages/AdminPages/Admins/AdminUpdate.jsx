@@ -2,7 +2,7 @@ import { Formik } from "formik";
 import React, { useEffect, useState } from "react";
 import { Cookies } from "react-cookie";
 import { useParams } from "react-router";
-import { Button, Form,  } from "semantic-ui-react";
+import { Button, Form, Table } from "semantic-ui-react";
 import AdminService from "../../../services/adminService";
 import ExamQuizTextInput from "../../../utilities/ExamQuizTextInput";
 
@@ -13,39 +13,59 @@ export default function AdminUpdate() {
   useEffect(() => {
     adminService.getByAdminId(adminId).then((result) => setAdmin(result.data));
   }, []);
-  const [userId, setUserId] = useState(null);
-
-  const initialValues = {
-    userId: "",
-  };
+  let userId = admin?.user?.userId;
+  const initialValues = {};
   return (
     <div>
       ADMİN UPDATE
-      <Formik initialValues={initialValues}>
-        <Form className="ui form">
-          <ExamQuizTextInput name="adminId" value={adminId} />
-          <ExamQuizTextInput
-            name="userId"
-            placeholder="User Id"
-            value={userId ?? admin?.user?.userId}
-            onChange={(e) => setUserId(e.target.value)}
-          />
+      <Table celled>
+        <Table.Body>
+          <Table.Row>
+            <Table.Cell width="1">
+              <strong>Admin Id</strong>
+            </Table.Cell>
+            <Table.Cell width="4">
+              <Formik initialValues={initialValues}>
+                <Form className="ui form">
+                  <ExamQuizTextInput name="adminId" value={adminId} />
+                </Form>
+              </Formik>
+            </Table.Cell>
+          </Table.Row>
+          <Table.Row>
+            <Table.Cell>
+              <strong>User Id</strong>
+            </Table.Cell>
+            <Table.Cell>
+              <Formik initialValues={initialValues}>
+                <Form className="ui form">
+                  <ExamQuizTextInput name="userId" value={userId} />
+                </Form>
+              </Formik>
+            </Table.Cell>
+          </Table.Row>
 
-          <Button
-            color="green"
-            type="submit"
-            onClick={() =>
-              adminService.updateAdmin({
-                adminId,
-                userId,
-              })
-            }
-            disabled={!userId}
-          >
-            Admin Update
-          </Button>
-        </Form>
-      </Formik>
+          <Table.Row>
+            <Table.Cell>
+              <strong>Admin Update</strong>
+            </Table.Cell>
+            <Table.Cell>
+              <Button
+                color="green"
+                type="submit"
+                onClick={() =>
+                  adminService.updateAdmin({
+                    adminId,
+                    userId,
+                  })
+                }
+              >
+                Admin Update
+              </Button>
+            </Table.Cell>
+          </Table.Row>
+        </Table.Body>
+      </Table>
     </div>
   );
 }

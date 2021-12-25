@@ -1,7 +1,7 @@
 import { Formik } from "formik";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import { Button, Form,  } from "semantic-ui-react";
+import { Button, Form, Table } from "semantic-ui-react";
 import TeacherService from "../../../services/teacherService";
 import ExamQuizTextInput from "../../../utilities/ExamQuizTextInput";
 
@@ -18,54 +18,99 @@ export default function TeacherUpdate() {
   const [profession, setProfession] = useState(null);
   const [departmentId, setDepartmentId] = useState(null);
 
-  const initialValues = {
-    userId: "",
-    profession: "",
-    departmentId: "",
-  };
+  const initialValues = {};
   return (
     <div>
       TEACHER UPDATE
-      <Formik initialValues={initialValues}>
-        <Form className="ui form">
-          <ExamQuizTextInput name="teacherId" value={teacherId} />
-          <ExamQuizTextInput
-            name="userId"
-            placeholder="User Id"
-            value={userId ?? teacher?.user?.userId}
-            onChange={(e) => setUserId(e.target.value)}
-          />
-
-          <ExamQuizTextInput
-            name="profession"
-            placeholder="Profession"
-            value={profession ?? teacher?.profession}
-            onChange={(e) => setProfession(e.target.value)}
-          />
-          <ExamQuizTextInput
-            name="departmentId"
-            placeholder="Department Id"
-            value={departmentId ?? teacher?.department?.departmentId}
-            onChange={(e) => setDepartmentId(e.target.value)}
-          />
-
-          <Button
-            color="green"
-            type="submit"
-            onClick={() =>
-              teacherService.updateTeacher({
-                teacherId,
-                userId,
-                profession,
-                departmentId,
-              })
-            }
-            disabled={!(userId && profession && departmentId)}
-          >
-            Teacher Update
-          </Button>
-        </Form>
-      </Formik>
+      <Table celled>
+        <Table.Body>
+          <Table.Row>
+            <Table.Cell width="1">
+              <strong>Teacher Id</strong>
+            </Table.Cell>
+            <Table.Cell width="4">
+              <Formik initialValues={initialValues}>
+                <Form className="ui form">
+                  <ExamQuizTextInput name="teacherId" value={teacherId} />
+                </Form>
+              </Formik>
+            </Table.Cell>
+          </Table.Row>
+          <Table.Row>
+            <Table.Cell>
+              <strong>User Id</strong>
+            </Table.Cell>
+            <Table.Cell>
+              <Formik>
+                <Form className="ui form">
+                  <ExamQuizTextInput
+                    name="userId"
+                    placeholder="User Id"
+                    value={userId ?? teacher?.user?.userId}
+                    onChange={(e) => setUserId(e.target.value)}
+                  />
+                </Form>
+              </Formik>
+            </Table.Cell>
+          </Table.Row>
+          <Table.Row>
+            <Table.Cell>
+              <strong>Profession</strong>
+            </Table.Cell>
+            <Table.Cell>
+              <Formik>
+                <Form className="ui form">
+                  <ExamQuizTextInput
+                    name="profession"
+                    placeholder="Profession"
+                    value={profession ?? teacher?.profession}
+                    onChange={(e) => setProfession(e.target.value)}
+                  />
+                </Form>
+              </Formik>
+            </Table.Cell>
+          </Table.Row>
+          <Table.Row>
+            <Table.Cell>
+              <strong>Department Id</strong>
+            </Table.Cell>
+            <Table.Cell>
+              <Formik>
+                <Form className="ui form">
+                  <ExamQuizTextInput
+                    name="departmentId"
+                    placeholder="Department Id"
+                    value={departmentId ?? teacher?.department?.departmentId}
+                    onChange={(e) => setDepartmentId(e.target.value)}
+                  />
+                </Form>
+              </Formik>
+            </Table.Cell>
+          </Table.Row>
+          <Table.Row>
+            <Table.Cell>
+              <strong>Teacher Update</strong>
+            </Table.Cell>
+            <Table.Cell>
+              <Button
+                color="green"
+                type="submit"
+                onClick={() =>
+                  teacherService.updateTeacher({
+                    teacherId,
+                    userId,
+                    profession,
+                    departmentId,
+                  })
+                }
+                disabled={!(userId && profession && departmentId)}
+              >
+                Teacher Update
+              </Button>
+            </Table.Cell>
+          </Table.Row>
+        </Table.Body>
+      </Table>
     </div>
   );
 }

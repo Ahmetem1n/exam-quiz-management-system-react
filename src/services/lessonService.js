@@ -17,7 +17,7 @@ export default class LessonService extends Component {
   }
   getByStudentId(studentId) {
     return axios.get(
-      "http://localhost:8080/lesson/getByStudentIdId?studentId=" + studentId
+      "http://localhost:8080/lesson/getByStudentId?studentId=" + studentId
     )
   }
 
@@ -25,7 +25,7 @@ export default class LessonService extends Component {
     return axios.post(
       "http://localhost:8080/lesson/add?teacher.teacherId=" +
         initialValues.teacherId +
-        "&departmentId=" +
+        "&department.departmentId=" +
         initialValues.departmentId +
         "&lessonName=" +
         initialValues.lessonName +
@@ -46,7 +46,7 @@ export default class LessonService extends Component {
         initialValues.lessonId +
         "&teacher.teacherId=" +
         initialValues.teacherId +
-        "&departmentId=" +
+        "&department.departmentId=" +
         initialValues.departmentId +
         "&lessonName=" +
         initialValues.lessonName +

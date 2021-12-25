@@ -1,6 +1,6 @@
 import { Formik } from "formik";
 import React, { useState } from "react";
-import { Button, Form } from "semantic-ui-react";
+import { Button, Form, Grid, Table } from "semantic-ui-react";
 import ExamService from "../../../services/examService";
 import ExamQuizTextInput from "../../../utilities/ExamQuizTextInput";
 
@@ -10,44 +10,67 @@ export default function ExamAdd() {
 
   let examService = new ExamService();
 
-  const initialValues = {
-    lessonId: "",
-    active: "",
-  };
   return (
     <div>
       EXAM ADD
-      <Formik initialValues={initialValues}>
-        <Form className="ui form">
-          <ExamQuizTextInput
-            name="lessonId"
-            placeholder="Lesson Id"
-            value={lessonId ?? ""}
-            onChange={(e) => setLessonId(e.target.value)}
-          />
-
-          <ExamQuizTextInput
-            name="active"
-            placeholder="Active"
-            value={active ?? ""}
-            onChange={(e) => setActive(e.target.value)}
-          />
-
-          <Button
-            color="green"
-            type="submit"
-            onClick={() =>
-              examService.addExam({
-                lessonId,
-                active,
-              })
-            }
-            disabled={!(lessonId && active)}
-          >
-            Exam Add
-          </Button>
-        </Form>
-      </Formik>
+      <Table celled>
+        <Table.Body>
+          <Table.Row>
+            <Table.Cell width="1">
+              <strong>Lesson Id</strong>
+            </Table.Cell>
+            <Table.Cell width="4">
+              <Formik >
+                <Form className="ui form">
+                  <ExamQuizTextInput
+                    name="lessonId"
+                    placeholder="Lesson Id"
+                    value={lessonId ?? ""}
+                    onChange={(e) => setLessonId(e.target.value)}
+                  />
+                </Form>
+              </Formik>
+            </Table.Cell>
+          </Table.Row>
+          <Table.Row>
+            <Table.Cell>
+              <strong>Active</strong>
+            </Table.Cell>
+            <Table.Cell>
+              <Formik>
+                <Form className="ui form">
+                  <ExamQuizTextInput
+                    name="active"
+                    placeholder="Active"
+                    value={active ?? ""}
+                    onChange={(e) => setActive(e.target.value)}
+                  />
+                </Form>
+              </Formik>
+            </Table.Cell>
+          </Table.Row>
+          <Table.Row>
+            <Table.Cell>
+              <strong>Exam Add</strong>
+            </Table.Cell>
+            <Table.Cell>
+              <Button
+                color="green"
+                type="submit"
+                onClick={() =>
+                  examService.addExam({
+                    lessonId,
+                    active,
+                  })
+                }
+                disabled={!(lessonId && active)}
+              >
+                Exam Add
+              </Button>
+            </Table.Cell>
+          </Table.Row>
+        </Table.Body>
+      </Table>
     </div>
   );
 }

@@ -27,7 +27,7 @@ export default class DepartmentService extends Component {
     return axios.post(
       "http://localhost:8080/department/update?departmentId=" +
         initialValues.departmentId +
-        "&facultyId=" +
+        "&faculty.facultyId=" +
         initialValues.facultyId +
         "&departmentName=" +
         initialValues.departmentName

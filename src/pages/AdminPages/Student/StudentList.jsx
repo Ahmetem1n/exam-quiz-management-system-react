@@ -16,11 +16,14 @@ export default function StudentList() {
         <Table.Header>
           <Table.Row>
             <Table.HeaderCell>Student Id</Table.HeaderCell>
+            <Table.HeaderCell>User Id</Table.HeaderCell>
             <Table.HeaderCell>Student Firstname</Table.HeaderCell>
             <Table.HeaderCell>Student Lastname</Table.HeaderCell>
             <Table.HeaderCell>Student Email</Table.HeaderCell>
             <Table.HeaderCell>Student Gender</Table.HeaderCell>
             <Table.HeaderCell>Department Name</Table.HeaderCell>
+            <Table.HeaderCell>Student Grade</Table.HeaderCell>
+            <Table.HeaderCell>Student Number</Table.HeaderCell>
             <Table.HeaderCell>Update</Table.HeaderCell>
             <Table.HeaderCell>Delete</Table.HeaderCell>
           </Table.Row>
@@ -30,6 +33,11 @@ export default function StudentList() {
           {students.map((student) => (
             <Table.Row key={student.studentId}>
               <Table.Cell>{student?.studentId}</Table.Cell>
+              <Table.Cell>
+                <Link to={`/user/${student?.user?.userId}`}>
+                  {student?.user?.userId}
+                </Link>
+              </Table.Cell>
               <Table.Cell>
                 <Link to={`/student/${student?.studentId}`}>
                   {student?.user?.userFirstname}
@@ -43,6 +51,8 @@ export default function StudentList() {
                   {student?.department?.departmentName}
                 </Link>
               </Table.Cell>
+              <Table.Cell>{student?.studentGrade}</Table.Cell>
+              <Table.Cell>{student?.studentNumber}</Table.Cell>
               <Table.Cell>
                 <Button
                   as={NavLink}

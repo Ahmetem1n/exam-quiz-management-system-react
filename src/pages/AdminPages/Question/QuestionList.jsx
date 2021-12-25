@@ -16,7 +16,7 @@ export default function QuestionList() {
         <Table.Header>
           <Table.Row>
             <Table.HeaderCell>Question Id</Table.HeaderCell>
-            <Table.HeaderCell>Lesson Id</Table.HeaderCell>
+            <Table.HeaderCell>Exam Id</Table.HeaderCell>
             <Table.HeaderCell>Lesson Name</Table.HeaderCell>
             <Table.HeaderCell>Question Text</Table.HeaderCell>
             <Table.HeaderCell>Option A</Table.HeaderCell>
@@ -34,11 +34,14 @@ export default function QuestionList() {
           {questions.map((question) => (
             <Table.Row key={question.questionId}>
               <Table.Cell>
-                <Link to={`/question/${question?.exam?.examId}`}>
-                  {question?.exam?.examId}
+                <Link to={`/question/${question?.questionId}`}>
+                  {question?.questionId}
                 </Link>
               </Table.Cell>
-              <Table.Cell>{question?.exam?.lesson?.lessonId}</Table.Cell>
+              <Table.Cell>
+              <Link to={`/exam/${question?.exam?.examId}`}>
+              {question?.exam?.examId}
+                </Link></Table.Cell>
               <Table.Cell>
                 <Link to={`/lesson/${question?.exam?.lesson?.lessonId}`}>
                   {question?.exam?.lesson?.lessonName}

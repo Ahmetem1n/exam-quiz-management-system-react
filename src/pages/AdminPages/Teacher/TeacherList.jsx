@@ -16,11 +16,13 @@ export default function TeacherList() {
         <Table.Header>
           <Table.Row>
             <Table.HeaderCell>Teacher Id</Table.HeaderCell>
+            <Table.HeaderCell>User Id</Table.HeaderCell>
             <Table.HeaderCell>Teacher Firstname</Table.HeaderCell>
             <Table.HeaderCell>Teacher Lastname</Table.HeaderCell>
             <Table.HeaderCell>Teacher Email</Table.HeaderCell>
             <Table.HeaderCell>Teacher Gender</Table.HeaderCell>
             <Table.HeaderCell>Department Name</Table.HeaderCell>
+            <Table.HeaderCell>Profession</Table.HeaderCell>
             <Table.HeaderCell>Update</Table.HeaderCell>
             <Table.HeaderCell>Delete</Table.HeaderCell>
           </Table.Row>
@@ -31,6 +33,11 @@ export default function TeacherList() {
             <Table.Row key={teacher.teacherId}>
               <Table.Cell>{teacher?.teacherId}</Table.Cell>
               <Table.Cell>
+                <Link to={`/user/${teacher?.user?.userId}`}>
+                  {teacher?.user?.userId}
+                </Link>
+              </Table.Cell>
+              <Table.Cell>
                 <Link to={`/teacher/${teacher?.teacherId}`}>
                   {teacher?.user?.userFirstname}
                 </Link>
@@ -38,11 +45,13 @@ export default function TeacherList() {
               <Table.Cell>{teacher?.user?.userLastname}</Table.Cell>
               <Table.Cell>{teacher?.user?.userEmail}</Table.Cell>
               <Table.Cell>{teacher?.user?.userGender}</Table.Cell>
+
               <Table.Cell>
                 <Link to={`/department/${teacher?.department?.departmentId}`}>
                   {teacher?.department?.departmentName}
                 </Link>
               </Table.Cell>
+              <Table.Cell>{teacher?.profession}</Table.Cell>
               <Table.Cell>
                 <Button
                   as={NavLink}

@@ -1,130 +1,222 @@
-import { Formik } from "formik"
-import React, { useEffect, useState } from "react"
-import { useParams } from "react-router"
-import { Button, Form } from "semantic-ui-react"
-import QuestionService from "../../../services/questionService"
-import ExamQuizTextInput from "../../../utilities/ExamQuizTextInput"
+import { Formik } from "formik";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router";
+import { Button, Form, Table } from "semantic-ui-react";
+import QuestionService from "../../../services/questionService";
+import ExamQuizTextInput from "../../../utilities/ExamQuizTextInput";
 
 export default function QuestionUpdate() {
-  let { questionId } = useParams()
-  const [question, setQuestion] = useState({})
-  let questionService = new QuestionService()
+  let { questionId } = useParams();
+  const [question, setQuestion] = useState({});
+  let questionService = new QuestionService();
   useEffect(() => {
     questionService
       .getByQuestionId(questionId)
-      .then((result) => setQuestion(result.data))
-  }, [])
-  const [examId, setExamId] = useState(null)
-  const [questionText, setQuestionText] = useState(null)
-  const [optionA, setOptionA] = useState(null)
-  const [optionB, setOptionB] = useState(null)
-  const [optionC, setOptionC] = useState(null)
-  const [optionD, setOptionD] = useState(null)
-  const [optionE, setOptionE] = useState(null)
-  const [trueOption, setTrueOption] = useState(null)
+      .then((result) => setQuestion(result.data));
+  }, []);
+  const [examId, setExamId] = useState(null);
+  const [questionText, setQuestionText] = useState(null);
+  const [optionA, setOptionA] = useState(null);
+  const [optionB, setOptionB] = useState(null);
+  const [optionC, setOptionC] = useState(null);
+  const [optionD, setOptionD] = useState(null);
+  const [optionE, setOptionE] = useState(null);
+  const [trueOption, setTrueOption] = useState(null);
 
-  const initialValues = {
-    questionId: "",
-    examId: "",
-    questionText: "",
-    optionA: "",
-    optionB: "",
-    optionC: "",
-    optionD: "",
-    optionE: "",
-    trueOption: "",
-  }
+  const initialValues = {};
   return (
     <div>
       QUESTİON UPDATE
-      <Formik initialValues={initialValues}>
-        <Form className="ui form">
-          <ExamQuizTextInput name="questionId" value={questionId} />
-          <ExamQuizTextInput
-            name="examId"
-            placeholder="Exam Id"
-            value={examId ?? question?.exam?.examId}
-            onChange={(e) => setExamId(e.target.value)}
-          />
-
-          <ExamQuizTextInput
-            name="questionText"
-            placeholder="Question Text"
-            value={questionText ?? question.questionText}
-            onChange={(e) => setQuestionText(e.target.value)}
-          />
-          <ExamQuizTextInput
-            name="optionA"
-            placeholder="OptionA"
-            value={optionA ?? question.optionA}
-            onChange={(e) => setOptionA(e.target.value)}
-          />
-          <ExamQuizTextInput
-            name="optionB"
-            placeholder="OptionB"
-            value={optionB ?? question.optionB}
-            onChange={(e) => setOptionB(e.target.value)}
-          />
-          <ExamQuizTextInput
-            name="optionC"
-            placeholder="OptionC"
-            value={optionC ?? question.optionC}
-            onChange={(e) => setOptionC(e.target.value)}
-          />
-          <ExamQuizTextInput
-            name="optionD"
-            placeholder="OptionD"
-            value={optionD ?? question.optionD}
-            onChange={(e) => setOptionD(e.target.value)}
-          />
-          <ExamQuizTextInput
-            name="optionE"
-            placeholder="OptionE"
-            value={optionE ?? question.optionE}
-            onChange={(e) => setOptionE(e.target.value)}
-          />
-          <ExamQuizTextInput
-            name="trueOption"
-            placeholder="True Option"
-            value={trueOption ?? question.trueOption}
-            onChange={(e) => setTrueOption(e.target.value)}
-          />
-
-          
-
-          <Button
-            color="green"
-            type="submit"
-            onClick={() =>
-              questionService.updateQuestion({
-                questionId,
-                examId,
-                questionText,
-                optionA,
-                optionB,
-                optionC,
-                optionD,
-                optionE,
-                trueOption,
-              })
-            }
-            disabled={
-              !(
-                examId &&
-                questionText &&
-                optionA &&
-                optionB &&
-                optionC &&
-                optionD &&
-                optionE &&
-                trueOption
-              )
-            }
-          >
-            Question Update
-          </Button>
-        </Form>
-      </Formik>
+      <Table celled>
+        <Table.Body>
+          <Table.Row>
+            <Table.Cell width="1">
+              <strong>Question Id</strong>
+            </Table.Cell>
+            <Table.Cell width="4">
+              <Formik initialValues={initialValues}>
+                <Form className="ui form">
+                  <ExamQuizTextInput name="questionId" value={questionId} />
+                </Form>
+              </Formik>
+            </Table.Cell>
+          </Table.Row>
+          <Table.Row>
+            <Table.Cell>
+              <strong>Exam Id</strong>
+            </Table.Cell>
+            <Table.Cell>
+              <Formik>
+                <Form className="ui form">
+                  <ExamQuizTextInput
+                    name="examId"
+                    placeholder="Exam Id"
+                    value={examId ?? question?.exam?.examId}
+                    onChange={(e) => setExamId(e.target.value)}
+                  />
+                </Form>
+              </Formik>
+            </Table.Cell>
+          </Table.Row>
+          <Table.Row>
+            <Table.Cell>
+              <strong>Question Text</strong>
+            </Table.Cell>
+            <Table.Cell>
+              <Formik>
+                <Form className="ui form">
+                  <ExamQuizTextInput
+                    name="questionText"
+                    placeholder="Question Text"
+                    value={questionText ?? question.questionText}
+                    onChange={(e) => setQuestionText(e.target.value)}
+                  />
+                </Form>
+              </Formik>
+            </Table.Cell>
+          </Table.Row>
+          <Table.Row>
+            <Table.Cell>
+              <strong>Option A</strong>
+            </Table.Cell>
+            <Table.Cell>
+              <Formik>
+                <Form className="ui form">
+                  <ExamQuizTextInput
+                    name="optionA"
+                    placeholder="Option A"
+                    value={optionA ?? question.optionA}
+                    onChange={(e) => setOptionA(e.target.value)}
+                  />
+                </Form>
+              </Formik>
+            </Table.Cell>
+          </Table.Row>
+          <Table.Row>
+            <Table.Cell>
+              <strong>Option B</strong>
+            </Table.Cell>
+            <Table.Cell>
+              <Formik>
+                <Form className="ui form">
+                  <ExamQuizTextInput
+                    name="optionB"
+                    placeholder="Option B"
+                    value={optionB ?? question.optionB}
+                    onChange={(e) => setOptionB(e.target.value)}
+                  />
+                </Form>
+              </Formik>
+            </Table.Cell>
+          </Table.Row>
+          <Table.Row>
+            <Table.Cell>
+              <strong>Option C</strong>
+            </Table.Cell>
+            <Table.Cell>
+              <Formik>
+                <Form className="ui form">
+                  <ExamQuizTextInput
+                    name="optionC"
+                    placeholder="Option C"
+                    value={optionC ?? question.optionC}
+                    onChange={(e) => setOptionC(e.target.value)}
+                  />
+                </Form>
+              </Formik>
+            </Table.Cell>
+          </Table.Row>
+          <Table.Row>
+            <Table.Cell>
+              <strong>Option D</strong>
+            </Table.Cell>
+            <Table.Cell>
+              <Formik>
+                <Form className="ui form">
+                  <ExamQuizTextInput
+                    name="optionD"
+                    placeholder="Option D"
+                    value={optionD ?? question.optionD}
+                    onChange={(e) => setOptionD(e.target.value)}
+                  />
+                </Form>
+              </Formik>
+            </Table.Cell>
+          </Table.Row>
+          <Table.Row>
+            <Table.Cell>
+              <strong>Option E</strong>
+            </Table.Cell>
+            <Table.Cell>
+              <Formik>
+                <Form className="ui form">
+                  <ExamQuizTextInput
+                    name="optionE"
+                    placeholder="Option E"
+                    value={optionE ?? question.optionE}
+                    onChange={(e) => setOptionE(e.target.value)}
+                  />
+                </Form>
+              </Formik>
+            </Table.Cell>
+          </Table.Row>
+          <Table.Row>
+            <Table.Cell>
+              <strong>True Option</strong>
+            </Table.Cell>
+            <Table.Cell>
+              <Formik>
+                <Form className="ui form">
+                  <ExamQuizTextInput
+                    name="trueOption"
+                    placeholder="True Option"
+                    value={trueOption ?? question.trueOption}
+                    onChange={(e) => setTrueOption(e.target.value)}
+                  />
+                </Form>
+              </Formik>
+            </Table.Cell>
+          </Table.Row>
+          <Table.Row>
+            <Table.Cell>
+              <strong>Question Update</strong>
+            </Table.Cell>
+            <Table.Cell>
+              <Button
+                color="green"
+                type="submit"
+                onClick={() =>
+                  questionService.updateQuestion({
+                    questionId,
+                    examId,
+                    questionText,
+                    optionA,
+                    optionB,
+                    optionC,
+                    optionD,
+                    optionE,
+                    trueOption,
+                  })
+                }
+                disabled={
+                  !(
+                    examId &&
+                    questionText &&
+                    optionA &&
+                    optionB &&
+                    optionC &&
+                    optionD &&
+                    optionE &&
+                    trueOption
+                  )
+                }
+              >
+                Question Update
+              </Button>
+            </Table.Cell>
+          </Table.Row>
+        </Table.Body>
+      </Table>
     </div>
-  )
+  );
 }

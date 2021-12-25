@@ -28,7 +28,7 @@ export default function ExamListByLessonId() {
 
         <Table.Body>
           {exams.map((exam) => (
-            <Table.Row key={exam.examId}>
+            <Table.Row key={exam?.examId}>
               <Table.Cell>{exam?.examId}</Table.Cell>
               <Table.Cell>{exam?.lesson?.lessonId}</Table.Cell>
               <Table.Cell>{exam?.lesson?.lessonName}</Table.Cell>

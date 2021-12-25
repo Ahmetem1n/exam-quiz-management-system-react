@@ -56,7 +56,7 @@ export default class UserService extends Component {
     return axios.get(
       "http://localhost:8080/user/login?nationalityId=" +
         initialValues.nationalityId +
-        "&password=" +
+        "&userPassword=" +
         initialValues.userPassword
     );
   }

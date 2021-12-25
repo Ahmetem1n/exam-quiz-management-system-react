@@ -1,6 +1,6 @@
 import { Formik } from "formik";
 import React, { useState } from "react";
-import { Button, Form } from "semantic-ui-react";
+import { Button, Form, Table } from "semantic-ui-react";
 import LessonService from "../../../services/lessonService";
 import ExamQuizTextInput from "../../../utilities/ExamQuizTextInput";
 
@@ -13,76 +13,130 @@ export default function LessonAdd() {
 
   let lessonService = new LessonService();
 
-  const initialValues = {
-    teacherId: "",
-    departmentId: "",
-    lessonName: "",
-    lessonTeamsCode: "",
-    lessonMaterialLink: "",
-  };
   return (
     <div>
       LESSON ADD
-      <Formik initialValues={initialValues}>
-        <Form className="ui form">
-          <ExamQuizTextInput
-            name="teacherId"
-            placeholder="Teacher Id"
-            value={teacherId ?? ""}
-            onChange={(e) => setTeacherId(e.target.value)}
-          />
+      <Table celled>
+        <Table.Body>
+          <Table.Row>
+            <Table.Cell width="1">
+              <strong>Teacher Id</strong>
+            </Table.Cell>
+            <Table.Cell width="4">
+              <Formik>
+                <Form className="ui form">
+                  <ExamQuizTextInput
+                    name="teacherId"
+                    placeholder="Teacher Id"
+                    value={teacherId ?? ""}
+                    onChange={(e) => setTeacherId(e.target.value)}
+                  />
+                </Form>
+              </Formik>
+            </Table.Cell>
+          </Table.Row>
+          <Table.Row>
+            <Table.Cell>
+              <strong>Department Id</strong>
+            </Table.Cell>
+            <Table.Cell>
+              <Formik>
+                <Form className="ui form">
+                  <ExamQuizTextInput
+                    name="departmentId"
+                    placeholder="Department Id"
+                    value={departmentId ?? ""}
+                    onChange={(e) => setDepartmentId(e.target.value)}
+                  />
+                </Form>
+              </Formik>
+            </Table.Cell>
+          </Table.Row>
+          <Table.Row>
+            <Table.Cell>
+              <strong>Lesson Name</strong>
+            </Table.Cell>
+            <Table.Cell>
+              <Formik>
+                <Form className="ui form">
+                  <ExamQuizTextInput
+                    name="lessonName"
+                    placeholder="Lesson Name"
+                    value={lessonName ?? ""}
+                    onChange={(e) => setLessonName(e.target.value)}
+                  />
+                </Form>
+              </Formik>
+            </Table.Cell>
+          </Table.Row>
+          <Table.Row>
+            <Table.Cell>
+              <strong>Lesson Teams Code</strong>
+            </Table.Cell>
+            <Table.Cell>
+              <Formik>
+                <Form className="ui form">
+                  <ExamQuizTextInput
+                    name="lessonTeamsCode"
+                    placeholder="Lesson Teams Code"
+                    value={lessonTeamsCode ?? ""}
+                    onChange={(e) => setLessonTeamsCode(e.target.value)}
+                  />
+                </Form>
+              </Formik>
+            </Table.Cell>
+          </Table.Row>
+          <Table.Row>
+            <Table.Cell>
+              <strong>Lesson Material Link</strong>
+            </Table.Cell>
+            <Table.Cell>
+              <Formik>
+                <Form className="ui form">
+                  <ExamQuizTextInput
+                    name="lessonMaterialLink"
+                    placeholder="Lesson Material Link"
+                    value={lessonMaterialLink ?? ""}
+                    onChange={(e) => setLessonMaterialLink(e.target.value)}
+                  />
+                </Form>
+              </Formik>
+            </Table.Cell>
+          </Table.Row>
 
-          <ExamQuizTextInput
-            name="departmentId"
-            placeholder="Department Id"
-            value={departmentId ?? ""}
-            onChange={(e) => setDepartmentId(e.target.value)}
-          />
-          <ExamQuizTextInput
-            name="lessonName"
-            placeholder="Lesson Name"
-            value={lessonName ?? ""}
-            onChange={(e) => setLessonName(e.target.value)}
-          />
-          <ExamQuizTextInput
-            name="lessonTeamsCode"
-            placeholder="Lesson Teams Code"
-            value={lessonTeamsCode ?? ""}
-            onChange={(e) => setLessonTeamsCode(e.target.value)}
-          />
-          <ExamQuizTextInput
-            name="lessonMaterialLink"
-            placeholder="Lesson Material Link"
-            value={lessonMaterialLink ?? ""}
-            onChange={(e) => setLessonMaterialLink(e.target.value)}
-          />
-
-          <Button
-            color="green"
-            type="submit"
-            onClick={() =>
-              lessonService.addLesson({
-                teacherId,
-                departmentId,
-                lessonName,
-                lessonTeamsCode,
-                lessonMaterialLink,
-              })
-            }
-            disabled={
-              !(
-                teacherId &&
-                departmentId &&
-                lessonName &&
-                lessonTeamsCode &&
-                lessonMaterialLink
-              )
-            }
-          >
-            Lesson Add
-          </Button>
-        </Form>
-      </Formik>
+          <Table.Row>
+            <Table.Cell>
+              <strong>Lesson Add</strong>
+            </Table.Cell>
+            <Table.Cell>
+              <Button
+                color="green"
+                type="submit"
+                onClick={() =>
+                  lessonService.addLesson({
+                    teacherId,
+                    departmentId,
+                    lessonName,
+                    lessonTeamsCode,
+                    lessonMaterialLink,
+                  })
+                }
+                disabled={
+                  !(
+                    teacherId &&
+                    departmentId &&
+                    lessonName &&
+                    lessonTeamsCode &&
+                    lessonMaterialLink
+                  )
+                }
+              >
+                Lesson Add
+              </Button>
+            </Table.Cell>
+          </Table.Row>
+        </Table.Body>
+      </Table>
     </div>
   );
 }
