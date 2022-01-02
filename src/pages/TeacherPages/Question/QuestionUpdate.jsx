@@ -23,7 +23,6 @@ export default function QuestionUpdate() {
   const [optionE, setOptionE] = useState(null);
   const [trueOption, setTrueOption] = useState(null);
 
-  const initialValues = {};
   return (
     <div>
       QUESTION UPDATE
@@ -31,34 +30,9 @@ export default function QuestionUpdate() {
         <Table.Body>
           <Table.Row>
             <Table.Cell width="1">
-              <strong>Question Id</strong>
-            </Table.Cell>
-            <Table.Cell width="4">
-              <Formik initialValues={initialValues}>
-                <Form className="ui form">
-                  <ExamQuizTextInput name="questionId" value={questionId} />
-                </Form>
-              </Formik>
-            </Table.Cell>
-          </Table.Row>
-
-          <Table.Row>
-            <Table.Cell>
-              <strong>Exam Id</strong>
-            </Table.Cell>
-            <Table.Cell>
-              <Formik initialValues={initialValues}>
-                <Form className="ui form">
-                  <ExamQuizTextInput name="examId" value={examId} />
-                </Form>
-              </Formik>
-            </Table.Cell>
-          </Table.Row>
-          <Table.Row>
-            <Table.Cell>
               <strong>Question Text</strong>
             </Table.Cell>
-            <Table.Cell>
+            <Table.Cell width="4">
               <Formik>
                 <Form className="ui form">
                   <ExamQuizTextInput
@@ -182,7 +156,7 @@ export default function QuestionUpdate() {
               <Button
                 color="green"
                 type="submit"
-                onClick={() =>
+                onClick={() => {
                   questionService.updateQuestion({
                     questionId,
                     examId,
@@ -193,8 +167,8 @@ export default function QuestionUpdate() {
                     optionD,
                     optionE,
                     trueOption,
-                  })
-                }
+                  });
+                }}
                 disabled={
                   !(
                     questionText &&

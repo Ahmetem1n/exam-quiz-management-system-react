@@ -5,12 +5,12 @@ import LessonService from "../../../services/lessonService";
 
 export default function LessonDetail() {
   let { lessonId } = useParams();
-  const [lessons, setLessons] = useState({});
+  const [lesson, setLesson] = useState({});
   useEffect(() => {
     let lessonService = new LessonService();
     lessonService
       .getByLessonId(lessonId)
-      .then((result) => setLessons(result.data));
+      .then((result) => setLesson(result.data));
   }, []);
 
   return (
@@ -88,16 +88,16 @@ export default function LessonDetail() {
           <Table>
             <Table.Body>
               <Table.Row>
-                <Table.Cell>{lessons?.lessonId}</Table.Cell>
+                <Table.Cell>{lesson?.lessonId}</Table.Cell>
               </Table.Row>
               <Table.Row>
-                <Table.Cell>{lessons?.lessonName}</Table.Cell>
+                <Table.Cell>{lesson?.lessonName}</Table.Cell>
               </Table.Row>
               <Table.Row>
-                <Table.Cell>{lessons?.lessonTeamsCode}</Table.Cell>
+                <Table.Cell>{lesson?.lessonTeamsCode}</Table.Cell>
               </Table.Row>
               <Table.Row>
-                <Table.Cell>{lessons?.lessonMaterialLink}</Table.Cell>
+                <Table.Cell>{lesson?.lessonMaterialLink}</Table.Cell>
               </Table.Row>
             </Table.Body>
           </Table>
@@ -105,15 +105,15 @@ export default function LessonDetail() {
           <Table>
             <Table.Body>
               <Table.Row>
-                <Table.Cell>{lessons?.department?.departmentId}</Table.Cell>
+                <Table.Cell>{lesson?.department?.departmentId}</Table.Cell>
               </Table.Row>
 
               <Table.Row>
-                <Table.Cell>{lessons?.department?.departmentName}</Table.Cell>
+                <Table.Cell>{lesson?.department?.departmentName}</Table.Cell>
               </Table.Row>
               <Table.Row>
                 <Table.Cell>
-                  {lessons?.department?.faculty?.facultyName}
+                  {lesson?.department?.faculty?.facultyName}
                 </Table.Cell>
               </Table.Row>
             </Table.Body>
@@ -122,13 +122,13 @@ export default function LessonDetail() {
           <Table>
             <Table.Body>
               <Table.Row>
-                <Table.Cell>{lessons?.teacher?.teacherId}</Table.Cell>
+                <Table.Cell>{lesson?.teacher?.teacherId}</Table.Cell>
               </Table.Row>
               <Table.Row>
                 <Table.Cell>
-                  {lessons?.teacher?.user?.userFirstname +
+                  {lesson?.teacher?.user?.userFirstname +
                     " " +
-                    lessons?.teacher?.user?.userLastname}
+                    lesson?.teacher?.user?.userLastname}
                 </Table.Cell>
               </Table.Row>
             </Table.Body>

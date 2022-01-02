@@ -62,7 +62,7 @@ export default function QuestionList() {
           ))}
         </Table.Body>
       </Table>
-      <Button as={NavLink} to={"/question_add"}>
+      <Button as={NavLink} to={"/question_add/"+examId}>
         Question Add
       </Button>
     </div>

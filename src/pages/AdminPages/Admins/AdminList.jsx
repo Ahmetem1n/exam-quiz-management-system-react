@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from "react"
-import { Link, NavLink } from "react-router-dom"
-import { Button, Table } from "semantic-ui-react"
-import AdminService from "../../../services/adminService"
+import React, { useEffect, useState } from "react";
+import { Link, NavLink } from "react-router-dom";
+import { Button, Table } from "semantic-ui-react";
+import AdminService from "../../../services/adminService";
 
 export default function AdminList() {
-  const [admins, setAdmins] = useState([])
+  const [admins, setAdmins] = useState([]);
 
   useEffect(() => {
-    let adminService = new AdminService()
-    adminService.getAdmins().then((result) => setAdmins(result.data))
-  }, [])
+    let adminService = new AdminService();
+    adminService.getAdmins().then((result) => setAdmins(result.data));
+  }, []);
   return (
     <div>
       <Table celled>
@@ -27,10 +27,10 @@ export default function AdminList() {
 
         <Table.Body>
           {admins.map((admin) => (
-            <Table.Row key={admin.adminId}>
+            <Table.Row key={admin?.adminId}>
               <Table.Cell>{admin?.adminId}</Table.Cell>
               <Table.Cell>
-                <Link to={`/admin/${admin.user.userId}`}>
+                <Link to={`/admin/${admin?.user?.userId}`}>
                   {admin?.user?.userFirstname}
                 </Link>
               </Table.Cell>
@@ -38,12 +38,12 @@ export default function AdminList() {
               <Table.Cell>{admin?.user?.userEmail}</Table.Cell>
               <Table.Cell>{admin?.user?.userGender}</Table.Cell>
               <Table.Cell>
-                <Button as={NavLink} to={"/admin_update/" + admin.adminId}>
+                <Button as={NavLink} to={"/admin_update/" + admin?.adminId}>
                   Update
                 </Button>
               </Table.Cell>
               <Table.Cell>
-                <Button as={NavLink} to={"/admin_delete/" + admin.adminId}>
+                <Button as={NavLink} to={"/admin_delete/" + admin?.adminId}>
                   Delete
                 </Button>
               </Table.Cell>
@@ -51,9 +51,9 @@ export default function AdminList() {
           ))}
         </Table.Body>
       </Table>
-      <Button as={NavLink} to={"/admin_add/"}>
+      <Button as={NavLink} to={"/admin_add"}>
         Admin Add
       </Button>
     </div>
-  )
+  );
 }

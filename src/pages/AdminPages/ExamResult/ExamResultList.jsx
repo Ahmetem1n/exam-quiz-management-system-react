@@ -27,7 +27,7 @@ export default function ExamResultList() {
 
         <Table.Body>
           {results.map((result) => (
-            <Table.Row key={result.resultId}>
+            <Table.Row key={result?.resultId}>
               <Table.Cell>
                 <Link to={`/examResult/${result?.resultId}`}>
                   {result?.resultId}
@@ -44,14 +44,17 @@ export default function ExamResultList() {
                   {result?.exam?.lesson?.lessonName}
                 </Link>
               </Table.Cell>
-              <Table.Cell> <Link to={`/student/${result?.student?.studentId}`}>
-              {result?.student?.user?.userFirstname}
-                </Link></Table.Cell>
+              <Table.Cell>
+                {" "}
+                <Link to={`/student/${result?.student?.studentId}`}>
+                  {result?.student?.user?.userFirstname}
+                </Link>
+              </Table.Cell>
               <Table.Cell>{result?.result}</Table.Cell>
               <Table.Cell>
                 <Button
                   as={NavLink}
-                  to={"/examResult_update/" + result.resultId}
+                  to={"/examResult_update/" + result?.resultId}
                 >
                   Update
                 </Button>
@@ -59,7 +62,7 @@ export default function ExamResultList() {
               <Table.Cell>
                 <Button
                   as={NavLink}
-                  to={"/examResult_delete/" + result.resultId}
+                  to={"/examResult_delete/" + result?.resultId}
                 >
                   Delete
                 </Button>
@@ -68,7 +71,7 @@ export default function ExamResultList() {
           ))}
         </Table.Body>
       </Table>
-      <Button as={NavLink} to={"/examResult_add/"}>
+      <Button as={NavLink} to={"/examResult_add"}>
         Exam Result Add
       </Button>
     </div>

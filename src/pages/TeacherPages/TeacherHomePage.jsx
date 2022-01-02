@@ -30,13 +30,6 @@ export default function TeacherHomePage() {
             />
             STUDENTS
           </Grid.Column>
-          <Grid.Column as={NavLink} to={"/studentLessonRelationships"}>
-            <Image
-              src="https://cumhuriyetedutr-my.sharepoint.com/personal/2018141024_cumhuriyet_edu_tr/Documents/EXAM-QU%C4%B0Z%20RES%C4%B0MLER/student-lesson-relationship.jfif"
-              bordered
-            />
-            STUDENT-LESSON RELATIONSHIPS
-          </Grid.Column>
 
           <Grid.Column as={NavLink} to={"/personalInformation"}>
             <Image

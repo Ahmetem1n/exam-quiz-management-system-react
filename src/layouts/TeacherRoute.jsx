@@ -1,6 +1,7 @@
 import React from "react";
 import { Route } from "react-router";
 import ExamAdd from "../pages/TeacherPages/Exam/ExamAdd";
+import ExamAddLesson from "../pages/TeacherPages/Exam/ExamAddLesson";
 import ExamDelete from "../pages/TeacherPages/Exam/ExamDelete";
 import ExamListByLessonId from "../pages/TeacherPages/Exam/ExamListByLessonId";
 import ExamListTeacher from "../pages/TeacherPages/Exam/ExamListTeacher";
@@ -14,8 +15,9 @@ import QuestionUpdate from "../pages/TeacherPages/Question/QuestionUpdate";
 import StudentList from "../pages/TeacherPages/Student/StudentList";
 import Student from "../pages/TeacherPages/StudentLessonRelationship/Student";
 import TeacherHomePage from "../pages/TeacherPages/TeacherHomePage";
-import PersonalInformation from "./PersonalInformation";
 import TeacherNavi from "./TeacherNavi";
+import PersonalInformationUpdate from "../pages/PersonalInformationUpdate";
+import PersonalInformation from "../pages/TeacherPages/PersonalInformation";
 
 export default function TeacherRoute() {
   return (
@@ -25,6 +27,7 @@ export default function TeacherRoute() {
       <Route exact path="/exams" component={ExamListTeacher} />
       <Route exact path="/exams/:lessonId" component={ExamListByLessonId} />
       <Route exact path="/exam_add" component={ExamAdd} />
+      <Route exact path="/exam_add/:lessonId" component={ExamAddLesson} />
       <Route exact path="/exam_delete/:examId" component={ExamDelete} />
       <Route exact path="/exam_update/:examId" component={ExamUpdate} />
 
@@ -32,7 +35,7 @@ export default function TeacherRoute() {
       <Route exact path="/lesson_update/:lessonId" component={LessonUpdate} />
 
       <Route exact path="/questions/:examId" component={QuestionList} />
-      <Route exact path="/question_add" component={QuestionAdd} />
+      <Route exact path="/question_add/:examId" component={QuestionAdd} />
       <Route
         exact
         path="/question_delete/:questionId"
@@ -50,6 +53,11 @@ export default function TeacherRoute() {
         exact
         path="/personalInformation"
         component={PersonalInformation}
+      />
+      <Route
+        exact
+        path="/personalInformation_update"
+        component={PersonalInformationUpdate}
       />
     </div>
   );

@@ -99,7 +99,7 @@ export default function ExamResultDetail() {
               </Table.Row>
               <Table.Row>
                 <Table.Cell>
-                  {examResult?.student?.user?.userFirstname}
+                  {examResult?.student?.user?.userFirstname + " " + examResult?.student?.user?.userLastname}
                 </Table.Cell>
               </Table.Row>
             </Table.Body>

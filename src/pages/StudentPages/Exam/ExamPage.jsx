@@ -1,3 +1,4 @@
+import moment from "moment";
 import React, { useEffect, useState } from "react";
 import { Cookies } from "react-cookie";
 import Countdown from "react-countdown";
@@ -184,16 +185,16 @@ export default function ExamPage() {
                   cookie.get("studentId")
                 );
                 cookie.set("examId", "");
+                alert("Cevaplar Kaydedildi.Sınavınız bitti.");
                 history.push("/");
                 window.location.reload();
               }}
             >
-              Çıkış
+              Finish
             </Form.Button>
           </Table.HeaderCell>
         </Table>
-
-        <Countdown date={Date.now() + 300000} renderer={renderer} />
+        <Countdown date={moment().add(5, "m")} renderer={renderer} />
       </Table>
     </div>
   );

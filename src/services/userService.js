@@ -34,7 +34,7 @@ export default class UserService extends Component {
     return axios.post(
       "http://localhost:8080/user/update?userId=" +
         initialValues.userId +
-        "userRole.roleId=" +
+        "&userRole.roleId=" +
         initialValues.roleId +
         "&userFirstname=" +
         initialValues.userFirstname +

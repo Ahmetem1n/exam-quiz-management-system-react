@@ -32,6 +32,8 @@ import LessonDelete from "../pages/AdminPages/Lesson/LessonDelete";
 import LessonDetail from "../pages/AdminPages/Lesson/LessonDetail";
 import LessonList from "../pages/AdminPages/Lesson/LessonList";
 import LessonUpdate from "../pages/AdminPages/Lesson/LessonUpdate";
+import PersonalInformationUpdate from "../pages/PersonalInformationUpdate";
+import PersonalInformation from "../pages/AdminPages/PersonalInformation";
 import QuestionAdd from "../pages/AdminPages/Question/QuestionAdd";
 import QuestionDelete from "../pages/AdminPages/Question/QuestionDelete";
 import QuestionDetail from "../pages/AdminPages/Question/QuestionDetail";
@@ -69,7 +71,6 @@ import UserRoleDetail from "../pages/AdminPages/UserRole/UserRoleDetail";
 import UserRoleList from "../pages/AdminPages/UserRole/UserRoleList";
 import UserRoleUpdate from "../pages/AdminPages/UserRole/UserRoleUpdate";
 import AdminNavi from "./AdminNavi";
-import PersonalInformation from "./PersonalInformation";
 export default function AdminRoute() {
   return (
     <div>
@@ -243,6 +244,11 @@ export default function AdminRoute() {
         exact
         path="/personalInformation"
         component={PersonalInformation}
+      />
+      <Route
+        exact
+        path="/personalInformation_update"
+        component={PersonalInformationUpdate}
       />
     </div>
   );

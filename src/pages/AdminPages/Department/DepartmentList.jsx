@@ -27,22 +27,22 @@ export default function DepartmentList() {
 
         <Table.Body>
           {departments.map((department) => (
-            <Table.Row key={department.departmentId}>
+            <Table.Row key={department?.departmentId}>
               <Table.Cell>{department?.departmentId}</Table.Cell>
               <Table.Cell>
-                <Link to={`/department/${department.departmentId}`}>
+                <Link to={`/department/${department?.departmentId}`}>
                   {department?.departmentName}
                 </Link>
               </Table.Cell>
               <Table.Cell>
-                <Link to={`/faculty/${department.faculty.facultyId}`}>
+                <Link to={`/faculty/${department?.faculty?.facultyId}`}>
                   {department?.faculty?.facultyName}
                 </Link>
               </Table.Cell>
               <Table.Cell>
                 <Button
                   as={NavLink}
-                  to={"/department_update/" + department.departmentId}
+                  to={"/department_update/" + department?.departmentId}
                 >
                   Update
                 </Button>
@@ -50,7 +50,7 @@ export default function DepartmentList() {
               <Table.Cell>
                 <Button
                   as={NavLink}
-                  to={"/department_delete/" + department.departmentId}
+                  to={"/department_delete/" + department?.departmentId}
                 >
                   Delete
                 </Button>
@@ -59,7 +59,7 @@ export default function DepartmentList() {
           ))}
         </Table.Body>
       </Table>
-      <Button as={NavLink} to={"/department_add/"}>
+      <Button as={NavLink} to={"/department_add"}>
         Department Add
       </Button>
     </div>

@@ -7,8 +7,9 @@ import ExamResultList from "../pages/StudentPages/ExamResult/ExamResultList";
 import LessonList from "../pages/StudentPages/Lesson/LessonList";
 import StudentHomePage from "../pages/StudentPages/StudentHomePage";
 import TeacherList from "../pages/StudentPages/Teacher/TeacherList";
-import PersonalInformation from "./PersonalInformation";
+import PersonalInformation from "../pages/StudentPages/PersonalInformation";
 import StudentNavi from "./StudentNavi";
+import PersonalInformationUpdate from "../pages/PersonalInformationUpdate";
 
 export default function StudentRoute() {
   return (
@@ -28,6 +29,11 @@ export default function StudentRoute() {
         exact
         path="/personalInformation"
         component={PersonalInformation}
+      />
+      <Route
+        exact
+        path="/personalInformation_update"
+        component={PersonalInformationUpdate}
       />
     </div>
   );

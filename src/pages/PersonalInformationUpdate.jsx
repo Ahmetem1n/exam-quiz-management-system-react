@@ -1,38 +1,47 @@
 import { Formik } from "formik";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { Cookies } from "react-cookie";
 import { Button, Form, Table } from "semantic-ui-react";
-import UserService from "../../../services/userService";
-import ExamQuizTextInput from "../../../utilities/ExamQuizTextInput";
+import UserService from "../services/userService";
+import ExamQuizTextInput from "../utilities/ExamQuizTextInput";
 
-export default function UserAdd() {
-  const [roleId, setRoleId] = useState(null);
-  const [userFirstname, setUserFirstname] = useState(null);
-  const [userLastname, setUserLastname] = useState(null);
-  const [userEmail, setUserEmail] = useState(null);
-  const [nationalityId, setNationalityId] = useState(null);
-  const [userGender, setUserGender] = useState(null);
-  const [userPhoto, setUserPhoto] = useState(null);
+export default function PersonalInformationUpdate() {
+  const [user, setUser] = useState({});
+  let cookie = new Cookies();
+  let userService = new UserService();
+  useEffect(() => {
+    userService
+      .getByUserId(cookie.get("userId"))
+      .then((result) => setUser(result.data));
+  }, []);
   const [userPassword, setUserPassword] = useState(null);
 
-  let userService = new UserService();
+  let userId = cookie.get("userId");
+  let roleId = user?.userRole?.roleId;
+  let userFirstname = user?.userFirstname;
+  let userLastname = user?.userLastname;
+  let userEmail = user?.userEmail;
+  let nationalityId = user?.nationalityId;
+  let userGender = user?.userGender;
+  let userPhoto = user?.userPhoto;
 
+  const initialValues = {};
   return (
     <div>
-      USER ADD
+      PASSWORD UPDATE
       <Table celled>
         <Table.Body>
           <Table.Row>
             <Table.Cell width="1">
-              <strong>Role Id</strong>
+              <strong>User Role</strong>
             </Table.Cell>
             <Table.Cell width="4">
-              <Formik>
+              <Formik initialValues={initialValues}>
                 <Form className="ui form">
                   <ExamQuizTextInput
-                    name="roleId"
-                    placeholder="Role Id"
-                    value={roleId ?? ""}
-                    onChange={(e) => setRoleId(e.target.value)}
+                    disabled
+                    name="userRole"
+                    value={user?.userRole?.roleName}
                   />
                 </Form>
               </Formik>
@@ -43,13 +52,12 @@ export default function UserAdd() {
               <strong>User Firstname</strong>
             </Table.Cell>
             <Table.Cell>
-              <Formik>
+              <Formik initialValues={initialValues}>
                 <Form className="ui form">
                   <ExamQuizTextInput
+                    disabled
                     name="userFirstname"
-                    placeholder="User Firstname"
-                    value={userFirstname ?? ""}
-                    onChange={(e) => setUserFirstname(e.target.value)}
+                    value={userFirstname}
                   />
                 </Form>
               </Formik>
@@ -60,13 +68,12 @@ export default function UserAdd() {
               <strong>User Lastname</strong>
             </Table.Cell>
             <Table.Cell>
-              <Formik>
+              <Formik initialValues={initialValues}>
                 <Form className="ui form">
                   <ExamQuizTextInput
+                    disabled
                     name="userLastname"
-                    placeholder="User Lastname"
-                    value={userLastname ?? ""}
-                    onChange={(e) => setUserLastname(e.target.value)}
+                    value={userLastname}
                   />
                 </Form>
               </Formik>
@@ -77,13 +84,12 @@ export default function UserAdd() {
               <strong>User Email</strong>
             </Table.Cell>
             <Table.Cell>
-              <Formik>
+              <Formik initialValues={initialValues}>
                 <Form className="ui form">
                   <ExamQuizTextInput
+                    disabled
                     name="userEmail"
-                    placeholder="User Email"
-                    value={userEmail ?? ""}
-                    onChange={(e) => setUserEmail(e.target.value)}
+                    value={userEmail}
                   />
                 </Form>
               </Formik>
@@ -94,13 +100,12 @@ export default function UserAdd() {
               <strong>Nationality Id</strong>
             </Table.Cell>
             <Table.Cell>
-              <Formik>
+              <Formik initialValues={initialValues}>
                 <Form className="ui form">
                   <ExamQuizTextInput
+                    disabled
                     name="nationalityId"
-                    placeholder="Nationality Id"
-                    value={nationalityId ?? ""}
-                    onChange={(e) => setNationalityId(e.target.value)}
+                    value={nationalityId}
                   />
                 </Form>
               </Formik>
@@ -111,35 +116,18 @@ export default function UserAdd() {
               <strong>User Gender</strong>
             </Table.Cell>
             <Table.Cell>
-              <Formik>
+              <Formik initialValues={initialValues}>
                 <Form className="ui form">
                   <ExamQuizTextInput
+                    disabled
                     name="userGender"
-                    placeholder="User Gender"
-                    value={userGender ?? ""}
-                    onChange={(e) => setUserGender(e.target.value)}
+                    value={userGender}
                   />
                 </Form>
               </Formik>
             </Table.Cell>
           </Table.Row>
-          <Table.Row>
-            <Table.Cell>
-              <strong>User Photo</strong>
-            </Table.Cell>
-            <Table.Cell>
-              <Formik>
-                <Form className="ui form">
-                  <ExamQuizTextInput
-                    name="userPhoto"
-                    placeholder="User Photo"
-                    value={userPhoto ?? ""}
-                    onChange={(e) => setUserPhoto(e.target.value)}
-                  />
-                </Form>
-              </Formik>
-            </Table.Cell>
-          </Table.Row>
+
           <Table.Row>
             <Table.Cell>
               <strong>User Password</strong>
@@ -150,7 +138,7 @@ export default function UserAdd() {
                   <ExamQuizTextInput
                     name="userPassword"
                     placeholder="User Password"
-                    value={userPassword ?? ""}
+                    value={userPassword ?? user?.userPassword}
                     onChange={(e) => setUserPassword(e.target.value)}
                   />
                 </Form>
@@ -159,14 +147,15 @@ export default function UserAdd() {
           </Table.Row>
           <Table.Row>
             <Table.Cell>
-              <strong>User Add</strong>
+              <strong>Password Update</strong>
             </Table.Cell>
             <Table.Cell>
               <Button
                 color="green"
                 type="submit"
                 onClick={() =>
-                  userService.addUser({
+                  userService.updateUser({
+                    userId,
                     roleId,
                     userFirstname,
                     userLastname,
@@ -177,20 +166,9 @@ export default function UserAdd() {
                     userPassword,
                   })
                 }
-                disabled={
-                  !(
-                    roleId &&
-                    userFirstname &&
-                    userLastname &&
-                    userEmail &&
-                    nationalityId &&
-                    userGender &&
-                    userPhoto &&
-                    userPassword
-                  )
-                }
+                disabled={!userPassword}
               >
-                User Add
+                Password Update
               </Button>
             </Table.Cell>
           </Table.Row>

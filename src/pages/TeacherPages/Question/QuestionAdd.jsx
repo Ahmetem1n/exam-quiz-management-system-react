@@ -1,11 +1,13 @@
 import { Formik } from "formik";
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { Button, Form, Table } from "semantic-ui-react";
 import QuestionService from "../../../services/questionService";
 import ExamQuizTextInput from "../../../utilities/ExamQuizTextInput";
 
-export default function QuestionAdd() {
-  const [examId, setExamId] = useState(null);
+export default function QuestionAdd(props) {
+  let { examId } = useParams();
   const [questionText, setQuestionText] = useState(null);
   const [optionA, setOptionA] = useState(null);
   const [optionB, setOptionB] = useState(null);
@@ -15,7 +17,7 @@ export default function QuestionAdd() {
   const [trueOption, setTrueOption] = useState(null);
 
   let questionService = new QuestionService();
-
+  const initialValues = {};
   return (
     <div>
       QUESTİON ADD
@@ -26,14 +28,9 @@ export default function QuestionAdd() {
               <strong>Exam Id</strong>
             </Table.Cell>
             <Table.Cell width="4">
-              <Formik>
+              <Formik initialValues={initialValues}>
                 <Form className="ui form">
-                  <ExamQuizTextInput
-                    name="examId"
-                    placeholder="Exam Id"
-                    value={examId ?? ""}
-                    onChange={(e) => setExamId(e.target.value)}
-                  />
+                  <ExamQuizTextInput name="examId" value={examId} />
                 </Form>
               </Formik>
             </Table.Cell>

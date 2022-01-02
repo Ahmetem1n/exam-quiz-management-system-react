@@ -28,23 +28,23 @@ export default function ExamListByLessonId() {
 
         <Table.Body>
           {exams.map((exam) => (
-            <Table.Row key={exam.examId}>
+            <Table.Row key={exam?.examId}>
               <Table.Cell>{exam?.examId}</Table.Cell>
               <Table.Cell>{exam?.lesson?.lessonId}</Table.Cell>
               <Table.Cell>{exam?.lesson?.lessonName}</Table.Cell>
               <Table.Cell>{`${exam?.active}`}</Table.Cell>
               <Table.Cell>
-                <Button as={NavLink} to={"/exam_update/" + exam.examId}>
+                <Button as={NavLink} to={"/exam_update/" + exam?.examId}>
                   Update
                 </Button>
               </Table.Cell>
               <Table.Cell>
-                <Button as={NavLink} to={"/exam_delete/" + exam.examId}>
+                <Button as={NavLink} to={"/exam_delete/" + exam?.examId}>
                   Delete
                 </Button>
               </Table.Cell>
               <Table.Cell>
-                <Button as={NavLink} to={"/questions/" + exam.examId}>
+                <Button as={NavLink} to={"/questions/" + exam?.examId}>
                   Questions
                 </Button>
               </Table.Cell>
@@ -52,7 +52,7 @@ export default function ExamListByLessonId() {
           ))}
         </Table.Body>
       </Table>
-      <Button as={NavLink} to={"/exam_add/"}>
+      <Button as={NavLink} to={"/exam_add"}>
         Exam Add
       </Button>
     </div>

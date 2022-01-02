@@ -29,7 +29,7 @@ export default function LessonList() {
 
         <Table.Body>
           {lessons.map((lesson) => (
-            <Table.Row key={lesson.lessonId}>
+            <Table.Row key={lesson?.lessonId}>
               <Table.Cell>{lesson?.lessonId}</Table.Cell>
               <Table.Cell>
                 <Link to={`/lesson/${lesson?.lessonId}`}>
@@ -49,17 +49,17 @@ export default function LessonList() {
               <Table.Cell>{lesson?.lessonTeamsCode}</Table.Cell>
               <Table.Cell>{lesson?.lessonMaterialLink}</Table.Cell>
               <Table.Cell>
-                <Button as={NavLink} to={"/lesson_update/" + lesson.lessonId}>
+                <Button as={NavLink} to={"/lesson_update/" + lesson?.lessonId}>
                   Update
                 </Button>
               </Table.Cell>
               <Table.Cell>
-                <Button as={NavLink} to={"/lesson_delete/" + lesson.lessonId}>
+                <Button as={NavLink} to={"/lesson_delete/" + lesson?.lessonId}>
                   Delete
                 </Button>
               </Table.Cell>
               <Table.Cell>
-                <Button as={NavLink} to={"/exams/" + lesson.lessonId}>
+                <Button as={NavLink} to={"/exams/" + lesson?.lessonId}>
                   Exams
                 </Button>
               </Table.Cell>
@@ -67,7 +67,7 @@ export default function LessonList() {
           ))}
         </Table.Body>
       </Table>
-      <Button as={NavLink} to={"/lesson_add/"}>
+      <Button as={NavLink} to={"/lesson_add"}>
         Lesson Add
       </Button>
     </div>

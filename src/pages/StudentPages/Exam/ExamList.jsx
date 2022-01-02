@@ -53,7 +53,7 @@ export default function ExamList() {
                               "\nTüm sonuçlarınızı sonuçlar sayfasından kontrol edebilirsiniz."
                           );
                         } else {
-                          cookie.set("examId",exam.examId)
+                          cookie.set("examId", exam.examId);
                           history.push("/exam_page");
                         }
                       })

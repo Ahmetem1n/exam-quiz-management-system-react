@@ -23,7 +23,7 @@ export default function FacultyList() {
 
         <Table.Body>
           {faculties.map((faculty) => (
-            <Table.Row key={faculty.facultyId}>
+            <Table.Row key={faculty?.facultyId}>
               <Table.Cell>{faculty?.facultyId}</Table.Cell>
               <Table.Cell>
                 <Link to={`/faculty/${faculty?.facultyId}`}>
@@ -50,7 +50,7 @@ export default function FacultyList() {
           ))}
         </Table.Body>
       </Table>
-      <Button as={NavLink} to={"/faculty_add/"}>
+      <Button as={NavLink} to={"/faculty_add"}>
         Faculty Add
       </Button>
     </div>

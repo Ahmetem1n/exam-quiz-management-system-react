@@ -16,8 +16,8 @@ export default function ExamListByLessonId() {
       <Table celled>
         <Table.Header>
           <Table.Row>
-          <Table.HeaderCell>Exam Id</Table.HeaderCell>
-          <Table.HeaderCell>Lesson Id</Table.HeaderCell>
+            <Table.HeaderCell>Exam Id</Table.HeaderCell>
+            <Table.HeaderCell>Lesson Id</Table.HeaderCell>
             <Table.HeaderCell>Lesson Name</Table.HeaderCell>
             <Table.HeaderCell>Active</Table.HeaderCell>
             <Table.HeaderCell>Update</Table.HeaderCell>
@@ -44,7 +44,7 @@ export default function ExamListByLessonId() {
                 </Button>
               </Table.Cell>
               <Table.Cell>
-                <Button as={NavLink} to={"/questions/" + exam.examId}>
+                <Button as={NavLink} to={"/questions/"+exam.examId}>
                   Questions
                 </Button>
               </Table.Cell>
@@ -52,7 +52,7 @@ export default function ExamListByLessonId() {
           ))}
         </Table.Body>
       </Table>
-      <Button as={NavLink} to={"/exam_add/"}>
+      <Button as={NavLink} to={"/exam_add/" + lessonId}>
         Exam Add
       </Button>
     </div>

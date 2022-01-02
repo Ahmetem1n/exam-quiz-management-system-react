@@ -12,26 +12,26 @@ export default function SignedIn() {
         <Dropdown pointing="top left" text={cookie.get("firstname")}>
           <DropdownMenu>
             <Dropdown.Item
-              text="Bilgilerim"
+              text="Personal Information"
               icon="info"
               as={NavLink}
               to={"/personalInformation"}
             />
             <Dropdown.Item
               onClick={() => (
-                cookie.set("roleId", ""),
-                cookie.set("adminId", ""),
-                cookie.set("profilePhoto", ""),
-                cookie.set("studentId", ""),
-                cookie.set("teacherId", ""),
-                cookie.set("firstname", ""),
-                cookie.set("userId", ""),
-                sessionStorage.setItem("firstname", ""),
-                sessionStorage.setItem("userId", ""),
+                document.cookie.split(";").forEach(function (c) {
+                  document.cookie = c
+                    .replace(/^ +/, "")
+                    .replace(
+                      /=.*/,
+                      "=;expires=" + new Date().toUTCString() + ";path=/"
+                    );
+                }),
+                sessionStorage.clear(),
                 history.push("/"),
                 window.location.reload()
               )}
-              text="Çıkış Yap"
+              text="Sign out"
               icon="sign-out"
             />
           </DropdownMenu>

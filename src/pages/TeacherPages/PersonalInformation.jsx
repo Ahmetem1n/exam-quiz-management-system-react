@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Cookies } from "react-cookie";
+import { NavLink } from "react-router-dom";
 import { Button, Grid, Table } from "semantic-ui-react";
-import UserService from "../services/userService";
+import UserService from "../../services/userService";
+import TeacherService from "../../services/teacherService";
 
 export default function PersonalInformation() {
   const [user, setUser] = useState({});
@@ -11,6 +13,13 @@ export default function PersonalInformation() {
     userService
       .getByUserId(cookie.get("userId"))
       .then((result) => setUser(result.data));
+  }, []);
+  const [teacher, setTeacher] = useState({});
+  useEffect(() => {
+    let teacherService = new TeacherService();
+    teacherService
+      .getByTeacherId(cookie.get("teacherId"))
+      .then((result) => setTeacher(result.data));
   }, []);
 
   return (
@@ -51,6 +60,21 @@ export default function PersonalInformation() {
               </Table.Row>
               <Table.Row>
                 <Table.Cell>
+                  <strong>Faculty</strong>
+                </Table.Cell>
+              </Table.Row>
+              <Table.Row>
+                <Table.Cell>
+                  <strong>Department</strong>
+                </Table.Cell>
+              </Table.Row>
+              <Table.Row>
+                <Table.Cell>
+                  <strong>Profession</strong>
+                </Table.Cell>
+              </Table.Row>
+              <Table.Row>
+                <Table.Cell>
                   <strong>User Password</strong>
                 </Table.Cell>
               </Table.Row>
@@ -80,11 +104,27 @@ export default function PersonalInformation() {
                 <Table.Cell>{user?.userGender}</Table.Cell>
               </Table.Row>
               <Table.Row>
+                <Table.Cell>
+                  {teacher?.department?.faculty?.facultyName}
+                </Table.Cell>
+              </Table.Row>
+              <Table.Row>
+                <Table.Cell>{teacher?.department?.departmentName}</Table.Cell>
+              </Table.Row>
+              <Table.Row>
+                <Table.Cell>{teacher?.profession}</Table.Cell>
+              </Table.Row>
+              <Table.Row>
                 <Table.Cell>{user?.userPassword}</Table.Cell>
               </Table.Row>
             </Table.Body>
           </Table>
-          <Button color="green" type="submit">
+          <Button
+            color="green"
+            type="submit"
+            as={NavLink}
+            to={"/personalInformation_update"}
+          >
             Password Update
           </Button>
         </Grid.Column>

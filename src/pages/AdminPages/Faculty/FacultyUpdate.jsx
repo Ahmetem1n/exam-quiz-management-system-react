@@ -46,7 +46,7 @@ export default function FacultyUpdate() {
                   <ExamQuizTextInput
                     name="facultyName"
                     placeholder="Faculty Name"
-                    value={facultyName ?? faculty.facultyName}
+                    value={facultyName ?? faculty?.facultyName}
                     onChange={(e) => setFacultyName(e.target.value)}
                   />
                 </Form>

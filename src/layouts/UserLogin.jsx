@@ -14,19 +14,19 @@ export default function UserLogin() {
   let teacherService = new TeacherService();
   let studentService = new StudentService();
   let cookie = new Cookies();
+  //cookie.set("a",false )
 
   const [nationalityId, setNationalityId] = useState(null);
   const [userPassword, setUserPassword] = useState(null);
 
-  const initialValues = {
-    nationalityId: "",
-    userPassword: "",
-  };
-
+  const [state, setState] = useState({
+    checked: cookie.get("remember") === "true",
+  });
+  let toggle = () => setState((prevState) => ({ checked: !prevState.checked }));
   return (
     <div>
       USER LOGIN
-      <Formik initialValues={initialValues}>
+      <Formik>
         <Form className="ui form">
           <ExamQuizTextInput
             name="nationalityId"
@@ -72,12 +72,16 @@ export default function UserLogin() {
                           cookie.set("studentId", result2.data.studentId);
                         });
                     }
-
-                    sessionStorage.setItem("userId", result.data.userId);
+                    cookie.set("remember", state.checked);
                     sessionStorage.setItem(
-                      "firstname",
-                      result.data.userFirstname
+                      "roleId",
+                      result.data.userRole.roleId
                     );
+                    sessionStorage.setItem(
+                      "password",
+                      result.data.userPassword
+                    );
+
                     cookie.set("userId", result.data.userId);
                     cookie.set("firstname", result.data.userFirstname);
                     cookie.set("profilePhoto", result.data.userPhoto);
@@ -90,6 +94,8 @@ export default function UserLogin() {
           >
             User Login
           </Button>
+
+          <Checkbox label="Remember Me" onChange={toggle} />
         </Form>
       </Formik>
     </div>

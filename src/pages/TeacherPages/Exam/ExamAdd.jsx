@@ -1,14 +1,28 @@
 import { Formik } from "formik";
 import React, { useState } from "react";
-import { Button, Form, Grid, Table } from "semantic-ui-react";
+import { Cookies } from "react-cookie";
+import { Button, Dropdown, Form, Table } from "semantic-ui-react";
 import ExamService from "../../../services/examService";
+import LessonService from "../../../services/lessonService";
 import ExamQuizTextInput from "../../../utilities/ExamQuizTextInput";
 
 export default function ExamAdd() {
   const [lessonId, setLessonId] = useState(null);
   const [active, setActive] = useState(null);
-
   let examService = new ExamService();
+  let lessonService = new LessonService();
+  let cookie = new Cookies();
+  const activeOption = [
+    { key: true, text: "True", value: "true" },
+    { key: false, text: "False", value: "false" },
+  ];
+
+  const { value } = "";
+
+  let handleChangeActive = (x) => {
+    setActive(x);
+    console.log(active);
+  };
 
   return (
     <div>
@@ -20,7 +34,7 @@ export default function ExamAdd() {
               <strong>Lesson Id</strong>
             </Table.Cell>
             <Table.Cell width="4">
-              <Formik >
+              <Formik>
                 <Form className="ui form">
                   <ExamQuizTextInput
                     name="lessonId"
@@ -58,9 +72,21 @@ export default function ExamAdd() {
                 color="green"
                 type="submit"
                 onClick={() =>
-                  examService.addExam({
-                    lessonId,
-                    active,
+                  lessonService.getByLessonId(lessonId).then((result) => {
+                    if (
+                      result.data !== "" &&
+                      result.data.teacher.teacherId.toString() ===
+                        cookie.get("teacherId")
+                    ) {
+                      examService.addExam({
+                        lessonId,
+                        active,
+                      });
+                    } else {
+                      alert(
+                        "Ders Id'si Yanlış!!!\nLütfen kendi derslerinizden birini giriniz."
+                      );
+                    }
                   })
                 }
                 disabled={!(lessonId && active)}
